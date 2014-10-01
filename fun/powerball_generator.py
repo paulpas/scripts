@@ -1,5 +1,5 @@
 import random
-print "Ofical Powerball number generator"
+print "Offical Powerball number generator"
 x = int(raw_input("How many sets of numbers? "))
 z = range(1,42)
 

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "[Current] [Average]: Traffic downloading from destination host."
+cat - | pv -ra >/dev/null
+

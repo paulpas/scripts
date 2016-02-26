@@ -1,0 +1,792 @@
+>>>>>>>>>> AUDIT SCRIPT: ./lusas-basic.sh lusas-basic: 1.1.1 <<<<<<<<<<<
+Thu Feb 18 13:49:34 CST 2016
+
+
+>>>>>>>>>> System Info ----------
+hostname: amagi-om
+
+---------- OS Info ----------
+Running command: uname -a
+Linux amagi-om 3.19.0-49-generic #55~14.04.1-Ubuntu SMP Fri Jan 22 11:24:31 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
+
+This is a Linux 3.19.0-49-generic on x86_64
+
+Release Info:
+
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=14.04
+DISTRIB_CODENAME=trusty
+DISTRIB_DESCRIPTION="Ubuntu 14.04.3 LTS"
+
+Running command: uptime
+ 13:49:34 up 1 day, 28 min,  7 users,  load average: 0.34, 0.42, 0.46
+
+---------- Hardware Info ----------
+=======Bios========================
+# dmidecode 2.12
+SMBIOS 2.5 present.
+
+Handle 0x0000, DMI type 0, 20 bytes
+BIOS Information
+	Vendor: innotek GmbH
+	Version: VirtualBox
+	Release Date: 12/01/2006
+	Address: 0xE0000
+	Runtime Size: 128 kB
+	ROM Size: 128 kB
+	Characteristics:
+		ISA is supported
+		PCI is supported
+		Boot from CD is supported
+		Selectable boot is supported
+		8042 keyboard services are supported (int 9h)
+		CGA/mono video services are supported (int 10h)
+		ACPI is supported
+
+
+=======CPU Info========================
+processor	: 0
+model name	: Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
+processor	: 1
+model name	: Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
+processor	: 2
+model name	: Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
+processor	: 3
+model name	: Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
+processor	: 4
+model name	: Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
+processor	: 5
+model name	: Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
+processor	: 6
+model name	: Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz
+
+=======Memory Info========================
+
+Running command: /usr/bin/free -m
+             total       used       free     shared    buffers     cached
+Mem:          9527       7403       2124        101        425       1610
+-/+ buffers/cache:       5366       4161
+Swap:         2045          0       2045
+==========================================
+
+For more Hw information run lspci, lsdev and lsusb
+
+
+
+---------- Filesystem Info ----------
+
+Running command: /bin/df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            4.7G  4.0K  4.7G   1% /dev
+tmpfs           953M  1.0M  952M   1% /run
+/dev/sda1        77G   29G   45G  40% /
+none            4.0K     0  4.0K   0% /sys/fs/cgroup
+none            5.0M     0  5.0M   0% /run/lock
+none            4.7G   54M  4.6G   2% /run/shm
+none            100M   16K  100M   1% /run/user
+
+Running command: mount
+/dev/sda1 on / type ext4 (rw,errors=remount-ro)
+proc on /proc type proc (rw,noexec,nosuid,nodev)
+sysfs on /sys type sysfs (rw,noexec,nosuid,nodev)
+none on /sys/fs/cgroup type tmpfs (rw)
+none on /sys/fs/fuse/connections type fusectl (rw)
+none on /sys/kernel/debug type debugfs (rw)
+none on /sys/kernel/security type securityfs (rw)
+udev on /dev type devtmpfs (rw,mode=0755)
+devpts on /dev/pts type devpts (rw,noexec,nosuid,gid=5,mode=0620)
+tmpfs on /run type tmpfs (rw,noexec,nosuid,size=10%,mode=0755)
+none on /run/lock type tmpfs (rw,noexec,nosuid,nodev,size=5242880)
+none on /run/shm type tmpfs (rw,nosuid,nodev)
+none on /run/user type tmpfs (rw,noexec,nosuid,nodev,size=104857600,mode=0755)
+none on /sys/fs/pstore type pstore (rw)
+cgroup on /sys/fs/cgroup/cpuset type cgroup (rw,relatime,cpuset)
+cgroup on /sys/fs/cgroup/cpu type cgroup (rw,relatime,cpu)
+cgroup on /sys/fs/cgroup/cpuacct type cgroup (rw,relatime,cpuacct)
+cgroup on /sys/fs/cgroup/memory type cgroup (rw,relatime,memory)
+cgroup on /sys/fs/cgroup/devices type cgroup (rw,relatime,devices)
+cgroup on /sys/fs/cgroup/freezer type cgroup (rw,relatime,freezer)
+cgroup on /sys/fs/cgroup/net_cls type cgroup (rw,relatime,net_cls)
+cgroup on /sys/fs/cgroup/blkio type cgroup (rw,relatime,blkio)
+cgroup on /sys/fs/cgroup/perf_event type cgroup (rw,relatime,perf_event)
+cgroup on /sys/fs/cgroup/net_prio type cgroup (rw,relatime,net_prio)
+cgroup on /sys/fs/cgroup/hugetlb type cgroup (rw,relatime,hugetlb)
+systemd on /sys/fs/cgroup/systemd type cgroup (rw,noexec,nosuid,nodev,none,name=systemd)
+gvfsd-fuse on /run/user/1000/gvfs type fuse.gvfsd-fuse (rw,nosuid,nodev,user=paul.pasika)
+
+---------- Current runlevel ----------
+
+Running command: who -r
+         run-level 2  2016-02-17 07:20
+
+>>>>>>>>>> User / Accounts Info ----------
+---------- w / whodo ----------
+
+Logged on users:
+ 13:49:34 up 1 day, 28 min,  7 users,  load average: 0.34, 0.42, 0.46
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+paul.pas :0       :0               Wed13   ?xdm?  10:36m  0.60s cinnamon-session --session cinnamon
+paul.pas pts/1    :0               Wed13    1:36  18.72s 18.68s ssh -D 1234 jpref@falcon.inetnebr.com
+paul.pas pts/3    :0               Wed15    7.00s  0.39s 27.64s /usr/bin/python /usr/bin/terminator
+paul.pas pts/5    :0               12:12    1:36m  0.02s  0.00s tail -f /home/paul.pasika/git/scripts/scripts/lusas-read-only/lusas-amagi-om-2016-02-18-1212/lusas-basic.log
+paul.pas pts/6    :0               12:12    1:30  11.64s 11.62s top
+paul.pas pts/8    :0               12:16    2:23   0.14s  0.12s ssh caslinux01.riv
+paul.pas pts/9    :0               12:17    2:21   0.13s  0.10s ssh caslinux01.riv
+
+---------- Accounts checks ----------
+
+Account, password and shadow checks
+Number of accounts: 40 /etc/passwd
+
+Accounts with UID=0: 
+root
+
+NIS(+)/YP accounts: 
+
+Accounts with no password:
+
+
+Accounts with passwords (not blocked or empty)
+root paul.pasika
+
+Duplicate Accounts
+
+Password settings:
+/etc/pam.d/passwd :
+@include common-password
+
+/etc/pam.d/system-auth :
+
+Checking for dormant/invalid with: pwck -r
+user 'lp': directory '/var/spool/lpd' does not exist
+user 'news': directory '/var/spool/news' does not exist
+user 'uucp': directory '/var/spool/uucp' does not exist
+user 'www-data': directory '/var/www' does not exist
+user 'list': directory '/var/list' does not exist
+user 'irc': directory '/var/run/ircd' does not exist
+user 'gnats': directory '/var/lib/gnats' does not exist
+user 'nobody': directory '/nonexistent' does not exist
+user 'syslog': directory '/home/syslog' does not exist
+user 'usbmux': directory '/home/usbmux' does not exist
+user 'saned': directory '/home/saned' does not exist
+user 'whoopsie': directory '/nonexistent' does not exist
+user 'speech-dispatcher': directory '/var/run/speech-dispatcher' does not exist
+user 'hplip': directory '/var/run/hplip' does not exist
+user 'pulse': directory '/var/run/pulse' does not exist
+user 'vboxadd': directory '/var/run/vboxadd' does not exist
+pwck: no changes
+
+ and grpck -r
+
+
+
+---------- Account settings ----------
+
+
+Environment variables and PATH:
+(check especially for '.' in the root PATH)
+SUDO_GID=1000
+MAIL=/var/mail/root
+LANGUAGE=en_US
+USER=root
+HOME=/home/paul.pasika
+COLORTERM=gnome-terminal
+SUDO_UID=1000
+LOGNAME=root
+TERM=xterm
+USERNAME=root
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/X11R6/bin:/usr/lib/saint/bin:/opt/postfix:/usr/lib/java/jre/bin
+DISPLAY=:0
+LANG=en_US.UTF-8
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:
+XAUTHORITY=/home/paul.pasika/.Xauthority
+SUDO_COMMAND=./lusas-basic.sh
+SHELL=/bin/bash
+SUDO_USER=paul.pasika
+PWD=/home/paul.pasika/git/scripts/scripts/lusas-read-only
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+root interactive umask (should be at least 022, or better 027 or 077):
+0022
+
+Searching for Daemon umasks in /sbin/init.d/*/* (to see if daemons start securely):
+/etc/init.d/ebtables:umask 0077
+/etc/init.d/grafana-server:umask 0027
+/etc/init.d/rc:umask 022
+/etc/init.d/ssh:umask 022
+/etc/init.d/umountfs:umask 022
+/etc/init.d/urandom:	umask 077
+/etc/init.d/urandom:	umask 022
+/etc/init.d/urandom:	umask 077
+
+Home directory and SSH trust permissions: (watch out for world/group writeable)
+drwx------ 8 root root 4096 Feb  9 11:08 /root
+
+drwxr-xr-x 2 root root 12288 Feb 17 11:36 /usr/sbin
+
+drwxr-xr-x 2 root root 4096 Feb  9 11:06 /bin
+
+drwxr-xr-x 16 root root 4100 Feb 17 07:20 /dev
+
+drwxr-xr-x 2 root root 4096 Feb  9 11:06 /bin
+
+drwxr-xr-x 2 root root 4096 Aug  5  2015 /usr/games
+
+drwxr-sr-x 89 man root 4096 Feb 18 09:24 /var/cache/man
+
+
+drwxrwsr-x 2 root mail 4096 Aug  5  2015 /var/mail
+
+
+
+drwxr-xr-x 2 root root 4096 Feb  9 11:06 /bin
+
+
+drwxr-xr-x 2 root root 4096 Feb 18 08:01 /var/backups
+
+
+
+
+
+drwxrwsr-x 2 libuuid libuuid 4096 Aug  5  2015 /var/lib/libuuid
+
+
+drwxr-xr-x 2 messagebus messagebus 80 Feb 17 07:20 /var/run/dbus
+
+
+drwxr-xr-x 2 root root 4096 Apr 10  2014 /var/lib/misc
+
+drwxr-xr-x 2 avahi-autoipd avahi-autoipd 4096 Feb  9 03:17 /var/lib/avahi-autoipd
+
+drwxr-xr-x 25 root root 4096 Feb  9 11:06 /
+
+dr-xr-xr-x 246 root root 0 Feb 17 13:20 /proc
+
+
+
+
+drwxr-xr-x 2 avahi avahi 80 Feb 17 07:20 /var/run/avahi-daemon
+
+drwxr-x--- 7 lightdm lightdm 4096 Aug 19  2015 /var/lib/lightdm
+
+drwxr-xr-x 3 colord colord 4096 Aug 19  2015 /var/lib/colord
+
+
+
+
+drwxr-xr-x 8 root root 4096 Aug 24 16:44 /var/lib/libvirt
+
+drwxr-xr-x 2 root root 4096 Feb 17 13:21 /var/lib/libvirt/dnsmasq
+
+drwxr-xr-x 2 root root 40 Feb 17 07:20 /var/run/sshd
+
+drwxr-xr-x 5 root root 4096 Dec  3 08:54 /usr/share/grafana
+
+drwxr-xr-x 31 paul.pasika paul.pasika 4096 Feb 18 12:13 /home/paul.pasika
+
+
+/etc/shells:
+/bin/sh
+/bin/dash
+/bin/bash
+/bin/rbash
+/usr/bin/tmux
+
+sudo: /etc/sudoers:
+Defaults	env_reset
+Defaults	mail_badpass
+Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+root	ALL=(ALL:ALL) ALL
+%admin ALL=(ALL) ALL
+%sudo	ALL=(ALL:ALL) ALL
+marcin.zieba ALL=(ALL) NOPASSWD:ALL
+paul.pasika ALL=(ALL) NOPASSWD:ALL
+
+Console security:
+root is allowed to logon to the following (/etc/securetty) -
+console
+:0
+:0.0
+:0.1
+:1
+:1.0
+:1.1
+:2
+:2.0
+:2.1
+:3
+:3.0
+:3.1
+tty1
+tty2
+tty3
+tty4
+tty5
+tty6
+tty7
+tty8
+tty9
+tty10
+tty11
+tty12
+tty13
+tty14
+tty15
+tty16
+tty17
+tty18
+tty19
+tty20
+tty21
+tty22
+tty23
+tty24
+tty25
+tty26
+tty27
+tty28
+tty29
+tty30
+tty31
+tty32
+tty33
+tty34
+tty35
+tty36
+tty37
+tty38
+tty39
+tty40
+tty41
+tty42
+tty43
+tty44
+tty45
+tty46
+tty47
+tty48
+tty49
+tty50
+tty51
+tty52
+tty53
+tty54
+tty55
+tty56
+tty57
+tty58
+tty59
+tty60
+tty61
+tty62
+tty63
+ttyS0
+ttyS1
+ttyS2
+ttyS3
+ttyS4
+ttyS5
+ttyB0
+ttyB1
+ttyH0
+ttyH1
+ttyC0
+ttyC1
+ttyD0
+ttyD1
+ttyE0
+ttyE1
+ttyX0
+ttyX1
+ttyR0
+ttyR1
+ttyL0
+ttyL1
+ttyP0
+ttyP1
+ttyF0
+ttyF1
+ttyW0
+ttyW1
+ttyV0
+ttyV1
+ttyM0
+ttyM1
+ttyT0
+ttyT1
+ttySR0
+ttySR1
+ttyCH0
+ttyCH1
+ttyMX0
+ttyMX1
+ttySI0
+ttySI1
+ttyUSB0
+ttyUSB1
+ttyUSB2
+ttyLU0
+ttyLU1
+ttyLU2
+ttyLU3
+ttySA0
+ttySA1
+ttySA2
+ttySC0
+ttySC1
+ttySC2
+ttySC3
+ttyAM0
+ttyAM1
+ttyAM2
+ttyAM3
+ttyAM4
+ttyAM5
+ttyAM6
+ttyAM7
+ttyAM8
+ttyAM9
+ttyAM10
+ttyAM11
+ttyAM12
+ttyAM13
+ttyAM14
+ttyAM15
+ttyAMA0
+ttyAMA1
+ttyAMA2
+ttyAMA3
+ttyDB0
+ttyDB1
+ttyDB2
+ttyDB3
+ttyDB4
+ttyDB5
+ttyDB6
+ttyDB7
+ttySG0
+ttySMX0
+ttySMX1
+ttySMX2
+ttyMM0
+ttyMM1
+ttyCPM0
+ttyCPM1
+ttyCPM2
+ttyCPM3
+ttyCPM4
+ttyCPM5
+ttyIOC0
+ttyIOC1
+ttyVR0
+ttyVR1
+ttyIOC84
+ttyIOC85
+ttySIOC0
+ttySIOC1
+ttyPSC0
+ttyPSC1
+ttyPSC2
+ttyPSC3
+ttyPSC4
+ttyPSC5
+ttyAT0
+ttyAT1
+ttyNX0
+ttyNX1
+ttyUL0
+ttyUL1
+ttyUL2
+ttyUL3
+xvc0
+ttyPZ0
+ttyPZ1
+ttyPZ2
+ttyPZ3
+ttyTX0
+ttyTX1
+ttyTX2
+ttyTX3
+ttyTX4
+ttyTX5
+ttyTX6
+ttyTX7
+ttyMAX0
+ttyMAX1
+ttyMAX2
+ttyMAX3
+ttyO0
+ttyO1
+ttyO2
+ttyO3
+ttyU0
+ttyU1
+ttyY0
+ttyY1
+3270/tty1
+3270/tty2
+hvc0
+hvc1
+hvsi0
+hvsi1
+hvsi2
+ttyEQ0
+ttyEQ1
+ttymxc0
+ttymxc1
+ttymxc2
+ttymxc3
+ttymxc4
+ttymxc5
+lxc/console
+lxc/tty1
+lxc/tty2
+lxc/tty3
+lxc/tty4
+duart0
+duart1
+ttysclp0
+# Disallows root logins except on tty's listed in /etc/securetty
+auth [success=ok new_authtok_reqd=ok ignore=ignore user_unknown=bad default=die] pam_securetty.so
+
+
+
+>>>>>>>>>> Networking Information ----------
+---------- Host info ----------
+
+
+/etc/nsswitch.conf - hosts entry:
+hosts:          files mdns4_minimal [NOTFOUND=return] dns
+
+/etc/resolv.conf :
+nameserver 10.0.14.11
+nameserver 10.0.14.12
+search om-holdings.com monstersecurities.com riv.om-holdings.com aperturegroup.com
+
+/etc/hosts :
+127.0.0.1	localhost
+127.0.1.1	marcinzieba-ubuntu
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+166.90.77.210	www.pf.monstersecurities.com
+
+
+
+---------- Interfaces ----------
+
+eth0      Link encap:Ethernet  HWaddr 08:00:27:90:88:2a  
+          inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0
+          inet6 addr: fe80::a00:27ff:fe90:882a/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:455221 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:292954 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:335796961 (335.7 MB)  TX bytes:50856162 (50.8 MB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:310715 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:310715 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:147344219 (147.3 MB)  TX bytes:147344219 (147.3 MB)
+
+virbr0    Link encap:Ethernet  HWaddr ea:91:0f:d7:23:c3  
+          inet addr:192.168.122.1  Bcast:192.168.122.255  Mask:255.255.255.0
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+
+---------- Interface Statistics ----------
+
+Kernel Interface table
+Iface   MTU Met   RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg
+eth0       1500 0    455221      0      0 0        292954      0      0      0 BMRU
+lo        65536 0    310715      0      0 0        310715      0      0      0 LRU
+virbr0     1500 0         0      0      0 0             0      0      0      0 BMU
+
+---------- Routing ----------
+
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+0.0.0.0         10.0.2.2        0.0.0.0         UG        0 0          0 eth0
+10.0.2.0        0.0.0.0         255.255.255.0   U         0 0          0 eth0
+169.254.0.0     0.0.0.0         255.255.0.0     U         0 0          0 eth0
+192.168.122.0   0.0.0.0         255.255.255.0   U         0 0          0 virbr0
+
+---------- Ports and sockets ----------
+
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 127.0.0.1:1234          0.0.0.0:*               LISTEN      3934/ssh        
+tcp        0      0 192.168.122.1:53        0.0.0.0:*               LISTEN      2103/dnsmasq    
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1119/sshd       
+tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      9978/cupsd      
+tcp        0      0 127.0.0.1:41236         127.0.0.1:1234          ESTABLISHED 2934/firefox    
+tcp        0      0 127.0.0.1:1234          127.0.0.1:45295         ESTABLISHED 3934/ssh        
+tcp        0      0 127.0.0.1:44746         127.0.0.1:1234          ESTABLISHED 2934/firefox    
+tcp        0      0 127.0.0.1:1234          127.0.0.1:44523         ESTABLISHED 3934/ssh        
+tcp        0      0 127.0.0.1:1234          127.0.0.1:45314         ESTABLISHED 3934/ssh        
+tcp        0      0 10.0.2.15:38159         173.194.46.41:443       ESTABLISHED 2937/chrome     
+tcp        0      0 127.0.0.1:45291         127.0.0.1:1234          ESTABLISHED 2934/firefox    
+tcp        0      0 127.0.0.1:44523         127.0.0.1:1234          ESTABLISHED 2934/firefox    
+tcp        0      0 127.0.0.1:1234          127.0.0.1:41236         ESTABLISHED 3934/ssh        
+tcp        0      0 127.0.0.1:1234          127.0.0.1:42328         ESTABLISHED 3934/ssh        
+tcp        0      0 127.0.0.1:40812         127.0.0.1:1234          ESTABLISHED 2934/firefox    
+tcp        0      0 127.0.0.1:1234          127.0.0.1:60964         ESTABLISHED 3934/ssh        
+tcp        0      0 127.0.0.1:42328         127.0.0.1:1234          ESTABLISHED 2934/firefox    
+tcp        0      0 127.0.0.1:1234          127.0.0.1:42329         ESTABLISHED 3934/ssh        
+tcp        0      0 127.0.0.1:45295         127.0.0.1:1234          ESTABLISHED 2934/firefox    
+tcp        0      0 10.0.2.15:49031         54.236.85.194:443       ESTABLISHED 2937/chrome     
+tcp        0      0 127.0.0.1:42329         127.0.0.1:1234          ESTABLISHED 2934/firefox    
+tcp        0      0 127.0.0.1:45314         127.0.0.1:1234          ESTABLISHED 2934/firefox    
+tcp        0      0 10.0.2.15:37381         54.165.64.11:443        ESTABLISHED 2937/chrome     
+tcp        0      0 10.0.2.15:35629         209.85.146.188:5228     ESTABLISHED 2937/chrome     
+tcp        0      0 127.0.0.1:1234          127.0.0.1:45315         ESTABLISHED 3934/ssh        
+tcp        0      0 127.0.0.1:45294         127.0.0.1:1234          TIME_WAIT   -               
+tcp        0      0 127.0.0.1:45296         127.0.0.1:1234          TIME_WAIT   -               
+tcp        0      0 127.0.0.1:45315         127.0.0.1:1234          ESTABLISHED 2934/firefox    
+tcp        0      0 10.0.2.15:40107         216.58.216.81:443       ESTABLISHED 2937/chrome     
+tcp        0      0 10.0.2.15:51917         10.0.14.110:22          ESTABLISHED 18126/ssh       
+tcp        0      0 10.0.2.15:51897         10.0.14.110:22          ESTABLISHED 18093/ssh       
+tcp        0      0 10.0.2.15:36223         199.16.156.232:443      ESTABLISHED 2937/chrome     
+tcp        0      0 10.0.2.15:55822         192.241.187.124:443     ESTABLISHED 2937/chrome     
+tcp        0      0 10.0.2.15:50472         199.184.119.58:22       ESTABLISHED 3934/ssh        
+tcp        0      0 127.0.0.1:1234          127.0.0.1:45291         ESTABLISHED 3934/ssh        
+tcp        0      0 127.0.0.1:1234          127.0.0.1:44019         TIME_WAIT   -               
+tcp        0      0 127.0.0.1:1234          127.0.0.1:40812         ESTABLISHED 3934/ssh        
+tcp        0      0 127.0.0.1:60964         127.0.0.1:1234          ESTABLISHED 2934/firefox    
+tcp        0      0 127.0.0.1:1234          127.0.0.1:44746         ESTABLISHED 3934/ssh        
+tcp6       0      0 ::1:1234                :::*                    LISTEN      3934/ssh        
+tcp6       0      0 :::22                   :::*                    LISTEN      1119/sshd       
+tcp6       0      0 ::1:631                 :::*                    LISTEN      9978/cupsd      
+tcp6       0      0 ::1:631                 ::1:56553               ESTABLISHED 9978/cupsd      
+tcp6       1      0 ::1:48693               ::1:631                 CLOSE_WAIT  1209/cups-browsed
+tcp6       0      0 ::1:56553               ::1:631                 ESTABLISHED 2581/cinnamon-setti
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+udp        0      0 0.0.0.0:60773           0.0.0.0:*                           1010/avahi-daemon: 
+udp        0      0 10.0.2.15:54027         74.125.135.189:443      ESTABLISHED 2937/chrome     
+udp        0      0 0.0.0.0:5353            0.0.0.0:*                           2937/chrome     
+udp        0      0 0.0.0.0:5353            0.0.0.0:*                           1010/avahi-daemon: 
+udp        0      0 0.0.0.0:48011           0.0.0.0:*                           767/dhclient    
+udp        0      0 192.168.122.1:53        0.0.0.0:*                           2103/dnsmasq    
+udp        0      0 0.0.0.0:67              0.0.0.0:*                           2103/dnsmasq    
+udp        0      0 0.0.0.0:68              0.0.0.0:*                           767/dhclient    
+udp        0      0 0.0.0.0:631             0.0.0.0:*                           1209/cups-browsed
+udp        0      0 10.0.2.15:33524         216.58.216.81:443       ESTABLISHED 2937/chrome     
+udp6       0      0 :::5353                 :::*                                1010/avahi-daemon: 
+udp6       0      0 :::39055                :::*                                1010/avahi-daemon: 
+udp6       0      0 :::18405                :::*                                767/dhclient    
+
+---------- List open files, devices, ports ----------
+
+/usr/bin/lsof
+COMMAND     PID            USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+dhclient    767            root    4u  IPv4    647      0t0  UDP *:bootpc 
+dhclient    767            root   20u  IPv4    611      0t0  UDP *:48011 
+dhclient    767            root   21u  IPv6    612      0t0  UDP *:18405 
+avahi-dae  1010           avahi   13u  IPv4  13566      0t0  UDP *:mdns 
+avahi-dae  1010           avahi   14u  IPv6  13567      0t0  UDP *:mdns 
+avahi-dae  1010           avahi   15u  IPv4  13568      0t0  UDP *:60773 
+avahi-dae  1010           avahi   16u  IPv6  13569      0t0  UDP *:39055 
+sshd       1119            root    3u  IPv4   9130      0t0  TCP *:ssh (LISTEN)
+sshd       1119            root    4u  IPv6   9132      0t0  TCP *:ssh (LISTEN)
+cups-brow  1209            root    6u  IPv6  12144      0t0  TCP ip6-localhost:48693->ip6-localhost:ipp (CLOSE_WAIT)
+cups-brow  1209            root    8u  IPv4  12148      0t0  UDP *:ipp 
+dnsmasq    2103 libvirt-dnsmasq    4u  IPv4   9815      0t0  UDP *:bootps 
+dnsmasq    2103 libvirt-dnsmasq    6u  IPv4   9818      0t0  UDP 192.168.122.1:domain 
+dnsmasq    2103 libvirt-dnsmasq    7u  IPv4   9819      0t0  TCP 192.168.122.1:domain (LISTEN)
+cinnamon-  2581     paul.pasika   28u  IPv6 120223      0t0  TCP ip6-localhost:56553->ip6-localhost:ipp (ESTABLISHED)
+firefox    2934     paul.pasika   43u  IPv4  40094      0t0  TCP localhost:60964->localhost:1234 (ESTABLISHED)
+firefox    2934     paul.pasika   44u  IPv4 134980      0t0  TCP localhost:41236->localhost:1234 (ESTABLISHED)
+firefox    2934     paul.pasika   45u  IPv4 123732      0t0  TCP localhost:40812->localhost:1234 (ESTABLISHED)
+firefox    2934     paul.pasika   57u  IPv4 279849      0t0  TCP localhost:45291->localhost:1234 (ESTABLISHED)
+firefox    2934     paul.pasika   73u  IPv4 279874      0t0  TCP localhost:45314->localhost:1234 (ESTABLISHED)
+firefox    2934     paul.pasika   74u  IPv4 275368      0t0  TCP localhost:44523->localhost:1234 (ESTABLISHED)
+firefox    2934     paul.pasika   76u  IPv4 279876      0t0  TCP localhost:45315->localhost:1234 (ESTABLISHED)
+firefox    2934     paul.pasika   80u  IPv4 279861      0t0  TCP localhost:45295->localhost:1234 (ESTABLISHED)
+firefox    2934     paul.pasika   92u  IPv4 279644      0t0  TCP localhost:44746->localhost:1234 (ESTABLISHED)
+firefox    2934     paul.pasika   94u  IPv4 143151      0t0  TCP localhost:42328->localhost:1234 (ESTABLISHED)
+firefox    2934     paul.pasika   96u  IPv4 143152      0t0  TCP localhost:42329->localhost:1234 (ESTABLISHED)
+chrome     2937     paul.pasika  100u  IPv4 275287      0t0  TCP 10.0.2.15:38159->ord08s10-in-f9.1e100.net:https (ESTABLISHED)
+chrome     2937     paul.pasika  105u  IPv4 118394      0t0  TCP 10.0.2.15:55822->do-13.lastpass.com:https (ESTABLISHED)
+chrome     2937     paul.pasika  112u  IPv4 159189      0t0  TCP 10.0.2.15:35629->jf-in-f188.1e100.net:5228 (ESTABLISHED)
+chrome     2937     paul.pasika  114u  IPv4 279872      0t0  TCP 10.0.2.15:40107->ord30s21-in-f17.1e100.net:https (ESTABLISHED)
+chrome     2937     paul.pasika  120u  IPv4 279871      0t0  UDP 10.0.2.15:33524->ord30s21-in-f17.1e100.net:https 
+chrome     2937     paul.pasika  126u  IPv4 154376      0t0  UDP *:mdns 
+chrome     2937     paul.pasika  227u  IPv4 123508      0t0  UDP 10.0.2.15:54027->jh-in-f189.1e100.net:https 
+chrome     2937     paul.pasika  240u  IPv4 127597      0t0  TCP 10.0.2.15:49031->ec2-54-236-85-194.compute-1.amazonaws.com:https (ESTABLISHED)
+chrome     2937     paul.pasika  242u  IPv4 123532      0t0  TCP 10.0.2.15:37381->ec2-54-165-64-11.compute-1.amazonaws.com:https (ESTABLISHED)
+chrome     2937     paul.pasika  334u  IPv4 173531      0t0  TCP 10.0.2.15:36223->199.16.156.232:https (ESTABLISHED)
+ssh        3934     paul.pasika    3u  IPv4  41252      0t0  TCP 10.0.2.15:50472->falcon.inebraska.com:ssh (ESTABLISHED)
+ssh        3934     paul.pasika    4u  IPv6  39071      0t0  TCP ip6-localhost:1234 (LISTEN)
+ssh        3934     paul.pasika    5u  IPv4  39072      0t0  TCP localhost:1234 (LISTEN)
+ssh        3934     paul.pasika    9u  IPv4  39074      0t0  TCP localhost:1234->localhost:60964 (ESTABLISHED)
+ssh        3934     paul.pasika   10u  IPv4 134981      0t0  TCP localhost:1234->localhost:41236 (ESTABLISHED)
+ssh        3934     paul.pasika   11u  IPv4 123733      0t0  TCP localhost:1234->localhost:40812 (ESTABLISHED)
+ssh        3934     paul.pasika   13u  IPv4 279875      0t0  TCP localhost:1234->localhost:45314 (ESTABLISHED)
+ssh        3934     paul.pasika   14u  IPv4 279850      0t0  TCP localhost:1234->localhost:45291 (ESTABLISHED)
+ssh        3934     paul.pasika   15u  IPv4 275369      0t0  TCP localhost:1234->localhost:44523 (ESTABLISHED)
+ssh        3934     paul.pasika   16u  IPv4 281762      0t0  TCP localhost:1234->localhost:45295 (ESTABLISHED)
+ssh        3934     paul.pasika   17u  IPv4 279877      0t0  TCP localhost:1234->localhost:45315 (ESTABLISHED)
+ssh        3934     paul.pasika   20u  IPv4 150562      0t0  TCP localhost:1234->localhost:42328 (ESTABLISHED)
+ssh        3934     paul.pasika   24u  IPv4 150563      0t0  TCP localhost:1234->localhost:42329 (ESTABLISHED)
+ssh        3934     paul.pasika   31u  IPv4 276456      0t0  TCP localhost:1234->localhost:44746 (ESTABLISHED)
+cupsd      9978            root    7u  IPv6 125692      0t0  TCP ip6-localhost:ipp->ip6-localhost:56553 (ESTABLISHED)
+cupsd      9978            root   10u  IPv6 125550      0t0  TCP ip6-localhost:ipp (LISTEN)
+cupsd      9978            root   11u  IPv4 125551      0t0  TCP localhost:ipp (LISTEN)
+ssh       18093     paul.pasika    3u  IPv4 178173      0t0  TCP 10.0.2.15:51897->caslinux01.riv.om-holdings.com:ssh (ESTABLISHED)
+ssh       18126     paul.pasika    3u  IPv4 202443      0t0  TCP 10.0.2.15:51917->caslinux01.riv.om-holdings.com:ssh (ESTABLISHED)
+
+---------- Firewalls ----------
+
+Local firewall configuration:
+
+Running command: /sbin/iptables -L -vn
+Chain INPUT (policy ACCEPT 610K packets, 465M bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 ACCEPT     udp  --  virbr0 *       0.0.0.0/0            0.0.0.0/0            udp dpt:53
+    0     0 ACCEPT     tcp  --  virbr0 *       0.0.0.0/0            0.0.0.0/0            tcp dpt:53
+    0     0 ACCEPT     udp  --  virbr0 *       0.0.0.0/0            0.0.0.0/0            udp dpt:67
+    0     0 ACCEPT     tcp  --  virbr0 *       0.0.0.0/0            0.0.0.0/0            tcp dpt:67
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 ACCEPT     all  --  *      virbr0  0.0.0.0/0            192.168.122.0/24     ctstate RELATED,ESTABLISHED
+    0     0 ACCEPT     all  --  virbr0 *       192.168.122.0/24     0.0.0.0/0           
+    0     0 ACCEPT     all  --  virbr0 virbr0  0.0.0.0/0            0.0.0.0/0           
+    0     0 REJECT     all  --  *      virbr0  0.0.0.0/0            0.0.0.0/0            reject-with icmp-port-unreachable
+    0     0 REJECT     all  --  virbr0 *       0.0.0.0/0            0.0.0.0/0            reject-with icmp-port-unreachable
+
+Chain OUTPUT (policy ACCEPT 543K packets, 180M bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 ACCEPT     udp  --  *      virbr0  0.0.0.0/0            0.0.0.0/0            udp dpt:68
+
+  /etc/sysconfig/iptables:
+
+  /etc/sysconfig/iptables-config:
+
+
+== Running kernel, process, device and ports Module ==
+Look for details in: /home/paul.pasika/git/scripts/scripts/lusas-read-only/lusas-amagi-om-2016-02-18-1349/kernel
+
+
+== Running Services Module ==
+Look for details in: /home/paul.pasika/git/scripts/scripts/lusas-read-only/lusas-amagi-om-2016-02-18-1349/services
+Running Services Module
+Running Software Module
+Running Logs Module
+
+
+
+Start time:	Thu Feb 18 13:49:34 CST 2016
+End time:	Thu Feb 18 13:49:47 CST 2016
+>>>>>>>>>> Done <<<<<<<<<<<

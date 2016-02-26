@@ -1,0 +1,310 @@
+
+
+
+>>>>>>>>>> Kernel, Process, devices, and ports Info ----------
+---------- Kernel Info ----------
+
+
+Linux security settings:
+
+Linux Security config... /etc/security/access.conf ..
+
+Linux Security config... /etc/security/capability.conf ..
+none  *
+
+Linux Security config... /etc/security/group.conf ..
+
+Linux Security config... /etc/security/limits.conf ..
+
+Linux Security config... /etc/security/namespace.conf ..
+
+Linux Security config... /etc/security/namespace.init ..
+if [ "$3" = 1 ]; then
+        [ -x /sbin/restorecon ] && /sbin/restorecon "$1"
+        user="$4"
+        passwd=$(getent passwd "$user")
+        homedir=$(echo "$passwd" | cut -f6 -d":")
+        if [ "$1" = "$homedir" ]; then
+                gid=$(echo "$passwd" | cut -f4 -d":")
+                cp -rT /etc/skel "$homedir"
+                chown -R "$user":"$gid" "$homedir"
+                mask=$(awk '/^UMASK/{gsub("#.*$", "", $2); print $2; exit}' /etc/login.defs)
+                mode=$(printf "%o" $((0777 & ~$mask)))
+                chmod ${mode:-700} "$homedir"
+                [ -x /sbin/restorecon ] && /sbin/restorecon -R "$homedir"
+        fi
+fi
+exit 0
+
+Linux Security config... /etc/security/opasswd ..
+
+Linux Security config... /etc/security/pam_env.conf ..
+
+Linux Security config... /etc/security/pwquality.conf ..
+
+Linux Security config... /etc/security/sepermit.conf ..
+
+Linux Security config... /etc/security/time.conf ..
+
+Linux: kernel parameters --
+net.ipv4.ip_forward = 1
+net.ipv4.conf.all.forwarding = 1
+net.ipv4.conf.all.mc_forwarding = 0
+net.ipv4.conf.all.rp_filter = 1
+net.ipv4.icmp_echo_ignore_broadcasts = 1
+net.ipv4.icmp_echo_ignore_all = 0
+net.ipv4.tcp_max_syn_backlog = 512
+net.ipv4.conf.all.accept_source_route = 0
+net.ipv4.conf.all.send_redirects = 1
+net.ipv4.conf.all.log_martians = 0
+net.ipv4.tcp_syn_retries = 6
+
+cat /proc/sys/net/ipv4/conf/*/log_martians
+0
+0
+0
+0
+0
+
+
+---------- Process Info ----------
+
+Running command: ps -ef
+UID        PID  PPID  C STIME TTY          TIME CMD
+root         1     0  0 Feb17 ?        00:00:01 /sbin/init
+root         2     0  0 Feb17 ?        00:00:00 [kthreadd]
+root         3     2  0 Feb17 ?        00:00:00 [ksoftirqd/0]
+root         5     2  0 Feb17 ?        00:00:00 [kworker/0:0H]
+root         7     2  0 Feb17 ?        00:00:16 [rcu_sched]
+root         8     2  0 Feb17 ?        00:00:00 [rcu_bh]
+root         9     2  0 Feb17 ?        00:00:04 [rcuos/0]
+root        10     2  0 Feb17 ?        00:00:00 [rcuob/0]
+root        11     2  0 Feb17 ?        00:00:00 [migration/0]
+root        12     2  0 Feb17 ?        00:00:00 [watchdog/0]
+root        13     2  0 Feb17 ?        00:00:00 [watchdog/1]
+root        14     2  0 Feb17 ?        00:00:00 [migration/1]
+root        15     2  0 Feb17 ?        00:00:00 [ksoftirqd/1]
+root        16     2  0 Feb17 ?        00:00:00 [kworker/1:0]
+root        17     2  0 Feb17 ?        00:00:00 [kworker/1:0H]
+root        18     2  0 Feb17 ?        00:00:00 [rcuos/1]
+root        19     2  0 Feb17 ?        00:00:00 [rcuob/1]
+root        20     2  0 Feb17 ?        00:00:00 [watchdog/2]
+root        21     2  0 Feb17 ?        00:00:00 [migration/2]
+root        22     2  0 Feb17 ?        00:00:00 [ksoftirqd/2]
+root        23     2  0 Feb17 ?        00:00:02 [kworker/2:0]
+root        24     2  0 Feb17 ?        00:00:00 [kworker/2:0H]
+root        25     2  0 Feb17 ?        00:00:04 [rcuos/2]
+root        26     2  0 Feb17 ?        00:00:00 [rcuob/2]
+root        27     2  0 Feb17 ?        00:00:00 [watchdog/3]
+root        28     2  0 Feb17 ?        00:00:00 [migration/3]
+root        29     2  0 Feb17 ?        00:00:02 [ksoftirqd/3]
+root        31     2  0 Feb17 ?        00:00:00 [kworker/3:0H]
+root        32     2  0 Feb17 ?        00:00:00 [rcuos/3]
+root        33     2  0 Feb17 ?        00:00:00 [rcuob/3]
+root        34     2  0 Feb17 ?        00:00:00 [watchdog/4]
+root        35     2  0 Feb17 ?        00:00:00 [migration/4]
+root        36     2  0 Feb17 ?        00:00:00 [ksoftirqd/4]
+root        37     2  0 Feb17 ?        00:00:00 [kworker/4:0]
+root        38     2  0 Feb17 ?        00:00:00 [kworker/4:0H]
+root        39     2  0 Feb17 ?        00:00:03 [rcuos/4]
+root        40     2  0 Feb17 ?        00:00:00 [rcuob/4]
+root        41     2  0 Feb17 ?        00:00:00 [watchdog/5]
+root        42     2  0 Feb17 ?        00:00:00 [migration/5]
+root        43     2  0 Feb17 ?        00:00:00 [ksoftirqd/5]
+root        45     2  0 Feb17 ?        00:00:00 [kworker/5:0H]
+root        46     2  0 Feb17 ?        00:00:00 [rcuos/5]
+root        47     2  0 Feb17 ?        00:00:00 [rcuob/5]
+root        48     2  0 Feb17 ?        00:00:00 [watchdog/6]
+root        49     2  0 Feb17 ?        00:00:00 [migration/6]
+root        50     2  0 Feb17 ?        00:00:00 [ksoftirqd/6]
+root        52     2  0 Feb17 ?        00:00:00 [kworker/6:0H]
+root        53     2  0 Feb17 ?        00:00:01 [rcuos/6]
+root        54     2  0 Feb17 ?        00:00:00 [rcuob/6]
+root        55     2  0 Feb17 ?        00:00:00 [khelper]
+root        56     2  0 Feb17 ?        00:00:00 [kdevtmpfs]
+root        57     2  0 Feb17 ?        00:00:00 [netns]
+root        58     2  0 Feb17 ?        00:00:00 [perf]
+root        59     2  0 Feb17 ?        00:00:00 [khungtaskd]
+root        60     2  0 Feb17 ?        00:00:00 [writeback]
+root        61     2  0 Feb17 ?        00:00:00 [ksmd]
+root        62     2  0 Feb17 ?        00:00:17 [khugepaged]
+root        63     2  0 Feb17 ?        00:00:00 [crypto]
+root        64     2  0 Feb17 ?        00:00:00 [kintegrityd]
+root        65     2  0 Feb17 ?        00:00:00 [bioset]
+root        66     2  0 Feb17 ?        00:00:00 [kblockd]
+root        67     2  0 Feb17 ?        00:00:00 [ata_sff]
+root        68     2  0 Feb17 ?        00:00:00 [md]
+root        69     2  0 Feb17 ?        00:00:00 [devfreq_wq]
+root        71     2  0 Feb17 ?        00:00:02 [kworker/1:1]
+root        72     2  0 Feb17 ?        00:00:00 [kworker/0:1]
+root        74     2  0 Feb17 ?        00:00:00 [kswapd0]
+root        75     2  0 Feb17 ?        00:00:00 [fsnotify_mark]
+root        76     2  0 Feb17 ?        00:00:00 [ecryptfs-kthrea]
+root        88     2  0 Feb17 ?        00:00:00 [kthrotld]
+root        89     2  0 Feb17 ?        00:00:00 [acpi_thermal_pm]
+root        93     2  0 Feb17 ?        00:00:00 [ipv6_addrconf]
+root        94     2  0 Feb17 ?        00:00:02 [kworker/4:1]
+root       113     2  0 Feb17 ?        00:00:00 [deferwq]
+root       114     2  0 Feb17 ?        00:00:00 [charger_manager]
+root       120     2  0 Feb17 ?        00:00:00 [kworker/5:1]
+root       172     2  0 Feb17 ?        00:00:00 [kworker/3:1]
+root       173     2  0 Feb17 ?        00:00:00 [kpsmoused]
+root       174     2  0 Feb17 ?        00:00:02 [kworker/6:1]
+root       176     2  0 Feb17 ?        00:00:00 [kworker/2:2]
+root       177     2  0 Feb17 ?        00:00:00 [scsi_eh_0]
+root       178     2  0 Feb17 ?        00:00:00 [scsi_tmf_0]
+root       179     2  0 Feb17 ?        00:00:00 [scsi_eh_1]
+root       180     2  0 Feb17 ?        00:00:00 [scsi_tmf_1]
+root       187     2  0 Feb17 ?        00:00:01 [kworker/0:1H]
+root       196     2  0 Feb17 ?        00:00:03 [jbd2/sda1-8]
+root       197     2  0 Feb17 ?        00:00:00 [ext4-rsv-conver]
+root       198     2  0 Feb17 ?        00:00:00 [kworker/2:1H]
+root       398     1  0 Feb17 ?        00:00:00 upstart-udev-bridge --daemon
+root       403     1  0 Feb17 ?        00:00:00 /lib/systemd/systemd-udevd --daemon
+root       472     2  0 Feb17 ?        00:00:00 [kworker/1:1H]
+root       520     2  0 Feb17 ?        00:00:00 [hd-audio0]
+root       553     1  0 Feb17 ?        00:00:00 upstart-socket-bridge --daemon
+root       620     2  0 Feb17 ?        00:00:00 [iprt-VBoxWQueue]
+root       691     2  0 Feb17 ?        00:00:00 [kworker/3:1H]
+root       692     2  0 Feb17 ?        00:00:00 [kworker/5:1H]
+root       704     2  0 Feb17 ?        00:00:00 [kworker/6:1H]
+root       767     1  0 Feb17 ?        00:00:00 dhclient -1 -v -pf /run/dhclient.eth0.pid -lf /var/lib/dhcp/dhclient.eth0.leases eth0
+message+   862     1  0 Feb17 ?        00:00:03 dbus-daemon --system --fork
+root       907     1  0 Feb17 ?        00:00:00 /usr/sbin/ModemManager
+syslog     915     1  0 Feb17 ?        00:00:00 rsyslogd
+root       930     1  0 Feb17 ?        00:00:00 upstart-file-bridge --daemon
+root       947     1  0 Feb17 ?        00:00:00 /usr/sbin/bluetoothd
+root       980     2  0 Feb17 ?        00:00:00 [krfcommd]
+root       988     1  0 Feb17 ?        00:00:00 /lib/systemd/systemd-logind
+avahi     1010     1  0 Feb17 ?        00:00:00 avahi-daemon: running [amagi-om.local]
+avahi     1014  1010  0 Feb17 ?        00:00:00 avahi-daemon: chroot helper
+root      1062     1  0 Feb17 tty4     00:00:00 /sbin/getty -8 38400 tty4
+root      1066     1  0 Feb17 tty5     00:00:00 /sbin/getty -8 38400 tty5
+root      1076     1  0 Feb17 tty2     00:00:00 /sbin/getty -8 38400 tty2
+root      1077     1  0 Feb17 tty3     00:00:00 /sbin/getty -8 38400 tty3
+root      1080     1  0 Feb17 tty6     00:00:00 /sbin/getty -8 38400 tty6
+root      1119     1  0 Feb17 ?        00:00:00 /usr/sbin/sshd -D
+root      1145     1  0 Feb17 ?        00:00:01 NetworkManager
+root      1152     1  0 Feb17 ?        00:00:04 /usr/sbin/irqbalance
+root      1168     1  0 Feb17 ?        00:00:00 cron
+kernoops  1171     1  0 Feb17 ?        00:00:00 /usr/sbin/kerneloops
+root      1198     2  0 Feb17 ?        00:00:00 [kauditd]
+root      1202     1  0 Feb17 ?        00:00:00 /usr/lib/policykit-1/polkitd --no-debug
+root      1209     1  0 Feb17 ?        00:00:00 /usr/sbin/cups-browsed
+root      1227     1  0 Feb17 ?        00:00:02 /usr/sbin/console-kit-daemon --no-daemon
+root      1297     1  0 Feb17 ?        00:00:00 acpid -c /etc/acpi/events -s /var/run/acpid.socket
+root      1328     1  0 Feb17 ?        00:00:00 /usr/sbin/libvirtd -d
+whoopsie  1344     1  0 Feb17 ?        00:00:00 whoopsie
+root      1422     1  0 Feb17 ?        00:00:17 /usr/sbin/VBoxService --pidfile /var/run/vboxadd-service.pid
+root      1550     1  0 Feb17 tty1     00:00:00 /sbin/getty -8 38400 tty1
+root      1622     1  0 Feb17 ?        00:00:00 lightdm
+root      1636  1622  3 Feb17 tty7     00:55:37 /usr/bin/X -core :0 -seat seat0 -auth /var/run/lightdm/root/:0 -nolisten tcp vt7 -novtswitch
+root      1642     1  0 Feb17 ?        00:00:00 /usr/lib/accountsservice/accounts-daemon
+libvirt+  2103     1  0 Feb17 ?        00:00:00 /usr/sbin/dnsmasq --conf-file=/var/lib/libvirt/dnsmasq/default.conf
+root      2153  1622  0 Feb17 ?        00:00:00 lightdm --session-child 12 19
+root      2166     2  0 Feb17 ?        00:00:00 [kworker/4:1H]
+root      2201     1  0 Feb17 ?        00:00:00 /usr/lib/upower/upowerd
+rtkit     2280     1  0 Feb17 ?        00:00:01 /usr/lib/rtkit/rtkit-daemon
+paul.pa+  2392     1  0 Feb17 ?        00:00:04 /usr/bin/gnome-keyring-daemon --daemonize --login
+paul.pa+  2396  2153  0 Feb17 ?        00:00:00 cinnamon-session --session cinnamon
+paul.pa+  2472     1  0 Feb17 ?        00:00:00 dbus-launch --autolaunch=e46daf92be166053d239b7bb55d4809c --binary-syntax --close-stderr
+paul.pa+  2474     1  0 Feb17 ?        00:00:00 //bin/dbus-daemon --fork --print-pid 5 --print-address 7 --session
+paul.pa+  2478     1  0 Feb17 ?        00:00:00 /usr/bin/VBoxClient --clipboard
+paul.pa+  2480  2478  0 Feb17 ?        00:00:00 /usr/bin/VBoxClient --clipboard
+paul.pa+  2488     1  0 Feb17 ?        00:00:00 /usr/bin/VBoxClient --display
+paul.pa+  2490  2488  0 Feb17 ?        00:00:00 /usr/bin/VBoxClient --display
+paul.pa+  2493     1  0 Feb17 ?        00:00:00 /usr/bin/VBoxClient --seamless
+paul.pa+  2494  2493  0 Feb17 ?        00:00:00 /usr/bin/VBoxClient --seamless
+paul.pa+  2501     1  0 Feb17 ?        00:00:00 /usr/bin/VBoxClient --draganddrop
+paul.pa+  2502  2501  0 Feb17 ?        00:02:09 /usr/bin/VBoxClient --draganddrop
+paul.pa+  2511  2396  0 Feb17 ?        00:00:00 /usr/bin/ssh-agent /usr/bin/dbus-launch --exit-with-session /usr/bin/im-launch cinnamon-session-cinnamon
+paul.pa+  2514     1  0 Feb17 ?        00:00:00 /usr/bin/dbus-launch --exit-with-session /usr/bin/im-launch cinnamon-session-cinnamon
+paul.pa+  2515     1  0 Feb17 ?        00:00:02 //bin/dbus-daemon --fork --print-pid 5 --print-address 7 --session
+paul.pa+  2526     1  0 Feb17 ?        00:00:22 /usr/bin/ibus-daemon --daemonize --xim
+paul.pa+  2541     1  0 Feb17 ?        00:00:00 /usr/lib/gvfs/gvfsd
+paul.pa+  2545     1  0 Feb17 ?        00:00:00 /usr/lib/gvfs/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
+paul.pa+  2550  2526  0 Feb17 ?        00:00:00 /usr/lib/ibus/ibus-dconf
+paul.pa+  2555  2526  0 Feb17 ?        00:00:05 /usr/lib/ibus/ibus-ui-gtk3
+paul.pa+  2558     1  0 Feb17 ?        00:00:00 /usr/lib/ibus/ibus-x11 --kill-daemon
+paul.pa+  2568  2526  0 Feb17 ?        00:00:06 /usr/lib/ibus/ibus-engine-simple
+paul.pa+  2581  2396  0 Feb17 ?        00:00:09 /usr/lib/cinnamon-settings-daemon/cinnamon-settings-daemon
+paul.pa+  2585     1  0 Feb17 ?        00:01:05 /usr/bin/pulseaudio --start --log-target=syslog
+paul.pa+  2607     1  0 Feb17 ?        00:00:00 /usr/lib/gvfs/gvfs-udisks2-volume-monitor
+root      2610     1  0 Feb17 ?        00:00:00 /usr/lib/udisks2/udisksd --no-debug
+paul.pa+  2619     1  0 Feb17 ?        00:00:00 /usr/lib/gvfs/gvfs-mtp-volume-monitor
+paul.pa+  2623     1  0 Feb17 ?        00:00:00 /usr/lib/gvfs/gvfs-gphoto2-volume-monitor
+paul.pa+  2627     1  0 Feb17 ?        00:00:00 /usr/lib/gvfs/gvfs-afc-volume-monitor
+paul.pa+  2632  2396  0 Feb17 ?        00:00:00 /usr/bin/python2 /usr/bin/cinnamon-launcher
+colord    2633     1  0 Feb17 ?        00:00:00 /usr/lib/colord/colord
+paul.pa+  2635     1  0 Feb17 ?        00:00:00 /usr/lib/cinnamon-settings-daemon/csd-printer
+paul.pa+  2641  2632  5 Feb17 ?        01:15:16 cinnamon --replace
+paul.pa+  2662  2396  0 Feb17 ?        00:00:00 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+paul.pa+  2669  2396  0 Feb17 ?        00:00:04 nemo -n
+paul.pa+  2694  2396  0 Feb17 ?        00:00:00 nm-applet
+paul.pa+  2695  2396  0 Feb17 ?        00:00:00 /usr/bin/python2 /usr/bin/cinnamon-killer-daemon
+paul.pa+  2702     1  0 Feb17 ?        00:00:00 /usr/lib/x86_64-linux-gnu/gconf/gconfd-2
+paul.pa+  2710     1  0 Feb17 ?        00:00:00 /usr/lib/gvfs/gvfsd-trash --spawner :1.3 /org/gtk/gvfs/exec_spaw/0
+paul.pa+  2721     1  0 Feb17 ?        00:00:00 /usr/lib/gvfs/gvfsd-metadata
+paul.pa+  2738     1  0 Feb17 ?        00:00:00 /usr/lib/dconf/dconf-service
+paul.pa+  2770  2396  0 Feb17 ?        00:00:00 telepathy-indicator
+paul.pa+  2775     1  0 Feb17 ?        00:00:00 /usr/lib/telepathy/mission-control-5
+paul.pa+  2787  2396  0 Feb17 ?        00:00:01 zeitgeist-datahub
+paul.pa+  2792     1  0 Feb17 ?        00:00:00 /usr/bin/zeitgeist-daemon
+paul.pa+  2801     1  0 Feb17 ?        00:00:01 /usr/lib/x86_64-linux-gnu/zeitgeist-fts
+paul.pa+  2824  2801  0 Feb17 ?        00:00:00 /bin/cat
+paul.pa+  2826  2396  0 Feb17 ?        00:00:00 /usr/bin/python /usr/share/system-config-printer/applet.py
+paul.pa+  2831  2396  0 Feb17 ?        00:00:00 update-notifier
+root      2835     2  0 Feb17 ?        00:00:04 [kworker/3:2]
+paul.pa+  2842  2396  0 Feb17 ?        00:00:00 /usr/lib/x86_64-linux-gnu/deja-dup/deja-dup-monitor
+paul.pa+  2899  2641  0 Feb17 ?        00:00:27 /usr/bin/python /usr/bin/terminator
+paul.pa+  2911  2899  0 Feb17 ?        00:00:00 gnome-pty-helper
+paul.pa+  2912  2899  0 Feb17 pts/1    00:00:00 /bin/bash
+paul.pa+  2934  2641 36 Feb17 ?        08:51:23 /usr/lib/firefox/firefox
+paul.pa+  2937  2641  0 Feb17 ?        00:12:17 /opt/google/chrome/chrome    
+paul.pa+  2945  2937  0 Feb17 ?        00:00:00 cat
+paul.pa+  2946  2937  0 Feb17 ?        00:00:00 cat
+paul.pa+  2979  2937  0 Feb17 ?        00:00:00 /opt/google/chrome/chrome --type=zygote
+paul.pa+  2981  2979  0 Feb17 ?        00:00:00 /opt/google/chrome/nacl_helper
+paul.pa+  2990  2979  0 Feb17 ?        00:00:00 /opt/google/chrome/chrome --type=zygote
+paul.pa+  3007     1  0 Feb17 ?        00:00:00 /usr/lib/at-spi2-core/at-spi-bus-launcher
+paul.pa+  3123  2990  0 Feb17 ?        00:01:04 /opt/google/chrome/chrome --type=renderer --lang=en-US --force-fieldtrials=AffiliationBasedMatching/EnabledThroughFieldTrial/AppBannerTriggering/Aggressive/AutofillProfileOrderByFrecency/Enabled/CaptivePortalInterstitial/Enabled/*ChildAccountDetection/Disabled/*ChromeSuggestions/Default/*ClientSideDetectionModel/Model0/*CrossDevicePromo/28DaySingleProfile/*ExtensionActionRedesign/Default/*ExtensionDeveloperModeWarning/Default/*GFE/Default/InstanceID/Enabled/LinuxObsoleteSystemIsEndOfTheLine/NotYetEndOfLine/*OmniboxBundledExperimentV1/Unused_2/PasswordBranding/Disabled/*PasswordGeneration/Disabled/*PasswordManagerSettingsMigration/Disable/*QUIC/EnabledNoId/ReportCertificateErrors/ShowAndPossiblySend/*ResourcePriorities/Disabled/SHA1IdentityUIWarning/Enabled/SHA1ToolbarUIJanuary2016/Warning/SHA1ToolbarUIJanuary2017/Error/*SafeBrowsingIncidentReportingService/Default/SafeBrowsingUnverifiedDownloads/DisableByParameterMostSbTypes2/SafeBrowsingUpdateFrequency/Default/SlimmingPaint/EnableSlimmingPaint/SpdyEnableDependencies/Control/*UMA-Population-Restrict/normal/*UMA-Uniformity-Trial-100-Percent/group_01/*UMA-Uniformity-Trial-20-Percent/default/*UMA-Uniformity-Trial-50-Percent/group_01/*UseDelayAgnosticAEC/DefaultEnabled/*VarationsServiceControl/Interval_30min/WebRTC-LocalIPPermissionCheck/Default/WebRTC-PeerConnectionDTLS1.2/Enabled/ --extension-process --enable-webrtc-hw-h264-encoding --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --num-raster-threads=3 --content-image-texture-target=3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553 --video-image-texture-target=3553 --disable-accelerated-video-decode --channel=2937.2.226868031 --v8-natives-passed-by-fd --v8-snapshot-passed-by-fd
+paul.pa+  3130  2990  0 Feb17 ?        00:00:00 /opt/google/chrome/chrome --type=renderer --lang=en-US --force-fieldtrials=AffiliationBasedMatching/EnabledThroughFieldTrial/AppBannerTriggering/Aggressive/AutofillProfileOrderByFrecency/Enabled/CaptivePortalInterstitial/Enabled/*ChildAccountDetection/Disabled/*ChromeSuggestions/Default/*ClientSideDetectionModel/Model0/*CrossDevicePromo/28DaySingleProfile/*ExtensionActionRedesign/Default/*ExtensionDeveloperModeWarning/Default/*GFE/Default/InstanceID/Enabled/LinuxObsoleteSystemIsEndOfTheLine/NotYetEndOfLine/*OmniboxBundledExperimentV1/Unused_2/PasswordBranding/Disabled/*PasswordGeneration/Disabled/*PasswordManagerSettingsMigration/Disable/*QUIC/EnabledNoId/ReportCertificateErrors/ShowAndPossiblySend/*ResourcePriorities/Disabled/SHA1IdentityUIWarning/Enabled/SHA1ToolbarUIJanuary2016/Warning/SHA1ToolbarUIJanuary2017/Error/*SafeBrowsingIncidentReportingService/Default/SafeBrowsingUnverifiedDownloads/DisableByParameterMostSbTypes2/SafeBrowsingUpdateFrequency/Default/SlimmingPaint/EnableSlimmingPaint/*SpdyEnableDependencies/Control/*UMA-Population-Restrict/normal/*UMA-Uniformity-Trial-100-Percent/group_01/*UMA-Uniformity-Trial-20-Percent/default/*UMA-Uniformity-Trial-50-Percent/group_01/*UseDelayAgnosticAEC/DefaultEnabled/*VarationsServiceControl/Interval_30min/WebRTC-LocalIPPermissionCheck/Default/WebRTC-PeerConnectionDTLS1.2/Enabled/ --extension-process --enable-webrtc-hw-h264-encoding --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --num-raster-threads=3 --content-image-texture-target=3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553 --video-image-texture-target=3553 --disable-accelerated-video-decode --channel=2937.3.1379712367 --v8-natives-passed-by-fd --v8-snapshot-passed-by-fd
+paul.pa+  3146  2990  0 Feb17 ?        00:00:00 /opt/google/chrome/chrome --type=renderer --lang=en-US --force-fieldtrials=AffiliationBasedMatching/EnabledThroughFieldTrial/AppBannerTriggering/Aggressive/AutofillProfileOrderByFrecency/Enabled/CaptivePortalInterstitial/Enabled/*ChildAccountDetection/Disabled/*ChromeSuggestions/Default/*ClientSideDetectionModel/Model0/*CrossDevicePromo/28DaySingleProfile/*ExtensionActionRedesign/Default/*ExtensionDeveloperModeWarning/Default/*GFE/Default/InstanceID/Enabled/LinuxObsoleteSystemIsEndOfTheLine/NotYetEndOfLine/*OmniboxBundledExperimentV1/Unused_2/PasswordBranding/Disabled/*PasswordGeneration/Disabled/*PasswordManagerSettingsMigration/Disable/*QUIC/EnabledNoId/ReportCertificateErrors/ShowAndPossiblySend/*ResourcePriorities/Disabled/SHA1IdentityUIWarning/Enabled/SHA1ToolbarUIJanuary2016/Warning/SHA1ToolbarUIJanuary2017/Error/*SafeBrowsingIncidentReportingService/Default/SafeBrowsingUnverifiedDownloads/DisableByParameterMostSbTypes2/SafeBrowsingUpdateFrequency/Default/SlimmingPaint/EnableSlimmingPaint/*SpdyEnableDependencies/Control/*UMA-Population-Restrict/normal/*UMA-Uniformity-Trial-100-Percent/group_01/*UMA-Uniformity-Trial-20-Percent/default/*UMA-Uniformity-Trial-50-Percent/group_01/*UseDelayAgnosticAEC/DefaultEnabled/*VarationsServiceControl/Interval_30min/WebRTC-LocalIPPermissionCheck/Default/WebRTC-PeerConnectionDTLS1.2/Enabled/ --extension-process --enable-webrtc-hw-h264-encoding --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --num-raster-threads=3 --content-image-texture-target=3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553 --video-image-texture-target=3553 --disable-accelerated-video-decode --channel=2937.4.1694244843 --v8-natives-passed-by-fd --v8-snapshot-passed-by-fd
+paul.pa+  3150  2990  0 Feb17 ?        00:01:27 /opt/google/chrome/chrome --type=renderer --lang=en-US --force-fieldtrials=AffiliationBasedMatching/EnabledThroughFieldTrial/AppBannerTriggering/Aggressive/AutofillProfileOrderByFrecency/Enabled/CaptivePortalInterstitial/Enabled/*ChildAccountDetection/Disabled/*ChromeSuggestions/Default/*ClientSideDetectionModel/Model0/*CrossDevicePromo/28DaySingleProfile/*ExtensionActionRedesign/Default/*ExtensionDeveloperModeWarning/Default/*GFE/Default/InstanceID/Enabled/LinuxObsoleteSystemIsEndOfTheLine/NotYetEndOfLine/*OmniboxBundledExperimentV1/Unused_2/PasswordBranding/Disabled/*PasswordGeneration/Disabled/*PasswordManagerSettingsMigration/Disable/*QUIC/EnabledNoId/ReportCertificateErrors/ShowAndPossiblySend/*ResourcePriorities/Disabled/SHA1IdentityUIWarning/Enabled/SHA1ToolbarUIJanuary2016/Warning/SHA1ToolbarUIJanuary2017/Error/*SafeBrowsingIncidentReportingService/Default/SafeBrowsingUnverifiedDownloads/DisableByParameterMostSbTypes2/SafeBrowsingUpdateFrequency/Default/SlimmingPaint/EnableSlimmingPaint/*SpdyEnableDependencies/Control/*UMA-Population-Restrict/normal/*UMA-Uniformity-Trial-100-Percent/group_01/*UMA-Uniformity-Trial-20-Percent/default/*UMA-Uniformity-Trial-50-Percent/group_01/*UseDelayAgnosticAEC/DefaultEnabled/*VarationsServiceControl/Interval_30min/WebRTC-LocalIPPermissionCheck/Default/WebRTC-PeerConnectionDTLS1.2/Enabled/ --extension-process --enable-webrtc-hw-h264-encoding --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --num-raster-threads=3 --content-image-texture-target=3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553 --video-image-texture-target=3553 --disable-accelerated-video-decode --channel=2937.5.1098854995 --v8-natives-passed-by-fd --v8-snapshot-passed-by-fd
+paul.pa+  3154  2990  0 Feb17 ?        00:00:15 /opt/google/chrome/chrome --type=renderer --lang=en-US --force-fieldtrials=AffiliationBasedMatching/EnabledThroughFieldTrial/AppBannerTriggering/Aggressive/AutofillProfileOrderByFrecency/Enabled/CaptivePortalInterstitial/Enabled/*ChildAccountDetection/Disabled/*ChromeSuggestions/Default/*ClientSideDetectionModel/Model0/*CrossDevicePromo/28DaySingleProfile/*ExtensionActionRedesign/Default/*ExtensionDeveloperModeWarning/Default/*GFE/Default/InstanceID/Enabled/LinuxObsoleteSystemIsEndOfTheLine/NotYetEndOfLine/*OmniboxBundledExperimentV1/Unused_2/PasswordBranding/Disabled/*PasswordGeneration/Disabled/*PasswordManagerSettingsMigration/Disable/*QUIC/EnabledNoId/ReportCertificateErrors/ShowAndPossiblySend/*ResourcePriorities/Disabled/SHA1IdentityUIWarning/Enabled/SHA1ToolbarUIJanuary2016/Warning/SHA1ToolbarUIJanuary2017/Error/*SafeBrowsingIncidentReportingService/Default/SafeBrowsingUnverifiedDownloads/DisableByParameterMostSbTypes2/SafeBrowsingUpdateFrequency/Default/SlimmingPaint/EnableSlimmingPaint/*SpdyEnableDependencies/Control/*UMA-Population-Restrict/normal/*UMA-Uniformity-Trial-100-Percent/group_01/*UMA-Uniformity-Trial-20-Percent/default/*UMA-Uniformity-Trial-50-Percent/group_01/*UseDelayAgnosticAEC/DefaultEnabled/*VarationsServiceControl/Interval_30min/WebRTC-LocalIPPermissionCheck/Default/WebRTC-PeerConnectionDTLS1.2/Enabled/ --extension-process --enable-webrtc-hw-h264-encoding --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --num-raster-threads=3 --content-image-texture-target=3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553 --video-image-texture-target=3553 --disable-accelerated-video-decode --channel=2937.6.501283625 --v8-natives-passed-by-fd --v8-snapshot-passed-by-fd
+paul.pa+  3159  2990  0 Feb17 ?        00:00:02 /opt/google/chrome/chrome --type=renderer --lang=en-US --force-fieldtrials=AffiliationBasedMatching/EnabledThroughFieldTrial/AppBannerTriggering/Aggressive/AutofillProfileOrderByFrecency/Enabled/CaptivePortalInterstitial/Enabled/*ChildAccountDetection/Disabled/*ChromeSuggestions/Default/*ClientSideDetectionModel/Model0/*CrossDevicePromo/28DaySingleProfile/*ExtensionActionRedesign/Default/*ExtensionDeveloperModeWarning/Default/*GFE/Default/InstanceID/Enabled/LinuxObsoleteSystemIsEndOfTheLine/NotYetEndOfLine/*OmniboxBundledExperimentV1/Unused_2/PasswordBranding/Disabled/*PasswordGeneration/Disabled/*PasswordManagerSettingsMigration/Disable/*QUIC/EnabledNoId/ReportCertificateErrors/ShowAndPossiblySend/*ResourcePriorities/Disabled/SHA1IdentityUIWarning/Enabled/SHA1ToolbarUIJanuary2016/Warning/SHA1ToolbarUIJanuary2017/Error/*SafeBrowsingIncidentReportingService/Default/SafeBrowsingUnverifiedDownloads/DisableByParameterMostSbTypes2/SafeBrowsingUpdateFrequency/Default/SlimmingPaint/EnableSlimmingPaint/*SpdyEnableDependencies/Control/*UMA-Population-Restrict/normal/*UMA-Uniformity-Trial-100-Percent/group_01/*UMA-Uniformity-Trial-20-Percent/default/*UMA-Uniformity-Trial-50-Percent/group_01/*UseDelayAgnosticAEC/DefaultEnabled/*VarationsServiceControl/Interval_30min/WebRTC-LocalIPPermissionCheck/Default/WebRTC-PeerConnectionDTLS1.2/Enabled/ --extension-process --enable-webrtc-hw-h264-encoding --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --num-raster-threads=3 --content-image-texture-target=3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553 --video-image-texture-target=3553 --disable-accelerated-video-decode --channel=2937.7.770936037 --v8-natives-passed-by-fd --v8-snapshot-passed-by-fd
+paul.pa+  3163  2990  0 Feb17 ?        00:00:00 /opt/google/chrome/chrome --type=renderer --lang=en-US --force-fieldtrials=AffiliationBasedMatching/EnabledThroughFieldTrial/AppBannerTriggering/Aggressive/AutofillProfileOrderByFrecency/Enabled/CaptivePortalInterstitial/Enabled/*ChildAccountDetection/Disabled/*ChromeSuggestions/Default/*ClientSideDetectionModel/Model0/*CrossDevicePromo/28DaySingleProfile/*ExtensionActionRedesign/Default/*ExtensionDeveloperModeWarning/Default/*GFE/Default/InstanceID/Enabled/LinuxObsoleteSystemIsEndOfTheLine/NotYetEndOfLine/*OmniboxBundledExperimentV1/Unused_2/PasswordBranding/Disabled/*PasswordGeneration/Disabled/*PasswordManagerSettingsMigration/Disable/*QUIC/EnabledNoId/ReportCertificateErrors/ShowAndPossiblySend/*ResourcePriorities/Disabled/SHA1IdentityUIWarning/Enabled/SHA1ToolbarUIJanuary2016/Warning/SHA1ToolbarUIJanuary2017/Error/*SafeBrowsingIncidentReportingService/Default/SafeBrowsingUnverifiedDownloads/DisableByParameterMostSbTypes2/SafeBrowsingUpdateFrequency/Default/SlimmingPaint/EnableSlimmingPaint/*SpdyEnableDependencies/Control/*UMA-Population-Restrict/normal/*UMA-Uniformity-Trial-100-Percent/group_01/*UMA-Uniformity-Trial-20-Percent/default/*UMA-Uniformity-Trial-50-Percent/group_01/*UseDelayAgnosticAEC/DefaultEnabled/*VarationsServiceControl/Interval_30min/WebRTC-LocalIPPermissionCheck/Default/WebRTC-PeerConnectionDTLS1.2/Enabled/ --extension-process --enable-webrtc-hw-h264-encoding --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --num-raster-threads=3 --content-image-texture-target=3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553 --video-image-texture-target=3553 --disable-accelerated-video-decode --channel=2937.8.661810580 --v8-natives-passed-by-fd --v8-snapshot-passed-by-fd
+paul.pa+  3167  2990  0 Feb17 ?        00:00:32 /opt/google/chrome/chrome --type=renderer --lang=en-US --force-fieldtrials=AffiliationBasedMatching/EnabledThroughFieldTrial/AppBannerTriggering/Aggressive/AutofillProfileOrderByFrecency/Enabled/CaptivePortalInterstitial/Enabled/*ChildAccountDetection/Disabled/*ChromeSuggestions/Default/*ClientSideDetectionModel/Model0/*CrossDevicePromo/28DaySingleProfile/*ExtensionActionRedesign/Default/*ExtensionDeveloperModeWarning/Default/*GFE/Default/InstanceID/Enabled/LinuxObsoleteSystemIsEndOfTheLine/NotYetEndOfLine/*OmniboxBundledExperimentV1/Unused_2/PasswordBranding/Disabled/*PasswordGeneration/Disabled/*PasswordManagerSettingsMigration/Disable/*QUIC/EnabledNoId/ReportCertificateErrors/ShowAndPossiblySend/*ResourcePriorities/Disabled/SHA1IdentityUIWarning/Enabled/SHA1ToolbarUIJanuary2016/Warning/SHA1ToolbarUIJanuary2017/Error/*SafeBrowsingIncidentReportingService/Default/SafeBrowsingUnverifiedDownloads/DisableByParameterMostSbTypes2/SafeBrowsingUpdateFrequency/Default/SlimmingPaint/EnableSlimmingPaint/*SpdyEnableDependencies/Control/*UMA-Population-Restrict/normal/*UMA-Uniformity-Trial-100-Percent/group_01/*UMA-Uniformity-Trial-20-Percent/default/*UMA-Uniformity-Trial-50-Percent/group_01/*UseDelayAgnosticAEC/DefaultEnabled/*VarationsServiceControl/Interval_30min/WebRTC-LocalIPPermissionCheck/Default/WebRTC-PeerConnectionDTLS1.2/Enabled/ --extension-process --enable-webrtc-hw-h264-encoding --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --num-raster-threads=3 --content-image-texture-target=3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553 --video-image-texture-target=3553 --disable-accelerated-video-decode --channel=2937.9.866383597 --v8-natives-passed-by-fd --v8-snapshot-passed-by-fd
+paul.pa+  3175  2990  0 Feb17 ?        00:00:00 /opt/google/chrome/chrome --type=renderer --lang=en-US --force-fieldtrials=AffiliationBasedMatching/EnabledThroughFieldTrial/AppBannerTriggering/Aggressive/AutofillProfileOrderByFrecency/Enabled/CaptivePortalInterstitial/Enabled/*ChildAccountDetection/Disabled/*ChromeSuggestions/Default/*ClientSideDetectionModel/Model0/*CrossDevicePromo/28DaySingleProfile/*ExtensionActionRedesign/Default/*ExtensionDeveloperModeWarning/Default/*GFE/Default/InstanceID/Enabled/LinuxObsoleteSystemIsEndOfTheLine/NotYetEndOfLine/*OmniboxBundledExperimentV1/Unused_2/PasswordBranding/Disabled/*PasswordGeneration/Disabled/*PasswordManagerSettingsMigration/Disable/*QUIC/EnabledNoId/ReportCertificateErrors/ShowAndPossiblySend/*ResourcePriorities/Disabled/SHA1IdentityUIWarning/Enabled/SHA1ToolbarUIJanuary2016/Warning/SHA1ToolbarUIJanuary2017/Error/*SafeBrowsingIncidentReportingService/Default/SafeBrowsingUnverifiedDownloads/DisableByParameterMostSbTypes2/SafeBrowsingUpdateFrequency/Default/SlimmingPaint/EnableSlimmingPaint/*SpdyEnableDependencies/Control/*UMA-Population-Restrict/normal/*UMA-Uniformity-Trial-100-Percent/group_01/*UMA-Uniformity-Trial-20-Percent/default/*UMA-Uniformity-Trial-50-Percent/group_01/*UseDelayAgnosticAEC/DefaultEnabled/*VarationsServiceControl/Interval_30min/WebRTC-LocalIPPermissionCheck/Default/WebRTC-PeerConnectionDTLS1.2/Enabled/ --extension-process --enable-webrtc-hw-h264-encoding --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --num-raster-threads=3 --content-image-texture-target=3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553 --video-image-texture-target=3553 --disable-accelerated-video-decode --channel=2937.11.73911613 --v8-natives-passed-by-fd --v8-snapshot-passed-by-fd
+paul.pa+  3309  2937  0 Feb17 ?        00:01:07 /opt/google/chrome/chrome --type=gpu-process --channel=2937.14.1791858156 --supports-dual-gpus=false --gpu-driver-bug-workarounds=2,52 --disable-accelerated-video-decode --gpu-vendor-id=0x80ee --gpu-device-id=0xbeef --gpu-driver-vendor=Chromium --gpu-driver-version=1.9 --v8-natives-passed-by-fd --v8-snapshot-passed-by-fd
+root      3432     2  0 Feb17 ?        00:00:00 [kworker/6:2]
+paul.pa+  3514  2990  0 Feb17 ?        00:00:02 /opt/google/chrome/chrome --type=renderer --lang=en-US --force-fieldtrials=*AffiliationBasedMatching/EnabledThroughFieldTrial/AppBannerTriggering/Aggressive/AutofillProfileOrderByFrecency/Enabled/CaptivePortalInterstitial/Enabled/*ChildAccountDetection/Disabled/*ChromeSuggestions/Default/*ClientSideDetectionModel/Model0/*CrossDevicePromo/28DaySingleProfile/*ExtensionActionRedesign/Default/*ExtensionDeveloperModeWarning/Default/*GFE/Default/InstanceID/Enabled/LinuxObsoleteSystemIsEndOfTheLine/NotYetEndOfLine/*OmniboxBundledExperimentV1/Unused_2/PasswordBranding/Disabled/*PasswordGeneration/Disabled/*PasswordManagerSettingsMigration/Disable/*QUIC/EnabledNoId/ReportCertificateErrors/ShowAndPossiblySend/*ResourcePriorities/Disabled/SHA1IdentityUIWarning/Enabled/SHA1ToolbarUIJanuary2016/Warning/SHA1ToolbarUIJanuary2017/Error/*SafeBrowsingIncidentReportingService/Default/SafeBrowsingUnverifiedDownloads/DisableByParameterMostSbTypes2/SafeBrowsingUpdateFrequency/Default/SlimmingPaint/EnableSlimmingPaint/*SpdyEnableDependencies/Control/*UMA-Population-Restrict/normal/*UMA-Uniformity-Trial-100-Percent/group_01/*UMA-Uniformity-Trial-20-Percent/default/*UMA-Uniformity-Trial-50-Percent/group_01/*UseDelayAgnosticAEC/DefaultEnabled/*VarationsServiceControl/Interval_30min/WebRTC-LocalIPPermissionCheck/Default/WebRTC-PeerConnectionDTLS1.2/Enabled/ --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --num-raster-threads=3 --content-image-texture-target=3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553 --video-image-texture-target=3553 --disable-accelerated-video-decode --disable-gpu-compositing --channel=2937.23.951705416 --v8-natives-passed-by-fd --v8-snapshot-passed-by-fd
+root      3664     2  0 Feb17 ?        00:00:19 [kworker/0:2]
+paul.pa+  3934  2912  0 Feb17 pts/1    00:00:18 ssh -D 1234 jpref@falcon.inetnebr.com
+paul.pa+  3939  2899  0 Feb17 pts/3    00:00:00 /bin/bash
+paul.pa+  4151     1  0 Feb17 ?        00:00:00 /usr/lib/gvfs/gvfsd-http --spawner :1.3 /org/gtk/gvfs/exec_spaw/1
+paul.pa+  4505  2641  0 Feb17 ?        00:00:03 gedit
+paul.pa+  4704     1  0 Feb17 ?        00:00:00 /usr/bin/python3 /usr/share/apport/apport-gtk
+paul.pa+  4768  2990  0 Feb17 ?        00:00:02 /opt/google/chrome/chrome --type=renderer --lang=en-US --force-fieldtrials=*AffiliationBasedMatching/EnabledThroughFieldTrial/AppBannerTriggering/Aggressive/AutofillProfileOrderByFrecency/Enabled/CaptivePortalInterstitial/Enabled/*ChildAccountDetection/Disabled/*ChromeSuggestions/Default/*ClientSideDetectionModel/Model0/*CrossDevicePromo/28DaySingleProfile/*ExtensionActionRedesign/Default/*ExtensionDeveloperModeWarning/Default/*GFE/Default/InstanceID/Enabled/LinuxObsoleteSystemIsEndOfTheLine/NotYetEndOfLine/*OmniboxBundledExperimentV1/Unused_2/PasswordBranding/Disabled/*PasswordGeneration/Disabled/*PasswordManagerSettingsMigration/Disable/*QUIC/EnabledNoId/ReportCertificateErrors/ShowAndPossiblySend/*ResourcePriorities/Disabled/SHA1IdentityUIWarning/Enabled/SHA1ToolbarUIJanuary2016/Warning/SHA1ToolbarUIJanuary2017/Error/*SafeBrowsingIncidentReportingService/Default/SafeBrowsingUnverifiedDownloads/DisableByParameterMostSbTypes2/*SafeBrowsingUpdateFrequency/Default/SlimmingPaint/EnableSlimmingPaint/*SpdyEnableDependencies/Control/*UMA-Population-Restrict/normal/*UMA-Uniformity-Trial-100-Percent/group_01/*UMA-Uniformity-Trial-20-Percent/default/*UMA-Uniformity-Trial-50-Percent/group_01/*UseDelayAgnosticAEC/DefaultEnabled/*VarationsServiceControl/Interval_30min/WebRTC-LocalIPPermissionCheck/Default/WebRTC-PeerConnectionDTLS1.2/Enabled/ --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --num-raster-threads=3 --content-image-texture-target=3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553 --video-image-texture-target=3553 --disable-accelerated-video-decode --disable-gpu-compositing --channel=2937.44.1912148408 --v8-natives-passed-by-fd --v8-snapshot-passed-by-fd
+paul.pa+  5926  2990  0 Feb17 ?        00:00:27 /opt/google/chrome/chrome --type=renderer --lang=en-US --force-fieldtrials=*AffiliationBasedMatching/EnabledThroughFieldTrial/AppBannerTriggering/Aggressive/AutofillProfileOrderByFrecency/Enabled/CaptivePortalInterstitial/Enabled/*ChildAccountDetection/Disabled/*ChromeSuggestions/Default/*ClientSideDetectionModel/Model0/*CrossDevicePromo/28DaySingleProfile/*ExtensionActionRedesign/Default/*ExtensionDeveloperModeWarning/Default/*GFE/Default/InstanceID/Enabled/LinuxObsoleteSystemIsEndOfTheLine/NotYetEndOfLine/*OmniboxBundledExperimentV1/Unused_2/PasswordBranding/Disabled/*PasswordGeneration/Disabled/*PasswordManagerSettingsMigration/Disable/*QUIC/EnabledNoId/ReportCertificateErrors/ShowAndPossiblySend/*ResourcePriorities/Disabled/SHA1IdentityUIWarning/Enabled/SHA1ToolbarUIJanuary2016/Warning/SHA1ToolbarUIJanuary2017/Error/*SafeBrowsingIncidentReportingService/Default/SafeBrowsingUnverifiedDownloads/DisableByParameterMostSbTypes2/*SafeBrowsingUpdateFrequency/Default/SlimmingPaint/EnableSlimmingPaint/*SpdyEnableDependencies/Control/*UMA-Population-Restrict/normal/*UMA-Uniformity-Trial-100-Percent/group_01/*UMA-Uniformity-Trial-20-Percent/default/*UMA-Uniformity-Trial-50-Percent/group_01/*UseDelayAgnosticAEC/DefaultEnabled/*VarationsServiceControl/Interval_30min/WebRTC-LocalIPPermissionCheck/Default/WebRTC-PeerConnectionDTLS1.2/Enabled/ --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --num-raster-threads=3 --content-image-texture-target=3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553 --video-image-texture-target=3553 --disable-accelerated-video-decode --disable-gpu-compositing --channel=2937.52.1532427114 --v8-natives-passed-by-fd --v8-snapshot-passed-by-fd
+root      9978     1  0 08:01 ?        00:00:00 /usr/sbin/cupsd -f
+paul.pa+ 14824     1  0 09:30 ?        00:00:00 python2 /usr/lib/cinnamon-looking-glass/cinnamon-looking-glass.py daemon
+root     15420     2  0 10:49 ?        00:00:00 [kworker/5:0]
+root     15692     2  0 11:09 ?        00:00:01 [kworker/u14:1]
+paul.pa+ 15995  2990  3 11:22 ?        00:04:28 /opt/google/chrome/chrome --type=renderer --lang=en-US --force-fieldtrials=*AffiliationBasedMatching/EnabledThroughFieldTrial/AppBannerTriggering/Aggressive/AutofillProfileOrderByFrecency/Enabled/CaptivePortalInterstitial/Enabled/*ChildAccountDetection/Disabled/*ChromeSuggestions/Default/*ClientSideDetectionModel/Model0/*CrossDevicePromo/28DaySingleProfile/*ExtensionActionRedesign/Default/*ExtensionDeveloperModeWarning/Default/*GFE/Default/InstanceID/Enabled/LinuxObsoleteSystemIsEndOfTheLine/NotYetEndOfLine/*OmniboxBundledExperimentV1/Unused_2/PasswordBranding/Disabled/*PasswordGeneration/Disabled/*PasswordManagerSettingsMigration/Disable/*QUIC/EnabledNoId/ReportCertificateErrors/ShowAndPossiblySend/*ResourcePriorities/Disabled/SHA1IdentityUIWarning/Enabled/SHA1ToolbarUIJanuary2016/Warning/SHA1ToolbarUIJanuary2017/Error/*SafeBrowsingIncidentReportingService/Default/SafeBrowsingUnverifiedDownloads/DisableByParameterMostSbTypes2/*SafeBrowsingUpdateFrequency/Default/SlimmingPaint/EnableSlimmingPaint/*SpdyEnableDependencies/Control/*UMA-Population-Restrict/normal/*UMA-Uniformity-Trial-100-Percent/group_01/*UMA-Uniformity-Trial-20-Percent/default/*UMA-Uniformity-Trial-50-Percent/group_01/*UseDelayAgnosticAEC/DefaultEnabled/*VarationsServiceControl/Interval_30min/WebRTC-LocalIPPermissionCheck/Default/WebRTC-PeerConnectionDTLS1.2/Enabled/ --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --num-raster-threads=3 --content-image-texture-target=3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553 --video-image-texture-target=3553 --disable-accelerated-video-decode --disable-gpu-compositing --channel=2937.103.1079065511 --v8-natives-passed-by-fd --v8-snapshot-passed-by-fd
+paul.pa+ 17674  2899  0 12:12 pts/5    00:00:00 /bin/bash
+paul.pa+ 17694 17674  0 12:12 pts/5    00:00:00 tail -f /home/paul.pasika/git/scripts/scripts/lusas-read-only/lusas-amagi-om-2016-02-18-1212/lusas-basic.log
+paul.pa+ 17696  2899  0 12:12 pts/6    00:00:00 /bin/bash
+paul.pa+ 17716 17696  0 12:12 pts/6    00:00:11 top
+paul.pa+ 18073  2899  0 12:16 pts/8    00:00:00 /bin/bash
+paul.pa+ 18093 18073  0 12:16 pts/8    00:00:00 ssh caslinux01.riv
+paul.pa+ 18106  2899  0 12:17 pts/9    00:00:00 /bin/bash
+paul.pa+ 18126 18106  0 12:17 pts/9    00:00:00 ssh caslinux01.riv
+paul.pa+ 18243  2990  1 12:34 ?        00:00:53 /opt/google/chrome/chrome --type=renderer --lang=en-US --force-fieldtrials=*AffiliationBasedMatching/EnabledThroughFieldTrial/AppBannerTriggering/Aggressive/AutofillProfileOrderByFrecency/Enabled/CaptivePortalInterstitial/Enabled/*ChildAccountDetection/Disabled/*ChromeSuggestions/Default/*ClientSideDetectionModel/Model0/*CrossDevicePromo/28DaySingleProfile/*ExtensionActionRedesign/Default/*ExtensionDeveloperModeWarning/Default/*GFE/Default/InstanceID/Enabled/LinuxObsoleteSystemIsEndOfTheLine/NotYetEndOfLine/*OmniboxBundledExperimentV1/Unused_2/PasswordBranding/Disabled/*PasswordGeneration/Disabled/*PasswordManagerSettingsMigration/Disable/*QUIC/EnabledNoId/ReportCertificateErrors/ShowAndPossiblySend/*ResourcePriorities/Disabled/SHA1IdentityUIWarning/Enabled/SHA1ToolbarUIJanuary2016/Warning/SHA1ToolbarUIJanuary2017/Error/*SafeBrowsingIncidentReportingService/Default/SafeBrowsingUnverifiedDownloads/DisableByParameterMostSbTypes2/*SafeBrowsingUpdateFrequency/Default/SlimmingPaint/EnableSlimmingPaint/*SpdyEnableDependencies/Control/*UMA-Population-Restrict/normal/*UMA-Uniformity-Trial-100-Percent/group_01/*UMA-Uniformity-Trial-20-Percent/default/*UMA-Uniformity-Trial-50-Percent/group_01/*UseDelayAgnosticAEC/DefaultEnabled/*VarationsServiceControl/Interval_30min/WebRTC-LocalIPPermissionCheck/Default/WebRTC-PeerConnectionDTLS1.2/Enabled/ --extension-process --enable-webrtc-hw-h264-encoding --enable-offline-auto-reload --enable-offline-auto-reload-visible-only --num-raster-threads=3 --content-image-texture-target=3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553,3553 --video-image-texture-target=3553 --disable-accelerated-video-decode --disable-gpu-compositing --channel=2937.137.976699468 --v8-natives-passed-by-fd --v8-snapshot-passed-by-fd
+root     18733     2  0 13:40 ?        00:00:00 [kworker/u14:0]
+root     18879  3939  0 13:49 pts/3    00:00:00 sudo ./lusas-basic.sh
+root     18880 18879  2 13:49 pts/3    00:00:00 /bin/sh ./lusas-basic.sh
+root     19165 18880  0 13:49 pts/3    00:00:00 ps -ef
+\---------- Check /dev/random ----------
+
+crw-rw-rw- 1 root root 1, 8 Feb 17 07:20 /dev/random

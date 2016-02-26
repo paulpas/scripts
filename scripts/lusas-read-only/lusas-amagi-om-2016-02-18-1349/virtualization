@@ -1,0 +1,9 @@
+
+>>>>>>>>>> Virtualization ----------
+---------- Check for Hypervisers and services ----------
+
+vmware kernel module info:
+Running command: /etc/init.d/vmware status
+.pasika/git/scripts/scripts/lusas-read-only/lusas-amagi-om-2016-02-18-1349/kernel: Directory nonexistent
+modinfo: ERROR: Module vmnet not found.
+./lusas-basic.sh: 273: ./lusas-basic.sh: /etc/init.d/vmware: not found

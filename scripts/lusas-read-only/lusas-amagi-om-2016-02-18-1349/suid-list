@@ -1,0 +1,674 @@
+-rwxr-sr-x 1 root shadow 35536 Jan 31  2014 /sbin/unix_chkpwd
+-rwsr-xr-x 1 root root 35608 Jun 27  2013 /sbin/mount.cifs
+-rwsr-xr-x 1 root root 36936 Jan 26 18:50 /bin/su
+-rwsr-xr-x 1 root root 69120 Sep  2 13:35 /bin/umount
+-rwsr-xr-x 1 root root 30800 May 15  2015 /bin/fusermount
+-rwsr-xr-x 1 root root 44680 May  7  2014 /bin/ping6
+-rwsr-xr-x 1 root root 44168 May  7  2014 /bin/ping
+-rwsr-xr-x 1 root root 94792 Sep  2 13:35 /bin/mount
+-rwsr-xr-- 1 root dip 347296 Apr 21  2015 /usr/sbin/pppd
+-rwsr-sr-x 1 libuuid libuuid 18904 Sep  2 13:35 /usr/sbin/uuidd
+-rwxr-sr-x 1 root ssh 284784 Jan 26 19:36 /usr/bin/ssh-agent
+-rwxr-sr-x 1 root mail 14592 Dec  3  2012 /usr/bin/mail-lock
+-rwsr-sr-x 1 root root 10192 Jun 22  2015 /usr/bin/X
+-rwxr-sr-x 1 root shadow 23360 Jan 26 18:50 /usr/bin/expiry
+-rwxr-sr-x 1 root mail 14592 Dec  3  2012 /usr/bin/mail-touchlock
+-rwsr-xr-x 1 root root 75256 Oct 21  2013 /usr/bin/mtr
+-rwxr-sr-x 1 root shadow 55000 Jan 26 18:50 /usr/bin/chage
+-rwsr-xr-x 1 root root 41336 Jan 26 18:50 /usr/bin/chsh
+-rwxr-sr-x 1 root mlocate 39520 Jun 20  2013 /usr/bin/mlocate
+-rwsr-xr-x 1 root root 46424 Jan 26 18:50 /usr/bin/chfn
+-rwsr-xr-x 1 root root 47032 Jan 26 18:50 /usr/bin/passwd
+-rwsr-xr-x 1 root lpadmin 14336 Dec 11 13:06 /usr/bin/lppasswd
+-rwsr-xr-x 1 root root 23304 Nov 24 15:15 /usr/bin/pkexec
+-rwxr-sr-x 1 root mail 14592 Dec  3  2012 /usr/bin/mail-unlock
+-rwxr-sr-x 1 root crontab 35984 Feb  9  2013 /usr/bin/crontab
+-rwxr-sr-x 1 root tty 19024 Sep  2 13:35 /usr/bin/wall
+-rwxr-sr-x 1 root mail 14856 Dec  6  2013 /usr/bin/dotlockfile
+-rwsr-xr-x 1 root root 72280 Jan 26 18:50 /usr/bin/gpasswd
+-rwsr-xr-x 1 root root 23104 May  7  2014 /usr/bin/traceroute6.iputils
+-rwxr-sr-x 1 root tty 14688 Jun  4  2013 /usr/bin/bsd-write
+-rwsr-xr-x 1 root root 155008 Aug 27 14:26 /usr/bin/sudo
+-rwsr-xr-x 1 root root 36592 Jan 26 18:50 /usr/bin/newgrp
+total 0
+-rwsr-xr-x 1 root root 18664 Jan 21 10:59 /usr/lib/x86_64-linux-gnu/oxide-qt/chrome-sandbox
+-rwxr-sr-x 1 root mail 14736 Oct 20  2014 /usr/lib/evolution/camel-lock-helper-1.2
+-rwxr-sr-x 1 root utmp 14904 Oct 21 11:23 /usr/lib/libvte-2.90-9/gnome-pty-helper
+-rwxr-sr-x 1 root nogroup 52304 Nov 21  2014 /usr/lib/kde4/libexec/kdesud
+-rwsr-xr-x 1 root root 11019 Jul 11  2014 /usr/lib/kde4/libexec/fileshareset
+-rwsr-xr-x 1 root root 440416 Jan 26 19:36 /usr/lib/openssh/ssh-keysign
+-rwsr-xr-- 1 root messagebus 310800 Nov 25  2014 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwxr-sr-x 1 root utmp 10104 Oct  5  2012 /usr/lib/utempter/utempter
+-rwsr-xr-x 1 root root 14776 Nov 24 15:15 /usr/lib/policykit-1/polkit-agent-helper-1
+-rwsr-xr-x 1 root root 10344 Feb 25  2015 /usr/lib/pt_chown
+-rwsr-xr-x 1 root root 10240 Feb 25  2014 /usr/lib/eject/dmcrypt-get-device
+-rwxr-sr-x 1 root utmp 14904 Oct  8  2012 /usr/lib/libvte9/gnome-pty-helper
+total 20
+drwxrwsr-x 2 root staff 4096 Aug  5  2015 declaration
+drwxrwsr-x 2 root staff 4096 Aug  5  2015 dtd
+drwxrwsr-x 2 root staff 4096 Aug  5  2015 entities
+drwxrwsr-x 2 root staff 4096 Aug  5  2015 misc
+drwxrwsr-x 2 root staff 4096 Aug  5  2015 stylesheet
+total 0
+total 0
+total 0
+total 0
+total 0
+total 16
+drwxrwsr-x 2 root staff 4096 Aug  5  2015 declaration
+drwxrwsr-x 2 root staff 4096 Aug  5  2015 entities
+drwxrwsr-x 2 root staff 4096 Aug  5  2015 misc
+drwxrwsr-x 2 root staff 4096 Aug  5  2015 schema
+total 0
+total 0
+total 0
+total 0
+total 0
+total 0
+total 8
+drwxrwsr-x 2 root staff 4096 Aug  5  2015 dist-packages
+drwxrwsr-x 2 root staff 4096 Aug  5  2015 site-packages
+total 0
+total 0
+total 4
+drwxrwsr-x 2 root staff 4096 Aug  5  2015 dist-packages
+total 0
+total 0
+total 0
+total 0
+total 1664
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 ar
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 ast
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 be
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 bg
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 bn
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 bo
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 bs
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 ca
+-rw-r--r-- 1 man root     190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root    4096 Dec 21 15:09 cat1
+drwxr-sr-x 2 man root    4096 Aug  5  2015 cat2
+drwxr-sr-x 2 man root    4096 Aug  5  2015 cat3
+drwxr-sr-x 2 man root    4096 Aug  5  2015 cat4
+drwxr-sr-x 2 man root    4096 Aug  5  2015 cat5
+drwxr-sr-x 2 man root    4096 Aug  5  2015 cat6
+drwxr-sr-x 2 man root    4096 Aug  5  2015 cat7
+drwxr-sr-x 2 man root    4096 Oct 13 10:39 cat8
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 ca@valencia
+drwxr-sr-x 6 man root    4096 Feb 18 09:24 cs
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 cy
+drwxr-sr-x 5 man root    4096 Feb 18 09:24 da
+drwxr-sr-x 7 man root    4096 Feb 18 09:24 de
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 el
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 en_AU
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 en_CA
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 en_GB
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 eo
+drwxr-sr-x 5 man root    4096 Feb 18 09:24 es
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 et
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 eu
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 fa
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 fi
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 fo
+drwxr-sr-x 6 man root    4096 Feb 18 09:24 fr
+drwxr-sr-x 4 man root    4096 Feb 18 09:24 fr.ISO8859-1
+drwxr-sr-x 4 man root    4096 Feb 18 09:24 fr.UTF-8
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 fy
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 gd
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 gl
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 he
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 hi
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 hr
+drwxr-sr-x 5 man root    4096 Feb 18 09:24 hu
+drwxr-sr-x 5 man root    4096 Feb 18 09:24 id
+-rw-r--r-- 1 man root 1347671 Feb 18 09:24 index.db
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 io
+drwxr-sr-x 5 man root    4096 Feb 18 09:24 it
+drwxr-sr-x 5 man root    4096 Feb 18 09:24 ja
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 kk
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 km
+drwxr-sr-x 5 man root    4096 Feb 18 09:24 ko
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 ku
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 lt
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 lv
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 mhr
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 ml
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 ms
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 my
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 nb
+drwxr-sr-x 5 man root    4096 Feb 18 09:24 nl
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 nn
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 oc
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 pa
+drwxr-sr-x 5 man root    4096 Feb 18 09:24 pl
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 ps
+drwxr-sr-x 5 man root    4096 Feb 18 09:24 pt
+drwxr-sr-x 5 man root    4096 Feb 18 09:24 pt_BR
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 ro
+drwxr-sr-x 5 man root    4096 Feb 18 09:24 ru
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 se
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 shn
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 si
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 sk
+drwxr-sr-x 4 man root    4096 Feb 18 09:24 sl
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 sq
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 sr
+drwxr-sr-x 5 man root    4096 Feb 18 09:24 sv
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 ta
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 te
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 th
+drwxr-sr-x 5 man root    4096 Feb 18 09:24 tr
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 ug
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 uk
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 uz
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 vi
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 zh
+drwxr-sr-x 5 man root    4096 Feb 18 09:24 zh_CN
+drwxr-sr-x 3 man root    4096 Feb 18 09:24 zh_HK
+drwxr-sr-x 5 man root    4096 Feb 18 09:24 zh_TW
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:57 index.db
+total 0
+total 28
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat7
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat8
+-rw-r--r-- 1 man root 12954 Feb 16 07:57 index.db
+total 0
+total 0
+total 40
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat5
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat8
+-rw-r--r-- 1 man root 23720 Feb 16 07:57 index.db
+total 0
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:57 index.db
+total 0
+total 32
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat5
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat8
+-rw-r--r-- 1 man root 13334 Feb 16 07:57 index.db
+total 0
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:57 index.db
+total 0
+total 0
+total 28
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat7
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat8
+-rw-r--r-- 1 man root 12954 Feb 16 07:57 index.db
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12563 Feb 16 07:57 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:57 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:57 index.db
+total 0
+total 32
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat5
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat8
+-rw-r--r-- 1 man root 13650 Feb 16 07:57 index.db
+total 0
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:57 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:57 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:57 index.db
+total 0
+total 32
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat5
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat8
+-rw-r--r-- 1 man root 15640 Feb 16 07:57 index.db
+total 0
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:57 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:57 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:57 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:57 index.db
+total 0
+total 40
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat5
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat8
+-rw-r--r-- 1 man root 21635 Feb 16 07:57 index.db
+total 0
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:57 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:57 index.db
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:57 index.db
+total 0
+total 32
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat5
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat8
+-rw-r--r-- 1 man root 14051 Feb 16 07:57 index.db
+total 0
+total 0
+total 0
+total 32
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat5
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat8
+-rw-r--r-- 1 man root 15695 Feb 16 07:57 index.db
+total 0
+total 0
+total 0
+total 32
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat5
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat8
+-rw-r--r-- 1 man root 13492 Feb 16 07:57 index.db
+total 0
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12738 Feb 16 07:57 index.db
+total 0
+total 44
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat5
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat8
+-rw-r--r-- 1 man root 26612 Feb 16 07:57 index.db
+total 0
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:57 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:57 index.db
+total 0
+total 32
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat5
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat8
+-rw-r--r-- 1 man root 13656 Feb 16 07:57 index.db
+total 0
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12576 Feb 16 07:57 index.db
+total 0
+total 32
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat5
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat8
+-rw-r--r-- 1 man root 13185 Feb 16 07:57 index.db
+total 0
+total 0
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:57 index.db
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:57 index.db
+total 0
+total 68
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat5
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat7
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat8
+-rw-r--r-- 1 man root 45460 Feb 16 07:57 index.db
+total 0
+total 0
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12562 Feb 16 07:57 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:57 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:57 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:57 index.db
+total 0
+total 72
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat3
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat5
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat7
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat8
+-rw-r--r-- 1 man root 45598 Feb 16 07:57 index.db
+total 0
+total 0
+total 0
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 36
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat5
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat8
+-rw-r--r-- 1 man root 18178 Feb 16 07:58 index.db
+total 0
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12680 Feb 16 07:58 index.db
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Oct  2 21:52 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Sep 30 09:55 cat1
+-rw-r--r-- 1 man root 12398 Feb 16 07:58 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 40
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat5
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat8
+-rw-r--r-- 1 man root 22647 Feb 16 07:58 index.db
+total 0
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 32
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat5
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat8
+-rw-r--r-- 1 man root 12922 Feb 16 07:58 index.db
+total 0
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 32
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat5
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat8
+-rw-r--r-- 1 man root 14707 Feb 16 07:58 index.db
+total 0
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 28
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat8
+-rw-r--r-- 1 man root 12969 Feb 16 07:58 index.db
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 40
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat5
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat8
+-rw-r--r-- 1 man root 21235 Feb 16 07:58 index.db
+total 0
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 36
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat5
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat7
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat8
+-rw-r--r-- 1 man root 14256 Feb 16 07:58 index.db
+total 0
+total 0
+total 0
+total 0
+total 24
+-rw-r--r-- 1 man root   190 Aug  5  2015 CACHEDIR.TAG
+drwxr-sr-x 2 man root  4096 Aug  5  2015 cat1
+-rw-r--r-- 1 man root 12477 Feb 16 07:58 index.db
+total 0
+total 5232
+-rw-r----- 1 paul.pasika whoopsie 3217169 Feb 17 11:24 _opt_google_chrome_chrome.1000.crash
+-rw-r----- 1 paul.pasika whoopsie 2137024 Feb 17 16:34 _usr_bin_cinnamon-screensaver.1000.crash
+-rw-rw-r-- 1 paul.pasika whoopsie       0 Feb 16 10:35 _usr_bin_cinnamon-screensaver.1000.upload
+total 0
+total 0
+total 4
+-rw-r----- 1 root dip 1093 Aug  5  2015 provider
+total 12
+-rw-r--r-- 1 root root 950 Apr 21  2015 gprs
+-rw-r--r-- 1 root root 653 Apr 21  2015 pap
+-rw-r----- 1 root dip  656 Aug  5  2015 provider
+-rwsr-xr-x 1 root root 14544 Feb  8 19:53 /opt/google/chrome/chrome-sandbox

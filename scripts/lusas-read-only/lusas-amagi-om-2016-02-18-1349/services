@@ -1,0 +1,307 @@
+>>>>>>>>>> Services ----------
+---------- Services status ----------
+
+
+---------- Inetd services ----------
+
+
+Checking for inetd process..
+root     19176 18880  0 13:49 pts/3    00:00:00 grep inetd
+
+---------- TCP Wrappers ----------
+
+
+TCP Wrappers, /etc/hosts.allow: 
+	/etc/hosts.deny: 
+
+---------- Specific services tests ----------
+
+---------- SSH ----------
+
+root      1119     1  0 Feb17 ?        00:00:00 /usr/sbin/sshd -D
+root     19185 18880  0 13:49 pts/3    00:00:00 grep sshd
+
+deamon version:
+OpenSSH_6.6.1p1 Ubuntu-2ubuntu2.6, OpenSSL 1.0.1f 6 Jan 2014
+
+client version:
+OpenSSH_6.6.1p1 Ubuntu-2ubuntu2.6, OpenSSL 1.0.1f 6 Jan 2014
+
+Where:
+Running command: whereis ssh
+ssh: /usr/bin/ssh /etc/ssh /usr/bin/X11/ssh /usr/share/man/man1/ssh.1.gz
+
+Active SSHD config:
+ssh config: /etc/ssh/sshd_config ..
+Port 22
+Protocol 2
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_dsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+UsePrivilegeSeparation yes
+KeyRegenerationInterval 3600
+ServerKeyBits 1024
+SyslogFacility AUTH
+LogLevel INFO
+LoginGraceTime 120
+PermitRootLogin without-password
+StrictModes yes
+RSAAuthentication yes
+PubkeyAuthentication yes
+IgnoreRhosts yes
+RhostsRSAAuthentication no
+HostbasedAuthentication no
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+X11Forwarding yes
+X11DisplayOffset 10
+PrintMotd no
+PrintLastLog yes
+TCPKeepAlive yes
+AcceptEnv LANG LC_*
+Subsystem sftp /usr/lib/openssh/sftp-server
+UsePAM yes
+
+---------- SNMP ----------
+
+SNMP , config /etc/snmp/snmpd.conf 
+
+
+Is the deamon running
+root     19207 18880  0 13:49 pts/3    00:00:00 grep snmp
+
+---------- FTP ----------
+
+
+/etc/ftpusers:
+
+vsftpd.conf:
+
+Inetd.conf contents relevant to FTP:
+
+---------- NTP ----------
+
+root     19217 18880  0 13:49 pts/3    00:00:00 grep ntpd
+
+ntp config - /etc/ntp.conf:
+
+Running command: ntpq -p
+
+---------- RPC ----------
+
+
+---------- NFS ----------
+
+
+ NFS sharing:
+
+ NFS client:
+
+---------- NIS+ ----------
+
+
+---------- X11 ----------
+
+
+X11 - xauth
+DISPLAY = :0
+marcinzieba-ubuntu/unix:0  MIT-MAGIC-COOKIE-1  eb0624a510f97cb8dac739abb15dab76
+amagi-om/unix:0  MIT-MAGIC-COOKIE-1  9f732ac37815dadace1ebdcd7243843e
+ls /etc/X*.hosts : 
+
+---------- Samba ----------
+
+deamon info:
+
+samba config /etc/samba/smb.conf ..
+[global]
+   workgroup = WORKGROUP
+	server string = %h server (Samba, Ubuntu)
+   dns proxy = no
+   log file = /var/log/samba/log.%m
+   max log size = 1000
+   syslog = 0
+   panic action = /usr/share/samba/panic-action %d
+   server role = standalone server
+   passdb backend = tdbsam
+   obey pam restrictions = yes
+   unix password sync = yes
+   passwd program = /usr/bin/passwd %u
+   passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully* .
+   pam password change = yes
+   map to guest = bad user
+   usershare allow guests = yes
+[printers]
+   comment = All Printers
+   browseable = no
+   path = /var/spool/samba
+   printable = yes
+   guest ok = no
+   read only = yes
+   create mask = 0700
+[print$]
+   comment = Printer Drivers
+   path = /var/lib/samba/printers
+   browseable = yes
+   read only = yes
+   guest ok = no
+
+---------- BIND ----------
+
+libvirt+  2103     1  0 Feb17 ?        00:00:00 /usr/sbin/dnsmasq --conf-file=/var/lib/libvirt/dnsmasq/default.conf
+Dnsmasq version 2.68  Copyright (c) 2000-2013 Simon Kelley
+Compile time options: IPv6 GNU-getopt DBus i18n IDN DHCP DHCPv6 no-Lua TFTP conntrack ipset auth
+
+This software comes with ABSOLUTELY NO WARRANTY.
+Dnsmasq is free software, and you are welcome to redistribute it
+under the terms of the GNU General Public License, version 2 or 3.
+
+---------- DHCP ----------
+
+
+---------- LDAP ----------
+
+
+---------- Apache ----------
+
+https Procesess:
+
+https file permissions:
+http Procesess:
+
+http file permissions:
+
+httpd version:
+
+---------- Syslog ----------
+
+loghost alias in /etc/hosts:
+
+Checking /etc/syslog.conf ..
+
+Checking /etc/syslog-ng.conf ..
+
+Checking /etc/rsyslog.conf ..
+$ModLoad imuxsock # provides support for local system logging
+$ModLoad imklog   # provides kernel logging support
+$KLogPermitNonKernelFacility on
+$ActionFileDefaultTemplate RSYSLOG_TraditionalFileFormat
+$RepeatedMsgReduction on
+$FileOwner syslog
+$FileGroup adm
+$FileCreateMode 0640
+$DirCreateMode 0755
+$Umask 0022
+$PrivDropToUser syslog
+$PrivDropToGroup syslog
+$WorkDirectory /var/spool/rsyslog
+$IncludeConfig /etc/rsyslog.d/*.conf
+
+---------- Cron ----------
+
+root cron:
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+17 *	* * *	root    cd / && run-parts --report /etc/cron.hourly
+25 6	* * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6	* * 7	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6	1 * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+
+/etc/cron.d/ :
+total 8
+-rw-r--r-- 1 root root 188 Feb 19  2014 anacron
+-rw-r--r-- 1 root root 510 Oct 27 20:50 php5
+
+/etc/cron.deny:
+\/etc/nat.deny:
+
+---------- Mail Services ----------
+
+List of mail boxes:
+
+Checking mail queue..
+
+=---------- Sendmail ----------=
+
+Sendmail process:
+
+mailhost alias in /etc/hosts:
+
+Checking /etc/aliases for programs..
+
+Checking /etc/aliases for root..
+
+sendmail.cf:
+
+Checking /etc/mail/relay-domains ..
+
+=---------- Postfix ----------=
+
+
+---------- Database Servers ----------
+
+=---------- mysql ----------=
+
+
+Checking mysql:
+processes:
+
+File permissions:
+
+Version:
+Running command: mysqladmin version
+
+Mysql config /etc/mysql/my.cnf ..
+[client]
+port		= 3306
+socket		= /var/run/mysqld/mysqld.sock
+[mysqld_safe]
+socket		= /var/run/mysqld/mysqld.sock
+nice		= 0
+[mysqld]
+user		= mysql
+pid-file	= /var/run/mysqld/mysqld.pid
+socket		= /var/run/mysqld/mysqld.sock
+port		= 3306
+basedir		= /usr
+datadir		= /var/lib/mysql
+tmpdir		= /tmp
+lc-messages-dir	= /usr/share/mysql
+skip-external-locking
+bind-address		= 127.0.0.1
+key_buffer		= 16M
+max_allowed_packet	= 16M
+thread_stack		= 192K
+thread_cache_size       = 8
+myisam-recover         = BACKUP
+query_cache_limit	= 1M
+query_cache_size        = 16M
+log_error = /var/log/mysql/error.log
+expire_logs_days	= 10
+max_binlog_size         = 100M
+[mysqldump]
+quick
+quote-names
+max_allowed_packet	= 16M
+[mysql]
+[isamchk]
+key_buffer		= 16M
+!includedir /etc/mysql/conf.d/
+
+=---------- postgreSQL ----------=
+
+
+=---------- Oracle ----------=
+
+
+---------- Clustering ----------
+
+
+=---------- Heartbeat ----------=
+
+Heartbeat is not installed
+
+=---------- drbd ----------=
+
+drbd is not installed

@@ -1,0 +1,801 @@
+
+>>>>>>>>>> Logs ----------
+---------- Capture log files ----------
+
+Thu Feb 18 13:49:47 CST 2016
+
+Diagnostic messages (dmesg) ------
+[80321.263997]   next_to_watch        <5b>
+[80321.263997]   jiffies              <101316542>
+[80321.263997]   next_to_watch.status <0>
+[80323.263262] e1000 0000:00:03.0 eth0: Detected Tx Unit Hang
+[80323.263262]   Tx Queue             <0>
+[80323.263262]   TDH                  <5a>
+[80323.263262]   TDT                  <5c>
+[80323.263262]   next_to_use          <5c>
+[80323.263262]   next_to_clean        <5a>
+[80323.263262] buffer_info[next_to_clean]
+[80323.263262]   time_stamp           <1013161f0>
+[80323.263262]   next_to_watch        <5b>
+[80323.263262]   jiffies              <101316736>
+[80323.263262]   next_to_watch.status <0>
+[80323.478801] ------------[ cut here ]------------
+[80323.478829] WARNING: CPU: 0 PID: 0 at /build/linux-lts-vivid-LIqOuh/linux-lts-vivid-3.19.0/net/sched/sch_generic.c:303 dev_watchdog+0x24f/0x260()
+[80323.478830] NETDEV WATCHDOG: eth0 (e1000): transmit queue 0 timed out
+[80323.478831] Modules linked in: ipt_MASQUERADE nf_nat_masquerade_ipv4 iptable_nat nf_nat_ipv4 nf_nat nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_conntrack ipt_REJECT nf_reject_ipv4 xt_CHECKSUM iptable_mangle xt_tcpudp bridge stp llc ip6table_filter ip6_tables iptable_filter ip_tables ebtable_nat ebtables x_tables vboxsf(OE) bnep rfcomm bluetooth joydev vboxguest(OE) vboxvideo(OE) iosf_mbi crct10dif_pclmul snd_hda_codec_idt crc32_pclmul snd_hda_codec_generic aesni_intel snd_hda_intel aes_x86_64 lrw gf128mul glue_helper snd_hda_controller ablk_helper snd_hda_codec snd_hwdep cryptd serio_raw i2c_piix4 snd_pcm snd_seq_midi snd_seq_midi_event snd_rawmidi snd_seq snd_seq_device snd_timer video snd mac_hid drm 8250_fintek soundcore parport_pc ppdev lp parport hid_generic usbhid hid psmouse ahci e1000 libahci
+[80323.478866] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G           OE  3.19.0-49-generic #55~14.04.1-Ubuntu
+[80323.478867] Hardware name: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
+[80323.478868]  ffffffff81b40440 ffff880281e03d58 ffffffff817b01b5 000000000000302e
+[80323.478870]  ffff880281e03da8 ffff880281e03d98 ffffffff81074dea ffff880200000001
+[80323.478872]  0000000000000000 ffff880272810000 0000000000000001 ffff8802732a2280
+[80323.478874] Call Trace:
+[80323.478875]  <IRQ>  [<ffffffff817b01b5>] dump_stack+0x45/0x57
+[80323.478882]  [<ffffffff81074dea>] warn_slowpath_common+0x8a/0xc0
+[80323.478884]  [<ffffffff81074e66>] warn_slowpath_fmt+0x46/0x50
+[80323.478887]  [<ffffffff816cd73f>] dev_watchdog+0x24f/0x260
+[80323.478889]  [<ffffffff816cd4f0>] ? dev_graft_qdisc+0x80/0x80
+[80323.478891]  [<ffffffff810dad09>] call_timer_fn+0x39/0x110
+[80323.478893]  [<ffffffff816cd4f0>] ? dev_graft_qdisc+0x80/0x80
+[80323.478895]  [<ffffffff810dc4d0>] run_timer_softirq+0x220/0x320
+[80323.478897]  [<ffffffff81078f44>] __do_softirq+0xe4/0x270
+[80323.478899]  [<ffffffff8107930d>] irq_exit+0x9d/0xb0
+[80323.478902]  [<ffffffff817bac8a>] smp_apic_timer_interrupt+0x4a/0x60
+[80323.478904]  [<ffffffff817b8cbd>] apic_timer_interrupt+0x6d/0x80
+[80323.478905]  <EOI>  [<ffffffff8105b976>] ? native_safe_halt+0x6/0x10
+[80323.478910]  [<ffffffff810d4f68>] ? rcu_eqs_enter+0x68/0x90
+[80323.478913]  [<ffffffff8101f3be>] default_idle+0x1e/0xc0
+[80323.478915]  [<ffffffff8101fddf>] arch_cpu_idle+0xf/0x20
+[80323.478917]  [<ffffffff810b55ba>] cpu_startup_entry+0x39a/0x3d0
+[80323.478920]  [<ffffffff817a06a7>] rest_init+0x77/0x80
+[80323.478923]  [<ffffffff81d3e101>] start_kernel+0x499/0x4a6
+[80323.478925]  [<ffffffff81d3da58>] ? set_init_arg+0x55/0x55
+[80323.478927]  [<ffffffff81d3d120>] ? early_idt_handler_array+0x120/0x120
+[80323.478929]  [<ffffffff81d3d5ee>] x86_64_start_reservations+0x2a/0x2c
+[80323.478930]  [<ffffffff81d3d733>] x86_64_start_kernel+0x143/0x152
+[80323.478932] ---[ end trace 3f1985f524c000c9 ]---
+[80323.479177] e1000 0000:00:03.0 eth0: Reset adapter
+[80323.535183] e1000: eth0 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: RX
+
+
+Log:
+
+list files in /var/adm /var/log/*   
+-rw-r--r-- 1 root              root      7159 Feb 17 08:31 /var/log/alternatives.log
+-rw-r--r-- 1 root              root      1058 Jan 19 14:55 /var/log/alternatives.log.1
+-rw-r--r-- 1 root              root       162 Jan  8 10:57 /var/log/alternatives.log.2.gz
+-rw-r--r-- 1 root              root      1028 Dec  9 08:29 /var/log/alternatives.log.3.gz
+-rw-r--r-- 1 root              root       314 Nov 30 10:39 /var/log/alternatives.log.4.gz
+-rw-r--r-- 1 root              root       166 Nov 12 09:14 /var/log/alternatives.log.5.gz
+-rw-r--r-- 1 root              root       508 Sep 30 09:55 /var/log/alternatives.log.6.gz
+-rw-r--r-- 1 root              root      3193 Aug 24 16:44 /var/log/alternatives.log.7.gz
+-rw-r----- 1 root              adm          0 Feb 18 08:01 /var/log/apport.log
+-rw-r----- 1 root              adm       4718 Feb 17 16:34 /var/log/apport.log.1
+-rw-r----- 1 root              adm        657 Feb 16 10:34 /var/log/apport.log.2.gz
+-rw-r----- 1 root              adm        563 Feb 12 15:09 /var/log/apport.log.3.gz
+-rw-r----- 1 root              adm        565 Feb 11 10:24 /var/log/apport.log.4.gz
+-rw-r----- 1 root              adm        700 Feb 10 08:57 /var/log/apport.log.5.gz
+-rw-r----- 1 root              adm        254 Oct 22 09:58 /var/log/apport.log.6.gz
+-rw-r----- 1 root              adm        217 Oct 12 16:52 /var/log/apport.log.7.gz
+-rw-r----- 1 syslog            adm      61898 Feb 18 13:49 /var/log/auth.log
+-rw-r----- 1 syslog            adm      73305 Feb 14 07:30 /var/log/auth.log.1
+-rw-r----- 1 syslog            adm       3073 Feb  8 07:30 /var/log/auth.log.2.gz
+-rw-r----- 1 syslog            adm       2490 Jan 31 07:30 /var/log/auth.log.3.gz
+-rw-r----- 1 syslog            adm       3136 Jan 25 07:30 /var/log/auth.log.4.gz
+-rw-r--r-- 1 root              root       516 Feb 17 13:20 /var/log/boot.log
+-rw-r--r-- 1 root              root     61499 Aug  5  2015 /var/log/bootstrap.log
+-rw-rw---- 1 root              utmp      6528 Feb  9 11:13 /var/log/btmp
+-rw-rw---- 1 root              utmp     13056 Feb  1 00:12 /var/log/btmp.1
+-rw-r----- 1 root              adm      36909 Feb 17 07:20 /var/log/dmesg
+-rw-r----- 1 root              adm      36360 Feb 17 05:19 /var/log/dmesg.0
+-rw-r----- 1 root              adm      11299 Feb 16 04:25 /var/log/dmesg.1.gz
+-rw-r----- 1 root              adm      11346 Feb 12 08:45 /var/log/dmesg.2.gz
+-rw-r----- 1 root              adm      11259 Feb 11 03:19 /var/log/dmesg.3.gz
+-rw-r----- 1 root              adm      11352 Feb 10 02:56 /var/log/dmesg.4.gz
+-rw-r--r-- 1 root              root    315538 Feb 18 09:24 /var/log/dpkg.log
+-rw-r--r-- 1 root              root     34671 Jan 19 14:55 /var/log/dpkg.log.1
+-rw-r--r-- 1 root              root      7792 Jan  8 10:57 /var/log/dpkg.log.2.gz
+-rw-r--r-- 1 root              root     13362 Dec  9 09:23 /var/log/dpkg.log.3.gz
+-rw-r--r-- 1 root              root     11421 Nov 30 10:39 /var/log/dpkg.log.4.gz
+-rw-r--r-- 1 root              root      1693 Oct 28 11:19 /var/log/dpkg.log.5.gz
+-rw-r--r-- 1 root              root     18807 Oct  2 08:32 /var/log/dpkg.log.6.gz
+-rw-r--r-- 1 root              root    104048 Aug 26 08:13 /var/log/dpkg.log.7.gz
+-rw-r--r-- 1 root              root     32096 Feb  9 09:19 /var/log/faillog
+-rw-r--r-- 1 root              root      3592 Nov 12 09:13 /var/log/fontconfig.log
+-rw-r--r-- 1 root              root         0 Jan 15 13:30 /var/log/gokeyless.err
+-rw-r--r-- 1 root              root         8 Jan 15 13:29 /var/log/gokeyless.err.1
+-rw-r--r-- 1 root              root      1459 Feb 17 13:21 /var/log/gpu-manager.log
+-rw-r----- 1 syslog            adm     180969 Feb 18 11:40 /var/log/kern.log
+-rw-r----- 1 syslog            adm     354938 Feb 14 07:47 /var/log/kern.log.1
+-rw-r----- 1 syslog            adm        640 Feb  8 07:54 /var/log/kern.log.2.gz
+-rw-r----- 1 syslog            adm       1838 Jan 31 07:54 /var/log/kern.log.3.gz
+-rw-r----- 1 syslog            adm        907 Jan 25 07:57 /var/log/kern.log.4.gz
+-rw-rw-r-- 1 root              utmp    292876 Feb 17 15:11 /var/log/lastlog
+-rw-r--r-- 1 root              root      9139 Feb 17 13:21 /var/log/pm-powersave.log
+-rw-r--r-- 1 root              root      7319 Feb 10 08:56 /var/log/pm-powersave.log.1
+-rw-r--r-- 1 root              root       500 Jan 14 07:51 /var/log/pm-powersave.log.2.gz
+-rw-r--r-- 1 root              root       691 Jan  4 07:46 /var/log/pm-powersave.log.3.gz
+-rw-r--r-- 1 root              root       636 Dec  1 15:16 /var/log/pm-powersave.log.4.gz
+-rw-r----- 1 syslog            adm      11128 Feb 18 13:49 /var/log/syslog
+-rw-r----- 1 syslog            adm     180155 Feb 18 08:01 /var/log/syslog.1
+-rw-r----- 1 syslog            adm      19862 Feb 17 07:45 /var/log/syslog.2.gz
+-rw-r----- 1 syslog            adm        884 Feb 16 07:57 /var/log/syslog.3.gz
+-rw-r----- 1 syslog            adm        850 Feb 15 07:52 /var/log/syslog.4.gz
+-rw-r----- 1 syslog            adm        986 Feb 14 07:47 /var/log/syslog.5.gz
+-rw-r----- 1 syslog            adm      18915 Feb 13 07:58 /var/log/syslog.6.gz
+-rw-r----- 1 syslog            adm       3097 Feb 12 08:00 /var/log/syslog.7.gz
+-rw-r--r-- 1 root              root    228913 Feb 17 07:20 /var/log/udev
+-rw-r--r-- 1 root              root    205706 Feb  9 11:18 /var/log/vboxadd-install.log
+-rw-r--r-- 1 root              root        73 Feb  9 11:18 /var/log/vboxadd-install-x11.log
+-rw-r--r-- 1 root              root         1 Feb  9 11:17 /var/log/VBoxGuestAdditions.log
+-rw-r--r-- 1 root              root         1 Feb  9 11:17 /var/log/VBoxGuestAdditions-uninstall.log
+-rw-rw-r-- 1 root              utmp    106752 Feb 18 12:17 /var/log/wtmp
+-rw-rw-r-- 1 root              utmp     26880 Jan 29 16:08 /var/log/wtmp.1
+-rw-r--r-- 1 root              root     23914 Feb 17 13:21 /var/log/Xorg.0.log
+-rw-r--r-- 1 root              root     23911 Feb 17 11:19 /var/log/Xorg.0.log.old
+
+/var/log/apt:
+total 180
+-rw-r--r-- 1 root root 24501 Feb 18 09:24 history.log
+-rw-r--r-- 1 root root   514 Jan 19 14:55 history.log.1.gz
+-rw-r--r-- 1 root root  1586 Jan  8 10:57 history.log.2.gz
+-rw-r--r-- 1 root root  3167 Dec  9 09:23 history.log.3.gz
+-rw-r--r-- 1 root root  2543 Nov 30 10:39 history.log.4.gz
+-rw-r--r-- 1 root root   460 Oct 28 11:19 history.log.5.gz
+-rw-r--r-- 1 root root  3478 Oct  2 08:32 history.log.6.gz
+-rw-r--r-- 1 root root 21344 Aug 26 08:13 history.log.7.gz
+-rw-r----- 1 root adm  51752 Feb 18 09:24 term.log
+-rw-r----- 1 root adm   1438 Jan 19 14:55 term.log.1.gz
+-rw-r----- 1 root adm   3875 Jan  8 10:57 term.log.2.gz
+-rw-r----- 1 root adm  10184 Dec  9 09:23 term.log.3.gz
+-rw-r----- 1 root adm   6108 Nov 30 10:39 term.log.4.gz
+-rw-r----- 1 root adm   1188 Oct 28 11:19 term.log.5.gz
+-rw-r----- 1 root adm   8694 Oct  2 08:32 term.log.6.gz
+-rw-r----- 1 root adm   4541 Aug 26 08:13 term.log.7.gz
+
+/var/log/ConsoleKit:
+total 44
+-rw-r--r-- 1 root root 13463 Feb 17 15:11 history
+-rw-r--r-- 1 root root  7302 Feb 10 08:56 history.1
+-rw-r--r-- 1 root root   435 Jan 14 07:51 history.2.gz
+-rw-r--r-- 1 root root  1620 Jan  4 07:46 history.3.gz
+-rw-r--r-- 1 root root   352 Dec  1 15:16 history.4.gz
+-rw-r--r-- 1 root root   528 Nov  2 07:56 history.5.gz
+-rw-r--r-- 1 root root   527 Oct  2 16:52 history.6.gz
+
+/var/log/cups:
+total 220
+-rw-r----- 1 root adm 160956 Feb 18 13:49 access_log
+-rw-r----- 1 root adm   4092 Feb 18 08:01 access_log.1.gz
+-rw-r----- 1 root adm   3778 Feb 17 07:45 access_log.2.gz
+-rw-r----- 1 root adm    255 Feb 16 07:36 access_log.3.gz
+-rw-r----- 1 root adm    257 Feb 15 07:17 access_log.4.gz
+-rw-r----- 1 root adm    252 Feb 14 06:59 access_log.5.gz
+-rw-r----- 1 root adm    308 Feb 13 07:39 access_log.6.gz
+-rw-r----- 1 root adm    247 Feb 12 07:44 access_log.7.gz
+-rw-r----- 1 root adm      0 Jan  9 07:43 error_log
+-rw-r----- 1 root adm    120 Jan  8 10:58 error_log.1.gz
+-rw-r----- 1 root adm    126 Dec 29 10:43 error_log.2.gz
+-rw-r----- 1 root adm    128 Dec 22 15:53 error_log.3.gz
+-rw-r----- 1 root adm    133 Dec 21 15:02 error_log.4.gz
+-rw-r----- 1 root adm    137 Dec 11 10:58 error_log.5.gz
+-rw-r----- 1 root adm    139 Dec 10 08:15 error_log.6.gz
+-rw-r----- 1 root adm    134 Dec  2 09:04 error_log.7.gz
+-rw-r----- 1 root adm      0 Aug 19  2015 page_log
+
+/var/log/dist-upgrade:
+total 0
+
+/var/log/fsck:
+total 8
+-rw-r----- 1 root adm 31 Aug  5  2015 checkfs
+-rw-r----- 1 root adm 31 Aug  5  2015 checkroot
+
+/var/log/grafana:
+total 936
+-rw-r--r-- 1 grafana grafana     66 Dec  8 14:34 grafana.log
+-rw-r--r-- 1 grafana grafana 775533 Dec  2 15:49 grafana.log.2015-12-03.001
+-rw-r--r-- 1 grafana grafana 151904 Dec  3 09:00 grafana.log.2015-12-07.001
+-rw-r--r-- 1 grafana grafana  11607 Dec  7 11:12 grafana.log.2015-12-08.001
+-rw-r--r-- 1 grafana grafana      0 Dec  7 11:12 xorm.log
+
+/var/log/hp:
+total 4
+drwxrwxr-x 2 root lp 4096 Jul 30  2015 tmp
+
+/var/log/installer:
+total 696
+-rw------- 1 root   root    940 Aug 19  2015 casper.log
+-rw------- 1 root   root    657 Aug 19  2015 debug
+-rw-rw-r-- 1 root   root 456168 Aug 19  2015 initial-status.gz
+-rw-r--r-- 1 root   root     56 Aug 19  2015 media-info
+-rw------- 1 root   root  98545 Aug 19  2015 partman
+-rw------- 1 syslog adm  132065 Aug 19  2015 syslog
+-rw------- 1 root   root     18 Aug 19  2015 version
+
+/var/log/libvirt:
+total 32
+-rw------- 1 root root    0 Jan 15 13:30 libvirtd.log
+-rw------- 1 root root 3089 Jan 15 13:30 libvirtd.log.1
+drwxr-xr-x 2 root root 4096 Jul  8  2015 libxl
+drwxr-xr-x 2 root root 4096 Aug 24 16:44 lxc
+drwxr-xr-x 2 root root 4096 Aug 24 16:44 qemu
+-rw-r--r-- 1 root root 8580 Feb 17 11:14 shutdownlog.log
+drwxr-xr-x 2 root root 4096 Aug 24 16:44 uml
+
+/var/log/lightdm:
+total 40
+-rw------- 1 root root 5457 Feb 18 12:17 lightdm.log
+-rw------- 1 root root 4900 Feb 17 11:32 lightdm.log.old
+-rw------- 1 root root 5458 Feb 17 13:21 x-0-greeter.log
+-rw------- 1 root root 5699 Feb 17 11:19 x-0-greeter.log.old
+-rw------- 1 root root 1005 Feb 17 13:21 x-0.log
+-rw------- 1 root root 1005 Feb 17 11:19 x-0.log.old
+
+/var/log/samba:
+total 0
+
+/var/log/speech-dispatcher:
+total 0
+
+/var/log/unattended-upgrades:
+total 0
+-rw-r--r-- 1 root root 0 Aug 19  2015 unattended-upgrades-shutdown.log
+
+/var/log/upstart:
+total 668
+-rw-r----- 1 root root   171 Feb  9 03:17 alsa-restore.log.1.gz
+-rw-r----- 1 root root   238 Nov 17 07:56 alsa-restore.log.2.gz
+-rw-r----- 1 root root   214 Aug 19  2015 alsa-restore.log.3.gz
+-rw-r----- 1 root root    68 Feb 17 07:20 alsa-state.log.1.gz
+-rw-r----- 1 root root    58 Feb 12 08:45 alsa-state.log.2.gz
+-rw-r----- 1 root root    79 Feb 11 03:19 alsa-state.log.3.gz
+-rw-r----- 1 root root    58 Jan 14 07:51 alsa-state.log.4.gz
+-rw-r----- 1 root root    62 Jan  8 10:58 alsa-state.log.5.gz
+-rw-r----- 1 root root    58 Jan  4 07:46 alsa-state.log.6.gz
+-rw-r----- 1 root root    65 Dec 29 11:53 alsa-state.log.7.gz
+-rw-r----- 1 root root    54 Feb  9 05:12 avahi-cups-reload.log.1.gz
+-rw-r----- 1 root root    54 Jan  8 10:58 avahi-cups-reload.log.2.gz
+-rw-r----- 1 root root    54 Nov 12 09:26 avahi-cups-reload.log.3.gz
+-rw-r----- 1 root root    54 Oct 21 13:40 avahi-cups-reload.log.4.gz
+-rw-r----- 1 root root    54 Sep 15 09:20 avahi-cups-reload.log.5.gz
+-rw-r----- 1 root root    66 Feb 17 07:20 console-setup.log.1.gz
+-rw-r----- 1 root root    63 Feb 12 08:45 console-setup.log.2.gz
+-rw-r----- 1 root root    66 Feb 11 03:19 console-setup.log.3.gz
+-rw-r----- 1 root root    63 Jan 14 07:50 console-setup.log.4.gz
+-rw-r----- 1 root root    66 Jan  8 10:58 console-setup.log.5.gz
+-rw-r----- 1 root root    63 Jan  4 07:46 console-setup.log.6.gz
+-rw-r----- 1 root root    66 Dec 29 11:53 console-setup.log.7.gz
+-rw-r----- 1 root root    76 Feb 17 07:20 container-detect.log.1.gz
+-rw-r----- 1 root root    66 Feb 12 08:45 container-detect.log.2.gz
+-rw-r----- 1 root root    85 Feb 11 03:19 container-detect.log.3.gz
+-rw-r----- 1 root root    66 Jan 14 07:50 container-detect.log.4.gz
+-rw-r----- 1 root root    72 Jan  8 10:58 container-detect.log.5.gz
+-rw-r----- 1 root root    66 Jan  4 07:46 container-detect.log.6.gz
+-rw-r----- 1 root root    77 Dec 29 11:53 container-detect.log.7.gz
+-rw-r----- 1 root root   100 Feb 17 11:19 cups.log.1.gz
+-rw-r----- 1 root root    95 Feb 12 15:07 cups.log.2.gz
+-rw-r----- 1 root root   100 Feb 11 09:20 cups.log.3.gz
+-rw-r----- 1 root root    95 Jan 14 07:51 cups.log.4.gz
+-rw-r----- 1 root root    95 Jan  8 10:31 cups.log.5.gz
+-rw-r----- 1 root root   100 Jan  4 07:47 cups.log.6.gz
+-rw-r----- 1 root root   100 Dec 21 15:02 cups.log.7.gz
+-rw-r----- 1 root root   124 Feb 17 13:21 gpu-manager.log.1.gz
+-rw-r----- 1 root root   115 Feb 12 15:07 gpu-manager.log.2.gz
+-rw-r----- 1 root root   128 Feb 11 15:20 gpu-manager.log.3.gz
+-rw-r----- 1 root root   115 Jan 14 07:51 gpu-manager.log.4.gz
+-rw-r----- 1 root root   120 Jan  8 10:58 gpu-manager.log.5.gz
+-rw-r----- 1 root root   115 Jan  4 07:46 gpu-manager.log.6.gz
+-rw-r----- 1 root root   124 Dec 29 11:53 gpu-manager.log.7.gz
+-rw-r----- 1 root root    63 Feb 17 07:20 kmod.log.1.gz
+-rw-r----- 1 root root    60 Feb 12 08:45 kmod.log.2.gz
+-rw-r----- 1 root root    63 Feb 11 03:19 kmod.log.3.gz
+-rw-r----- 1 root root    60 Jan 14 07:50 kmod.log.4.gz
+-rw-r----- 1 root root    63 Jan  8 10:58 kmod.log.5.gz
+-rw-r----- 1 root root    60 Jan  4 07:46 kmod.log.6.gz
+-rw-r----- 1 root root    63 Dec 29 11:53 kmod.log.7.gz
+-rw-r----- 1 root root   228 Feb 17 13:20 libvirt-bin.log.1.gz
+-rw-r----- 1 root root   180 Feb 12 15:07 libvirt-bin.log.2.gz
+-rw-r----- 1 root root   245 Feb 11 09:19 libvirt-bin.log.3.gz
+-rw-r----- 1 root root    51 Jan 19 14:55 libvirt-bin.log.4.gz
+-rw-r----- 1 root root    51 Jan 14 07:51 libvirt-bin.log.5.gz
+-rw-r----- 1 root root    55 Jan  8 10:58 libvirt-bin.log.6.gz
+-rw-r----- 1 root root    51 Jan  4 07:46 libvirt-bin.log.7.gz
+-rw-r----- 1 root root   218 Feb 17 13:20 modemmanager.log.1.gz
+-rw-r----- 1 root root   163 Feb 12 15:07 modemmanager.log.2.gz
+-rw-r----- 1 root root   271 Feb 11 09:19 modemmanager.log.3.gz
+-rw-r----- 1 root root   163 Jan 14 07:51 modemmanager.log.4.gz
+-rw-r----- 1 root root   244 Jan  8 10:58 modemmanager.log.5.gz
+-rw-r----- 1 root root   162 Jan  4 07:46 modemmanager.log.6.gz
+-rw-r----- 1 root root   236 Dec 29 11:53 modemmanager.log.7.gz
+-rw-r----- 1 root root   138 Feb 17 07:20 mountall.log.1.gz
+-rw-r----- 1 root root   107 Feb 12 08:45 mountall.log.2.gz
+-rw-r----- 1 root root   155 Feb 11 03:19 mountall.log.3.gz
+-rw-r----- 1 root root   107 Jan 14 07:50 mountall.log.4.gz
+-rw-r----- 1 root root   125 Jan  8 10:58 mountall.log.5.gz
+-rw-r----- 1 root root   107 Jan  4 07:46 mountall.log.6.gz
+-rw-r----- 1 root root   128 Dec 29 11:53 mountall.log.7.gz
+-rw-r----- 1 root root   350 Feb 17 11:14 networking.log
+-rw-r----- 1 root root   339 Feb 10 17:05 networking.log.1.gz
+-rw-r----- 1 root root   274 Jan  8 10:58 networking.log.2.gz
+-rw-r----- 1 root root   285 Dec 29 11:44 networking.log.3.gz
+-rw-r----- 1 root root   296 Dec 29 10:44 networking.log.4.gz
+-rw-r----- 1 root root   318 Dec 22 15:51 networking.log.5.gz
+-rw-r----- 1 root root   390 Dec 11 10:55 networking.log.6.gz
+-rw-r----- 1 root root   335 Dec  9 08:03 networking.log.7.gz
+-rw-r----- 1 root root   470 Feb 17 07:20 network-interface-eth0.log.1.gz
+-rw-r----- 1 root root   425 Feb 12 08:45 network-interface-eth0.log.2.gz
+-rw-r----- 1 root root   607 Feb 11 03:19 network-interface-eth0.log.3.gz
+-rw-r----- 1 root root   309 Jan 14 07:50 network-interface-eth0.log.4.gz
+-rw-r----- 1 root root   379 Jan  8 10:58 network-interface-eth0.log.5.gz
+-rw-r----- 1 root root   350 Jan  4 07:46 network-interface-eth0.log.6.gz
+-rw-r----- 1 root root   405 Dec 29 11:53 network-interface-eth0.log.7.gz
+-rw-r----- 1 root root   248 Feb 17 07:20 network-manager.log.1.gz
+-rw-r----- 1 root root   228 Feb 12 08:45 network-manager.log.2.gz
+-rw-r----- 1 root root   267 Feb 11 03:19 network-manager.log.3.gz
+-rw-r----- 1 root root   229 Jan 14 07:50 network-manager.log.4.gz
+-rw-r----- 1 root root   241 Jan  8 10:58 network-manager.log.5.gz
+-rw-r----- 1 root root   229 Jan  4 07:46 network-manager.log.6.gz
+-rw-r----- 1 root root   244 Dec 29 11:53 network-manager.log.7.gz
+-rw-r----- 1 root root    35 Dec 29 11:44 plymouth-ready-started.log.1.gz
+-rw-r----- 1 root root    32 Dec 21 14:59 plymouth-ready-started.log.2.gz
+-rw-r----- 1 root root    91 Dec  9 08:50 plymouth-ready-started.log.3.gz
+-rw-r----- 1 root root    32 Nov 12 10:17 plymouth-ready-started.log.4.gz
+-rw-r----- 1 root root    32 Oct 28 17:07 plymouth-ready-started.log.5.gz
+-rw-r----- 1 root root    32 Oct 27 15:24 plymouth-ready-started.log.6.gz
+-rw-r----- 1 root root    32 Sep 25 12:04 plymouth-ready-started.log.7.gz
+-rw-r----- 1 root root    32 Dec 11 10:58 plymouth-ready-startup.log.1.gz
+-rw-r----- 1 root root    29 Feb 17 11:14 plymouth-shutdown.log
+-rw-r----- 1 root root    51 Feb 10 17:05 plymouth-shutdown.log.1.gz
+-rw-r----- 1 root root    51 Jan  8 10:58 plymouth-shutdown.log.2.gz
+-rw-r----- 1 root root    51 Dec 29 11:44 plymouth-shutdown.log.3.gz
+-rw-r----- 1 root root    51 Dec 29 10:44 plymouth-shutdown.log.4.gz
+-rw-r----- 1 root root    51 Dec 22 15:51 plymouth-shutdown.log.5.gz
+-rw-r----- 1 root root    51 Dec 11 10:58 plymouth-shutdown.log.6.gz
+-rw-r----- 1 root root    51 Dec  9 08:03 plymouth-shutdown.log.7.gz
+-rw-r----- 1 root root    74 Feb 10 08:56 plymouth-splash.log.1.gz
+-rw-r----- 1 root root   232 Feb 17 07:20 procps-static-network-up.log.1.gz
+-rw-r----- 1 root root   222 Feb 12 08:45 procps-static-network-up.log.2.gz
+-rw-r----- 1 root root   239 Feb 11 03:19 procps-static-network-up.log.3.gz
+-rw-r----- 1 root root   222 Jan 14 07:50 procps-static-network-up.log.4.gz
+-rw-r----- 1 root root   231 Jan  8 10:58 procps-static-network-up.log.5.gz
+-rw-r----- 1 root root   222 Jan  4 07:46 procps-static-network-up.log.6.gz
+-rw-r----- 1 root root   232 Dec 29 11:53 procps-static-network-up.log.7.gz
+-rw-r----- 1 root root   232 Feb 17 07:20 procps-virtual-filesystems.log.1.gz
+-rw-r----- 1 root root   222 Feb 12 08:45 procps-virtual-filesystems.log.2.gz
+-rw-r----- 1 root root   239 Feb 11 03:19 procps-virtual-filesystems.log.3.gz
+-rw-r----- 1 root root   222 Jan 14 07:50 procps-virtual-filesystems.log.4.gz
+-rw-r----- 1 root root   231 Jan  8 10:58 procps-virtual-filesystems.log.5.gz
+-rw-r----- 1 root root   222 Jan  4 07:46 procps-virtual-filesystems.log.6.gz
+-rw-r----- 1 root root   232 Dec 29 11:53 procps-virtual-filesystems.log.7.gz
+-rw-r----- 1 root root    87 Feb 17 07:20 rsyslog.log.1.gz
+-rw-r----- 1 root root    84 Feb 12 08:45 rsyslog.log.2.gz
+-rw-r----- 1 root root    87 Feb 11 03:19 rsyslog.log.3.gz
+-rw-r----- 1 root root    84 Jan 14 07:50 rsyslog.log.4.gz
+-rw-r----- 1 root root    87 Jan  8 10:58 rsyslog.log.5.gz
+-rw-r----- 1 root root    84 Jan  4 07:46 rsyslog.log.6.gz
+-rw-r----- 1 root root    87 Dec 29 11:53 rsyslog.log.7.gz
+-rw-r----- 1 root root   295 Feb 17 07:20 systemd-logind.log.1.gz
+-rw-r----- 1 root root    85 Feb 12 08:45 systemd-logind.log.2.gz
+-rw-r----- 1 root root   120 Feb 11 03:19 systemd-logind.log.3.gz
+-rw-r----- 1 root root    41 Jan 19 13:40 systemd-logind.log.4.gz
+-rw-r----- 1 root root   257 Jan 14 07:59 systemd-logind.log.5.gz
+-rw-r----- 1 root root   285 Jan  8 10:58 systemd-logind.log.6.gz
+-rw-r----- 1 root root    85 Jan  4 07:46 systemd-logind.log.7.gz
+-rw-r----- 1 root root  1045 Feb 17 07:20 thermald.log.1.gz
+-rw-r----- 1 root root   971 Feb 12 08:45 thermald.log.2.gz
+-rw-r----- 1 root root  1076 Feb 11 03:19 thermald.log.3.gz
+-rw-r----- 1 root root   971 Jan 14 07:50 thermald.log.4.gz
+-rw-r----- 1 root root  1003 Jan  8 10:58 thermald.log.5.gz
+-rw-r----- 1 root root   971 Jan  4 07:46 thermald.log.6.gz
+-rw-r----- 1 root root  1028 Dec 29 11:53 thermald.log.7.gz
+-rw-r----- 1 root root   175 Feb 17 07:20 ureadahead.log.1.gz
+-rw-r----- 1 root root   165 Feb 12 08:45 ureadahead.log.2.gz
+-rw-r----- 1 root root 22219 Feb 11 03:19 ureadahead.log.3.gz
+-rw-r----- 1 root root   140 Jan 14 07:50 ureadahead.log.4.gz
+-rw-r----- 1 root root 11661 Jan  8 10:58 ureadahead.log.5.gz
+-rw-r----- 1 root root   164 Jan  4 07:46 ureadahead.log.6.gz
+-rw-r----- 1 root root   224 Dec 29 11:53 ureadahead.log.7.gz
+-rw-r----- 1 root root    45 Feb 17 11:14 wait-for-state-plymouth-shutdownlightdm.log
+-rw-r----- 1 root root    67 Feb 10 17:05 wait-for-state-plymouth-shutdownlightdm.log.1.gz
+-rw-r----- 1 root root    67 Jan  8 10:58 wait-for-state-plymouth-shutdownlightdm.log.2.gz
+-rw-r----- 1 root root    67 Dec 29 11:44 wait-for-state-plymouth-shutdownlightdm.log.3.gz
+-rw-r----- 1 root root    67 Dec 29 10:44 wait-for-state-plymouth-shutdownlightdm.log.4.gz
+-rw-r----- 1 root root    67 Dec 22 15:51 wait-for-state-plymouth-shutdownlightdm.log.5.gz
+-rw-r----- 1 root root    64 Dec 11 10:55 wait-for-state-plymouth-shutdownlightdm.log.6.gz
+-rw-r----- 1 root root    67 Dec  9 08:03 wait-for-state-plymouth-shutdownlightdm.log.7.gz
+-rw-r--r-- 1 root    root     24501 Feb 18 09:24 /var/log/apt/history.log
+-rw-r--r-- 1 root    root       514 Jan 19 14:55 /var/log/apt/history.log.1.gz
+-rw-r--r-- 1 root    root      1586 Jan  8 10:57 /var/log/apt/history.log.2.gz
+-rw-r--r-- 1 root    root      3167 Dec  9 09:23 /var/log/apt/history.log.3.gz
+-rw-r--r-- 1 root    root      2543 Nov 30 10:39 /var/log/apt/history.log.4.gz
+-rw-r--r-- 1 root    root       460 Oct 28 11:19 /var/log/apt/history.log.5.gz
+-rw-r--r-- 1 root    root      3478 Oct  2 08:32 /var/log/apt/history.log.6.gz
+-rw-r--r-- 1 root    root     21344 Aug 26 08:13 /var/log/apt/history.log.7.gz
+-rw-r----- 1 root    adm      51752 Feb 18 09:24 /var/log/apt/term.log
+-rw-r----- 1 root    adm       1438 Jan 19 14:55 /var/log/apt/term.log.1.gz
+-rw-r----- 1 root    adm       3875 Jan  8 10:57 /var/log/apt/term.log.2.gz
+-rw-r----- 1 root    adm      10184 Dec  9 09:23 /var/log/apt/term.log.3.gz
+-rw-r----- 1 root    adm       6108 Nov 30 10:39 /var/log/apt/term.log.4.gz
+-rw-r----- 1 root    adm       1188 Oct 28 11:19 /var/log/apt/term.log.5.gz
+-rw-r----- 1 root    adm       8694 Oct  2 08:32 /var/log/apt/term.log.6.gz
+-rw-r----- 1 root    adm       4541 Aug 26 08:13 /var/log/apt/term.log.7.gz
+-rw-r--r-- 1 root    root     13463 Feb 17 15:11 /var/log/ConsoleKit/history
+-rw-r--r-- 1 root    root      7302 Feb 10 08:56 /var/log/ConsoleKit/history.1
+-rw-r--r-- 1 root    root       435 Jan 14 07:51 /var/log/ConsoleKit/history.2.gz
+-rw-r--r-- 1 root    root      1620 Jan  4 07:46 /var/log/ConsoleKit/history.3.gz
+-rw-r--r-- 1 root    root       352 Dec  1 15:16 /var/log/ConsoleKit/history.4.gz
+-rw-r--r-- 1 root    root       528 Nov  2 07:56 /var/log/ConsoleKit/history.5.gz
+-rw-r--r-- 1 root    root       527 Oct  2 16:52 /var/log/ConsoleKit/history.6.gz
+-rw-r----- 1 root    adm     160956 Feb 18 13:49 /var/log/cups/access_log
+-rw-r----- 1 root    adm       4092 Feb 18 08:01 /var/log/cups/access_log.1.gz
+-rw-r----- 1 root    adm       3778 Feb 17 07:45 /var/log/cups/access_log.2.gz
+-rw-r----- 1 root    adm        255 Feb 16 07:36 /var/log/cups/access_log.3.gz
+-rw-r----- 1 root    adm        257 Feb 15 07:17 /var/log/cups/access_log.4.gz
+-rw-r----- 1 root    adm        252 Feb 14 06:59 /var/log/cups/access_log.5.gz
+-rw-r----- 1 root    adm        308 Feb 13 07:39 /var/log/cups/access_log.6.gz
+-rw-r----- 1 root    adm        247 Feb 12 07:44 /var/log/cups/access_log.7.gz
+-rw-r----- 1 root    adm          0 Jan  9 07:43 /var/log/cups/error_log
+-rw-r----- 1 root    adm        120 Jan  8 10:58 /var/log/cups/error_log.1.gz
+-rw-r----- 1 root    adm        126 Dec 29 10:43 /var/log/cups/error_log.2.gz
+-rw-r----- 1 root    adm        128 Dec 22 15:53 /var/log/cups/error_log.3.gz
+-rw-r----- 1 root    adm        133 Dec 21 15:02 /var/log/cups/error_log.4.gz
+-rw-r----- 1 root    adm        137 Dec 11 10:58 /var/log/cups/error_log.5.gz
+-rw-r----- 1 root    adm        139 Dec 10 08:15 /var/log/cups/error_log.6.gz
+-rw-r----- 1 root    adm        134 Dec  2 09:04 /var/log/cups/error_log.7.gz
+-rw-r----- 1 root    adm          0 Aug 19  2015 /var/log/cups/page_log
+-rw-r----- 1 root    adm         31 Aug  5  2015 /var/log/fsck/checkfs
+-rw-r----- 1 root    adm         31 Aug  5  2015 /var/log/fsck/checkroot
+-rw-r--r-- 1 grafana grafana     66 Dec  8 14:34 /var/log/grafana/grafana.log
+-rw-r--r-- 1 grafana grafana 775533 Dec  2 15:49 /var/log/grafana/grafana.log.2015-12-03.001
+-rw-r--r-- 1 grafana grafana 151904 Dec  3 09:00 /var/log/grafana/grafana.log.2015-12-07.001
+-rw-r--r-- 1 grafana grafana  11607 Dec  7 11:12 /var/log/grafana/grafana.log.2015-12-08.001
+-rw-r--r-- 1 grafana grafana      0 Dec  7 11:12 /var/log/grafana/xorm.log
+-rw------- 1 root    root       940 Aug 19  2015 /var/log/installer/casper.log
+-rw------- 1 root    root       657 Aug 19  2015 /var/log/installer/debug
+-rw-rw-r-- 1 root    root    456168 Aug 19  2015 /var/log/installer/initial-status.gz
+-rw-r--r-- 1 root    root        56 Aug 19  2015 /var/log/installer/media-info
+-rw------- 1 root    root     98545 Aug 19  2015 /var/log/installer/partman
+-rw------- 1 syslog  adm     132065 Aug 19  2015 /var/log/installer/syslog
+-rw------- 1 root    root        18 Aug 19  2015 /var/log/installer/version
+-rw------- 1 root    root         0 Jan 15 13:30 /var/log/libvirt/libvirtd.log
+-rw------- 1 root    root      3089 Jan 15 13:30 /var/log/libvirt/libvirtd.log.1
+-rw-r--r-- 1 root    root      8580 Feb 17 11:14 /var/log/libvirt/shutdownlog.log
+-rw------- 1 root    root      5457 Feb 18 12:17 /var/log/lightdm/lightdm.log
+-rw------- 1 root    root      4900 Feb 17 11:32 /var/log/lightdm/lightdm.log.old
+-rw------- 1 root    root      5458 Feb 17 13:21 /var/log/lightdm/x-0-greeter.log
+-rw------- 1 root    root      5699 Feb 17 11:19 /var/log/lightdm/x-0-greeter.log.old
+-rw------- 1 root    root      1005 Feb 17 13:21 /var/log/lightdm/x-0.log
+-rw------- 1 root    root      1005 Feb 17 11:19 /var/log/lightdm/x-0.log.old
+-rw-r--r-- 1 root    root         0 Aug 19  2015 /var/log/unattended-upgrades/unattended-upgrades-shutdown.log
+-rw-r----- 1 root    root       171 Feb  9 03:17 /var/log/upstart/alsa-restore.log.1.gz
+-rw-r----- 1 root    root       238 Nov 17 07:56 /var/log/upstart/alsa-restore.log.2.gz
+-rw-r----- 1 root    root       214 Aug 19  2015 /var/log/upstart/alsa-restore.log.3.gz
+-rw-r----- 1 root    root        68 Feb 17 07:20 /var/log/upstart/alsa-state.log.1.gz
+-rw-r----- 1 root    root        58 Feb 12 08:45 /var/log/upstart/alsa-state.log.2.gz
+-rw-r----- 1 root    root        79 Feb 11 03:19 /var/log/upstart/alsa-state.log.3.gz
+-rw-r----- 1 root    root        58 Jan 14 07:51 /var/log/upstart/alsa-state.log.4.gz
+-rw-r----- 1 root    root        62 Jan  8 10:58 /var/log/upstart/alsa-state.log.5.gz
+-rw-r----- 1 root    root        58 Jan  4 07:46 /var/log/upstart/alsa-state.log.6.gz
+-rw-r----- 1 root    root        65 Dec 29 11:53 /var/log/upstart/alsa-state.log.7.gz
+-rw-r----- 1 root    root        54 Feb  9 05:12 /var/log/upstart/avahi-cups-reload.log.1.gz
+-rw-r----- 1 root    root        54 Jan  8 10:58 /var/log/upstart/avahi-cups-reload.log.2.gz
+-rw-r----- 1 root    root        54 Nov 12 09:26 /var/log/upstart/avahi-cups-reload.log.3.gz
+-rw-r----- 1 root    root        54 Oct 21 13:40 /var/log/upstart/avahi-cups-reload.log.4.gz
+-rw-r----- 1 root    root        54 Sep 15 09:20 /var/log/upstart/avahi-cups-reload.log.5.gz
+-rw-r----- 1 root    root        66 Feb 17 07:20 /var/log/upstart/console-setup.log.1.gz
+-rw-r----- 1 root    root        63 Feb 12 08:45 /var/log/upstart/console-setup.log.2.gz
+-rw-r----- 1 root    root        66 Feb 11 03:19 /var/log/upstart/console-setup.log.3.gz
+-rw-r----- 1 root    root        63 Jan 14 07:50 /var/log/upstart/console-setup.log.4.gz
+-rw-r----- 1 root    root        66 Jan  8 10:58 /var/log/upstart/console-setup.log.5.gz
+-rw-r----- 1 root    root        63 Jan  4 07:46 /var/log/upstart/console-setup.log.6.gz
+-rw-r----- 1 root    root        66 Dec 29 11:53 /var/log/upstart/console-setup.log.7.gz
+-rw-r----- 1 root    root        76 Feb 17 07:20 /var/log/upstart/container-detect.log.1.gz
+-rw-r----- 1 root    root        66 Feb 12 08:45 /var/log/upstart/container-detect.log.2.gz
+-rw-r----- 1 root    root        85 Feb 11 03:19 /var/log/upstart/container-detect.log.3.gz
+-rw-r----- 1 root    root        66 Jan 14 07:50 /var/log/upstart/container-detect.log.4.gz
+-rw-r----- 1 root    root        72 Jan  8 10:58 /var/log/upstart/container-detect.log.5.gz
+-rw-r----- 1 root    root        66 Jan  4 07:46 /var/log/upstart/container-detect.log.6.gz
+-rw-r----- 1 root    root        77 Dec 29 11:53 /var/log/upstart/container-detect.log.7.gz
+-rw-r----- 1 root    root       100 Feb 17 11:19 /var/log/upstart/cups.log.1.gz
+-rw-r----- 1 root    root        95 Feb 12 15:07 /var/log/upstart/cups.log.2.gz
+-rw-r----- 1 root    root       100 Feb 11 09:20 /var/log/upstart/cups.log.3.gz
+-rw-r----- 1 root    root        95 Jan 14 07:51 /var/log/upstart/cups.log.4.gz
+-rw-r----- 1 root    root        95 Jan  8 10:31 /var/log/upstart/cups.log.5.gz
+-rw-r----- 1 root    root       100 Jan  4 07:47 /var/log/upstart/cups.log.6.gz
+-rw-r----- 1 root    root       100 Dec 21 15:02 /var/log/upstart/cups.log.7.gz
+-rw-r----- 1 root    root       124 Feb 17 13:21 /var/log/upstart/gpu-manager.log.1.gz
+-rw-r----- 1 root    root       115 Feb 12 15:07 /var/log/upstart/gpu-manager.log.2.gz
+-rw-r----- 1 root    root       128 Feb 11 15:20 /var/log/upstart/gpu-manager.log.3.gz
+-rw-r----- 1 root    root       115 Jan 14 07:51 /var/log/upstart/gpu-manager.log.4.gz
+-rw-r----- 1 root    root       120 Jan  8 10:58 /var/log/upstart/gpu-manager.log.5.gz
+-rw-r----- 1 root    root       115 Jan  4 07:46 /var/log/upstart/gpu-manager.log.6.gz
+-rw-r----- 1 root    root       124 Dec 29 11:53 /var/log/upstart/gpu-manager.log.7.gz
+-rw-r----- 1 root    root        63 Feb 17 07:20 /var/log/upstart/kmod.log.1.gz
+-rw-r----- 1 root    root        60 Feb 12 08:45 /var/log/upstart/kmod.log.2.gz
+-rw-r----- 1 root    root        63 Feb 11 03:19 /var/log/upstart/kmod.log.3.gz
+-rw-r----- 1 root    root        60 Jan 14 07:50 /var/log/upstart/kmod.log.4.gz
+-rw-r----- 1 root    root        63 Jan  8 10:58 /var/log/upstart/kmod.log.5.gz
+-rw-r----- 1 root    root        60 Jan  4 07:46 /var/log/upstart/kmod.log.6.gz
+-rw-r----- 1 root    root        63 Dec 29 11:53 /var/log/upstart/kmod.log.7.gz
+-rw-r----- 1 root    root       228 Feb 17 13:20 /var/log/upstart/libvirt-bin.log.1.gz
+-rw-r----- 1 root    root       180 Feb 12 15:07 /var/log/upstart/libvirt-bin.log.2.gz
+-rw-r----- 1 root    root       245 Feb 11 09:19 /var/log/upstart/libvirt-bin.log.3.gz
+-rw-r----- 1 root    root        51 Jan 19 14:55 /var/log/upstart/libvirt-bin.log.4.gz
+-rw-r----- 1 root    root        51 Jan 14 07:51 /var/log/upstart/libvirt-bin.log.5.gz
+-rw-r----- 1 root    root        55 Jan  8 10:58 /var/log/upstart/libvirt-bin.log.6.gz
+-rw-r----- 1 root    root        51 Jan  4 07:46 /var/log/upstart/libvirt-bin.log.7.gz
+-rw-r----- 1 root    root       218 Feb 17 13:20 /var/log/upstart/modemmanager.log.1.gz
+-rw-r----- 1 root    root       163 Feb 12 15:07 /var/log/upstart/modemmanager.log.2.gz
+-rw-r----- 1 root    root       271 Feb 11 09:19 /var/log/upstart/modemmanager.log.3.gz
+-rw-r----- 1 root    root       163 Jan 14 07:51 /var/log/upstart/modemmanager.log.4.gz
+-rw-r----- 1 root    root       244 Jan  8 10:58 /var/log/upstart/modemmanager.log.5.gz
+-rw-r----- 1 root    root       162 Jan  4 07:46 /var/log/upstart/modemmanager.log.6.gz
+-rw-r----- 1 root    root       236 Dec 29 11:53 /var/log/upstart/modemmanager.log.7.gz
+-rw-r----- 1 root    root       138 Feb 17 07:20 /var/log/upstart/mountall.log.1.gz
+-rw-r----- 1 root    root       107 Feb 12 08:45 /var/log/upstart/mountall.log.2.gz
+-rw-r----- 1 root    root       155 Feb 11 03:19 /var/log/upstart/mountall.log.3.gz
+-rw-r----- 1 root    root       107 Jan 14 07:50 /var/log/upstart/mountall.log.4.gz
+-rw-r----- 1 root    root       125 Jan  8 10:58 /var/log/upstart/mountall.log.5.gz
+-rw-r----- 1 root    root       107 Jan  4 07:46 /var/log/upstart/mountall.log.6.gz
+-rw-r----- 1 root    root       128 Dec 29 11:53 /var/log/upstart/mountall.log.7.gz
+-rw-r----- 1 root    root       350 Feb 17 11:14 /var/log/upstart/networking.log
+-rw-r----- 1 root    root       339 Feb 10 17:05 /var/log/upstart/networking.log.1.gz
+-rw-r----- 1 root    root       274 Jan  8 10:58 /var/log/upstart/networking.log.2.gz
+-rw-r----- 1 root    root       285 Dec 29 11:44 /var/log/upstart/networking.log.3.gz
+-rw-r----- 1 root    root       296 Dec 29 10:44 /var/log/upstart/networking.log.4.gz
+-rw-r----- 1 root    root       318 Dec 22 15:51 /var/log/upstart/networking.log.5.gz
+-rw-r----- 1 root    root       390 Dec 11 10:55 /var/log/upstart/networking.log.6.gz
+-rw-r----- 1 root    root       335 Dec  9 08:03 /var/log/upstart/networking.log.7.gz
+-rw-r----- 1 root    root       470 Feb 17 07:20 /var/log/upstart/network-interface-eth0.log.1.gz
+-rw-r----- 1 root    root       425 Feb 12 08:45 /var/log/upstart/network-interface-eth0.log.2.gz
+-rw-r----- 1 root    root       607 Feb 11 03:19 /var/log/upstart/network-interface-eth0.log.3.gz
+-rw-r----- 1 root    root       309 Jan 14 07:50 /var/log/upstart/network-interface-eth0.log.4.gz
+-rw-r----- 1 root    root       379 Jan  8 10:58 /var/log/upstart/network-interface-eth0.log.5.gz
+-rw-r----- 1 root    root       350 Jan  4 07:46 /var/log/upstart/network-interface-eth0.log.6.gz
+-rw-r----- 1 root    root       405 Dec 29 11:53 /var/log/upstart/network-interface-eth0.log.7.gz
+-rw-r----- 1 root    root       248 Feb 17 07:20 /var/log/upstart/network-manager.log.1.gz
+-rw-r----- 1 root    root       228 Feb 12 08:45 /var/log/upstart/network-manager.log.2.gz
+-rw-r----- 1 root    root       267 Feb 11 03:19 /var/log/upstart/network-manager.log.3.gz
+-rw-r----- 1 root    root       229 Jan 14 07:50 /var/log/upstart/network-manager.log.4.gz
+-rw-r----- 1 root    root       241 Jan  8 10:58 /var/log/upstart/network-manager.log.5.gz
+-rw-r----- 1 root    root       229 Jan  4 07:46 /var/log/upstart/network-manager.log.6.gz
+-rw-r----- 1 root    root       244 Dec 29 11:53 /var/log/upstart/network-manager.log.7.gz
+-rw-r----- 1 root    root        35 Dec 29 11:44 /var/log/upstart/plymouth-ready-started.log.1.gz
+-rw-r----- 1 root    root        32 Dec 21 14:59 /var/log/upstart/plymouth-ready-started.log.2.gz
+-rw-r----- 1 root    root        91 Dec  9 08:50 /var/log/upstart/plymouth-ready-started.log.3.gz
+-rw-r----- 1 root    root        32 Nov 12 10:17 /var/log/upstart/plymouth-ready-started.log.4.gz
+-rw-r----- 1 root    root        32 Oct 28 17:07 /var/log/upstart/plymouth-ready-started.log.5.gz
+-rw-r----- 1 root    root        32 Oct 27 15:24 /var/log/upstart/plymouth-ready-started.log.6.gz
+-rw-r----- 1 root    root        32 Sep 25 12:04 /var/log/upstart/plymouth-ready-started.log.7.gz
+-rw-r----- 1 root    root        32 Dec 11 10:58 /var/log/upstart/plymouth-ready-startup.log.1.gz
+-rw-r----- 1 root    root        29 Feb 17 11:14 /var/log/upstart/plymouth-shutdown.log
+-rw-r----- 1 root    root        51 Feb 10 17:05 /var/log/upstart/plymouth-shutdown.log.1.gz
+-rw-r----- 1 root    root        51 Jan  8 10:58 /var/log/upstart/plymouth-shutdown.log.2.gz
+-rw-r----- 1 root    root        51 Dec 29 11:44 /var/log/upstart/plymouth-shutdown.log.3.gz
+-rw-r----- 1 root    root        51 Dec 29 10:44 /var/log/upstart/plymouth-shutdown.log.4.gz
+-rw-r----- 1 root    root        51 Dec 22 15:51 /var/log/upstart/plymouth-shutdown.log.5.gz
+-rw-r----- 1 root    root        51 Dec 11 10:58 /var/log/upstart/plymouth-shutdown.log.6.gz
+-rw-r----- 1 root    root        51 Dec  9 08:03 /var/log/upstart/plymouth-shutdown.log.7.gz
+-rw-r----- 1 root    root        74 Feb 10 08:56 /var/log/upstart/plymouth-splash.log.1.gz
+-rw-r----- 1 root    root       232 Feb 17 07:20 /var/log/upstart/procps-static-network-up.log.1.gz
+-rw-r----- 1 root    root       222 Feb 12 08:45 /var/log/upstart/procps-static-network-up.log.2.gz
+-rw-r----- 1 root    root       239 Feb 11 03:19 /var/log/upstart/procps-static-network-up.log.3.gz
+-rw-r----- 1 root    root       222 Jan 14 07:50 /var/log/upstart/procps-static-network-up.log.4.gz
+-rw-r----- 1 root    root       231 Jan  8 10:58 /var/log/upstart/procps-static-network-up.log.5.gz
+-rw-r----- 1 root    root       222 Jan  4 07:46 /var/log/upstart/procps-static-network-up.log.6.gz
+-rw-r----- 1 root    root       232 Dec 29 11:53 /var/log/upstart/procps-static-network-up.log.7.gz
+-rw-r----- 1 root    root       232 Feb 17 07:20 /var/log/upstart/procps-virtual-filesystems.log.1.gz
+-rw-r----- 1 root    root       222 Feb 12 08:45 /var/log/upstart/procps-virtual-filesystems.log.2.gz
+-rw-r----- 1 root    root       239 Feb 11 03:19 /var/log/upstart/procps-virtual-filesystems.log.3.gz
+-rw-r----- 1 root    root       222 Jan 14 07:50 /var/log/upstart/procps-virtual-filesystems.log.4.gz
+-rw-r----- 1 root    root       231 Jan  8 10:58 /var/log/upstart/procps-virtual-filesystems.log.5.gz
+-rw-r----- 1 root    root       222 Jan  4 07:46 /var/log/upstart/procps-virtual-filesystems.log.6.gz
+-rw-r----- 1 root    root       232 Dec 29 11:53 /var/log/upstart/procps-virtual-filesystems.log.7.gz
+-rw-r----- 1 root    root        87 Feb 17 07:20 /var/log/upstart/rsyslog.log.1.gz
+-rw-r----- 1 root    root        84 Feb 12 08:45 /var/log/upstart/rsyslog.log.2.gz
+-rw-r----- 1 root    root        87 Feb 11 03:19 /var/log/upstart/rsyslog.log.3.gz
+-rw-r----- 1 root    root        84 Jan 14 07:50 /var/log/upstart/rsyslog.log.4.gz
+-rw-r----- 1 root    root        87 Jan  8 10:58 /var/log/upstart/rsyslog.log.5.gz
+-rw-r----- 1 root    root        84 Jan  4 07:46 /var/log/upstart/rsyslog.log.6.gz
+-rw-r----- 1 root    root        87 Dec 29 11:53 /var/log/upstart/rsyslog.log.7.gz
+-rw-r----- 1 root    root       295 Feb 17 07:20 /var/log/upstart/systemd-logind.log.1.gz
+-rw-r----- 1 root    root        85 Feb 12 08:45 /var/log/upstart/systemd-logind.log.2.gz
+-rw-r----- 1 root    root       120 Feb 11 03:19 /var/log/upstart/systemd-logind.log.3.gz
+-rw-r----- 1 root    root        41 Jan 19 13:40 /var/log/upstart/systemd-logind.log.4.gz
+-rw-r----- 1 root    root       257 Jan 14 07:59 /var/log/upstart/systemd-logind.log.5.gz
+-rw-r----- 1 root    root       285 Jan  8 10:58 /var/log/upstart/systemd-logind.log.6.gz
+-rw-r----- 1 root    root        85 Jan  4 07:46 /var/log/upstart/systemd-logind.log.7.gz
+-rw-r----- 1 root    root      1045 Feb 17 07:20 /var/log/upstart/thermald.log.1.gz
+-rw-r----- 1 root    root       971 Feb 12 08:45 /var/log/upstart/thermald.log.2.gz
+-rw-r----- 1 root    root      1076 Feb 11 03:19 /var/log/upstart/thermald.log.3.gz
+-rw-r----- 1 root    root       971 Jan 14 07:50 /var/log/upstart/thermald.log.4.gz
+-rw-r----- 1 root    root      1003 Jan  8 10:58 /var/log/upstart/thermald.log.5.gz
+-rw-r----- 1 root    root       971 Jan  4 07:46 /var/log/upstart/thermald.log.6.gz
+-rw-r----- 1 root    root      1028 Dec 29 11:53 /var/log/upstart/thermald.log.7.gz
+-rw-r----- 1 root    root       175 Feb 17 07:20 /var/log/upstart/ureadahead.log.1.gz
+-rw-r----- 1 root    root       165 Feb 12 08:45 /var/log/upstart/ureadahead.log.2.gz
+-rw-r----- 1 root    root     22219 Feb 11 03:19 /var/log/upstart/ureadahead.log.3.gz
+-rw-r----- 1 root    root       140 Jan 14 07:50 /var/log/upstart/ureadahead.log.4.gz
+-rw-r----- 1 root    root     11661 Jan  8 10:58 /var/log/upstart/ureadahead.log.5.gz
+-rw-r----- 1 root    root       164 Jan  4 07:46 /var/log/upstart/ureadahead.log.6.gz
+-rw-r----- 1 root    root       224 Dec 29 11:53 /var/log/upstart/ureadahead.log.7.gz
+-rw-r----- 1 root    root        45 Feb 17 11:14 /var/log/upstart/wait-for-state-plymouth-shutdownlightdm.log
+-rw-r----- 1 root    root        67 Feb 10 17:05 /var/log/upstart/wait-for-state-plymouth-shutdownlightdm.log.1.gz
+-rw-r----- 1 root    root        67 Jan  8 10:58 /var/log/upstart/wait-for-state-plymouth-shutdownlightdm.log.2.gz
+-rw-r----- 1 root    root        67 Dec 29 11:44 /var/log/upstart/wait-for-state-plymouth-shutdownlightdm.log.3.gz
+-rw-r----- 1 root    root        67 Dec 29 10:44 /var/log/upstart/wait-for-state-plymouth-shutdownlightdm.log.4.gz
+-rw-r----- 1 root    root        67 Dec 22 15:51 /var/log/upstart/wait-for-state-plymouth-shutdownlightdm.log.5.gz
+-rw-r----- 1 root    root        64 Dec 11 10:55 /var/log/upstart/wait-for-state-plymouth-shutdownlightdm.log.6.gz
+-rw-r----- 1 root    root        67 Dec  9 08:03 /var/log/upstart/wait-for-state-plymouth-shutdownlightdm.log.7.gz
+
+/var/log/hp/tmp:
+total 0
+
+/var/log/libvirt/libxl:
+total 0
+
+/var/log/libvirt/lxc:
+total 0
+
+/var/log/libvirt/qemu:
+total 0
+
+/var/log/libvirt/uml:
+total 0
+
+Checking /var/adm sulog messages loginlog aculog shutdownlog rbootd.log vtdaemonlog system.log shutdownlog snmpd.log automount.log
+
+Checking messages xferlog ipflog weekly.out monthly.out adduser secure ftpd log.nmb log.smb samba.log httpd.access_log httpd.error_log mail warn Config.bootup access_log boot.msg samhain_log yule_log
+
+Tail of /var/log/syslog...
+Feb 18 11:40:02 amagi-om kernel: [80323.263262]   next_to_use          <5c>
+Feb 18 11:40:02 amagi-om kernel: [80323.263262]   next_to_clean        <5a>
+Feb 18 11:40:02 amagi-om kernel: [80323.263262] buffer_info[next_to_clean]
+Feb 18 11:40:02 amagi-om kernel: [80323.263262]   time_stamp           <1013161f0>
+Feb 18 11:40:02 amagi-om kernel: [80323.263262]   next_to_watch        <5b>
+Feb 18 11:40:02 amagi-om kernel: [80323.263262]   jiffies              <101316736>
+Feb 18 11:40:02 amagi-om kernel: [80323.263262]   next_to_watch.status <0>
+Feb 18 11:40:02 amagi-om kernel: [80323.478801] ------------[ cut here ]------------
+Feb 18 11:40:02 amagi-om kernel: [80323.478829] WARNING: CPU: 0 PID: 0 at /build/linux-lts-vivid-LIqOuh/linux-lts-vivid-3.19.0/net/sched/sch_generic.c:303 dev_watchdog+0x24f/0x260()
+Feb 18 11:40:02 amagi-om kernel: [80323.478830] NETDEV WATCHDOG: eth0 (e1000): transmit queue 0 timed out
+Feb 18 11:40:02 amagi-om kernel: [80323.478831] Modules linked in: ipt_MASQUERADE nf_nat_masquerade_ipv4 iptable_nat nf_nat_ipv4 nf_nat nf_conntrack_ipv4 nf_defrag_ipv4 xt_conntrack nf_conntrack ipt_REJECT nf_reject_ipv4 xt_CHECKSUM iptable_mangle xt_tcpudp bridge stp llc ip6table_filter ip6_tables iptable_filter ip_tables ebtable_nat ebtables x_tables vboxsf(OE) bnep rfcomm bluetooth joydev vboxguest(OE) vboxvideo(OE) iosf_mbi crct10dif_pclmul snd_hda_codec_idt crc32_pclmul snd_hda_codec_generic aesni_intel snd_hda_intel aes_x86_64 lrw gf128mul glue_helper snd_hda_controller ablk_helper snd_hda_codec snd_hwdep cryptd serio_raw i2c_piix4 snd_pcm snd_seq_midi snd_seq_midi_event snd_rawmidi snd_seq snd_seq_device snd_timer video snd mac_hid drm 8250_fintek soundcore parport_pc ppdev lp parport hid_generic usbhid hid psmouse ahci e1000 libahci
+Feb 18 11:40:02 amagi-om kernel: [80323.478866] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G           OE  3.19.0-49-generic #55~14.04.1-Ubuntu
+Feb 18 11:40:02 amagi-om kernel: [80323.478867] Hardware name: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
+Feb 18 11:40:02 amagi-om kernel: [80323.478868]  ffffffff81b40440 ffff880281e03d58 ffffffff817b01b5 000000000000302e
+Feb 18 11:40:02 amagi-om kernel: [80323.478870]  ffff880281e03da8 ffff880281e03d98 ffffffff81074dea ffff880200000001
+Feb 18 11:40:02 amagi-om kernel: [80323.478872]  0000000000000000 ffff880272810000 0000000000000001 ffff8802732a2280
+Feb 18 11:40:02 amagi-om kernel: [80323.478874] Call Trace:
+Feb 18 11:40:02 amagi-om kernel: [80323.478875]  <IRQ>  [<ffffffff817b01b5>] dump_stack+0x45/0x57
+Feb 18 11:40:02 amagi-om kernel: [80323.478882]  [<ffffffff81074dea>] warn_slowpath_common+0x8a/0xc0
+Feb 18 11:40:02 amagi-om kernel: [80323.478884]  [<ffffffff81074e66>] warn_slowpath_fmt+0x46/0x50
+Feb 18 11:40:02 amagi-om kernel: [80323.478887]  [<ffffffff816cd73f>] dev_watchdog+0x24f/0x260
+Feb 18 11:40:02 amagi-om kernel: [80323.478889]  [<ffffffff816cd4f0>] ? dev_graft_qdisc+0x80/0x80
+Feb 18 11:40:02 amagi-om kernel: [80323.478891]  [<ffffffff810dad09>] call_timer_fn+0x39/0x110
+Feb 18 11:40:02 amagi-om kernel: [80323.478893]  [<ffffffff816cd4f0>] ? dev_graft_qdisc+0x80/0x80
+Feb 18 11:40:02 amagi-om kernel: [80323.478895]  [<ffffffff810dc4d0>] run_timer_softirq+0x220/0x320
+Feb 18 11:40:02 amagi-om kernel: [80323.478897]  [<ffffffff81078f44>] __do_softirq+0xe4/0x270
+Feb 18 11:40:02 amagi-om kernel: [80323.478899]  [<ffffffff8107930d>] irq_exit+0x9d/0xb0
+Feb 18 11:40:02 amagi-om kernel: [80323.478902]  [<ffffffff817bac8a>] smp_apic_timer_interrupt+0x4a/0x60
+Feb 18 11:40:02 amagi-om kernel: [80323.478904]  [<ffffffff817b8cbd>] apic_timer_interrupt+0x6d/0x80
+Feb 18 11:40:02 amagi-om kernel: [80323.478905]  <EOI>  [<ffffffff8105b976>] ? native_safe_halt+0x6/0x10
+Feb 18 11:40:02 amagi-om kernel: [80323.478910]  [<ffffffff810d4f68>] ? rcu_eqs_enter+0x68/0x90
+Feb 18 11:40:02 amagi-om kernel: [80323.478913]  [<ffffffff8101f3be>] default_idle+0x1e/0xc0
+Feb 18 11:40:02 amagi-om kernel: [80323.478915]  [<ffffffff8101fddf>] arch_cpu_idle+0xf/0x20
+Feb 18 11:40:02 amagi-om kernel: [80323.478917]  [<ffffffff810b55ba>] cpu_startup_entry+0x39a/0x3d0
+Feb 18 11:40:02 amagi-om kernel: [80323.478920]  [<ffffffff817a06a7>] rest_init+0x77/0x80
+Feb 18 11:40:02 amagi-om kernel: [80323.478923]  [<ffffffff81d3e101>] start_kernel+0x499/0x4a6
+Feb 18 11:40:02 amagi-om kernel: [80323.478925]  [<ffffffff81d3da58>] ? set_init_arg+0x55/0x55
+Feb 18 11:40:02 amagi-om kernel: [80323.478927]  [<ffffffff81d3d120>] ? early_idt_handler_array+0x120/0x120
+Feb 18 11:40:02 amagi-om kernel: [80323.478929]  [<ffffffff81d3d5ee>] x86_64_start_reservations+0x2a/0x2c
+Feb 18 11:40:02 amagi-om kernel: [80323.478930]  [<ffffffff81d3d733>] x86_64_start_kernel+0x143/0x152
+Feb 18 11:40:02 amagi-om kernel: [80323.478932] ---[ end trace 3f1985f524c000c9 ]---
+Feb 18 11:40:02 amagi-om kernel: [80323.479177] e1000 0000:00:03.0 eth0: Reset adapter
+Feb 18 11:40:02 amagi-om kernel: [80323.535183] e1000: eth0 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: RX
+Feb 18 12:09:01 amagi-om CRON[17064]: (root) CMD (  [ -x /usr/lib/php5/maxlifetime ] && [ -x /usr/lib/php5/sessionclean ] && [ -d /var/lib/php5 ] && /usr/lib/php5/sessionclean /var/lib/php5 $(/usr/lib/php5/maxlifetime))
+Feb 18 12:17:01 amagi-om CRON[18104]: (root) CMD (   cd / && run-parts --report /etc/cron.hourly)
+Feb 18 12:39:01 amagi-om CRON[18316]: (root) CMD (  [ -x /usr/lib/php5/maxlifetime ] && [ -x /usr/lib/php5/sessionclean ] && [ -d /var/lib/php5 ] && /usr/lib/php5/sessionclean /var/lib/php5 $(/usr/lib/php5/maxlifetime))
+Feb 18 13:09:01 amagi-om CRON[18499]: (root) CMD (  [ -x /usr/lib/php5/maxlifetime ] && [ -x /usr/lib/php5/sessionclean ] && [ -d /var/lib/php5 ] && /usr/lib/php5/sessionclean /var/lib/php5 $(/usr/lib/php5/maxlifetime))
+Feb 18 13:17:01 amagi-om CRON[18554]: (root) CMD (   cd / && run-parts --report /etc/cron.hourly)
+Feb 18 13:39:01 amagi-om CRON[18714]: (root) CMD (  [ -x /usr/lib/php5/maxlifetime ] && [ -x /usr/lib/php5/sessionclean ] && [ -d /var/lib/php5 ] && /usr/lib/php5/sessionclean /var/lib/php5 $(/usr/lib/php5/maxlifetime))
+Feb 18 13:49:35 amagi-om crontab[19331]: (root) LIST (root)
+
+Last 50 logins..
+Running command: last
+paul.pas pts/9        :0               Thu Feb 18 12:17   still logged in   
+paul.pas pts/8        :0               Thu Feb 18 12:16   still logged in   
+paul.pas pts/6        :0               Thu Feb 18 12:12   still logged in   
+paul.pas pts/5        :0               Thu Feb 18 12:12   still logged in   
+paul.pas pts/5        :0               Wed Feb 17 16:56 - 16:57  (00:00)    
+paul.pas pts/5        :0               Wed Feb 17 16:45 - 16:45  (00:00)    
+paul.pas pts/5        localhost        Wed Feb 17 15:11 - 15:11  (00:00)    
+paul.pas pts/3        :0               Wed Feb 17 15:10   still logged in   
+paul.pas pts/1        :0               Wed Feb 17 13:27   still logged in   
+paul.pas :0           :0               Wed Feb 17 13:21   still logged in   
+reboot   system boot  3.19.0-49-generi Wed Feb 17 07:20 - 13:49 (1+06:28)   
+paul.pas pts/3        :0               Wed Feb 17 11:32 - crash  (-4:-11)   
+paul.pas pts/1        :0               Wed Feb 17 11:20 - crash  (-3:-59)   
+paul.pas :0           :0               Wed Feb 17 11:19 - crash  (-3:-58)   
+reboot   system boot  3.19.0-49-generi Wed Feb 17 05:19 - 13:49 (1+08:30)   
+paul.pas pts/11       :0               Tue Feb 16 16:38 - down   (18:36)    
+paul.pas pts/10       :0               Tue Feb 16 10:40 - down  (1+00:34)   
+paul.pas pts/9        :0               Tue Feb 16 10:38 - down  (1+00:36)   
+paul.pas pts/8        :0               Tue Feb 16 10:37 - down  (1+00:37)   
+paul.pas pts/0        :0               Tue Feb 16 10:36 - down  (1+00:37)   
+paul.pas pts/0        :0               Tue Feb 16 10:36 - 10:36  (00:00)    
+paul.pas pts/7        :0               Tue Feb 16 10:25 - down  (1+00:48)   
+paul.pas pts/3        :0               Tue Feb 16 10:25 - down  (1+00:49)   
+paul.pas pts/0        :0               Tue Feb 16 10:25 - 10:36  (00:11)    
+paul.pas :0           :0               Tue Feb 16 10:25 - down  (1+00:49)   
+reboot   system boot  3.19.0-49-generi Tue Feb 16 04:25 - 11:14 (1+06:49)   
+paul.pas pts/8        :0               Tue Feb 16 08:49 - crash  (-4:-24)   
+paul.pas pts/7        :0               Tue Feb 16 08:35 - 09:30  (00:54)    
+paul.pas pts/5        :0               Tue Feb 16 08:35 - crash  (-4:-10)   
+paul.pas pts/9        :0               Fri Feb 12 16:35 - crash (3+11:49)   
+paul.pas pts/8        :0               Fri Feb 12 15:49 - 17:02  (01:12)    
+paul.pas pts/5        :0               Fri Feb 12 15:49 - 17:02  (01:12)    
+paul.pas pts/5        :0               Fri Feb 12 15:10 - 15:10  (00:00)    
+paul.pas pts/1        :0               Fri Feb 12 15:09 - crash (3+13:15)   
+paul.pas pts/0        :0               Fri Feb 12 15:08 - 17:02  (01:53)    
+paul.pas :0           :0               Fri Feb 12 15:07 - crash (3+13:17)   
+reboot   system boot  3.19.0-49-generi Fri Feb 12 08:45 - 11:14 (5+02:29)   
+paul.pas pts/13       :0               Fri Feb 12 15:00 - crash  (-6:-15)   
+paul.pas pts/12       :0               Fri Feb 12 14:51 - crash  (-6:-6)    
+paul.pas pts/11       :0               Fri Feb 12 13:43 - crash  (-4:-58)   
+paul.pas pts/10       :0               Fri Feb 12 13:42 - crash  (-4:-56)   
+paul.pas pts/7        :0               Fri Feb 12 13:12 - crash  (-4:-26)   
+paul.pas pts/5        :0               Fri Feb 12 13:12 - crash  (-4:-26)   
+paul.pas pts/8        :0               Fri Feb 12 11:58 - crash  (-3:-13)   
+paul.pas pts/7        :0               Fri Feb 12 11:57 - 13:12  (01:14)    
+paul.pas pts/6        :0               Thu Feb 11 10:24 - crash  (22:21)    
+paul.pas pts/6        :0               Thu Feb 11 10:24 - 10:24  (00:00)    
+paul.pas pts/6        :0               Thu Feb 11 10:22 - 10:23  (00:01)    
+paul.pas pts/6        :0               Thu Feb 11 10:22 - 10:22  (00:00)    
+Running command: faillog -a
+Login       Failures Maximum Latest                   On
+
+root            0        0   12/31/69 18:00:00 -0600  
+daemon          0        0   12/31/69 18:00:00 -0600  
+bin             0        0   12/31/69 18:00:00 -0600  
+sys             0        0   12/31/69 18:00:00 -0600  
+sync            0        0   12/31/69 18:00:00 -0600  
+games           0        0   12/31/69 18:00:00 -0600  
+man             0        0   12/31/69 18:00:00 -0600  
+lp              0        0   12/31/69 18:00:00 -0600  
+mail            0        0   12/31/69 18:00:00 -0600  
+news            0        0   12/31/69 18:00:00 -0600  
+uucp            0        0   12/31/69 18:00:00 -0600  
+proxy           0        0   12/31/69 18:00:00 -0600  
+www-data        0        0   12/31/69 18:00:00 -0600  
+backup          0        0   12/31/69 18:00:00 -0600  
+list            0        0   12/31/69 18:00:00 -0600  
+irc             0        0   12/31/69 18:00:00 -0600  
+gnats           0        0   12/31/69 18:00:00 -0600  
+nobody          0        0   12/31/69 18:00:00 -0600  
+libuuid         0        0   12/31/69 18:00:00 -0600  
+syslog          0        0   12/31/69 18:00:00 -0600  
+messagebus       0        0   12/31/69 18:00:00 -0600  
+usbmux          0        0   12/31/69 18:00:00 -0600  
+dnsmasq         0        0   12/31/69 18:00:00 -0600  
+avahi-autoipd       0        0   12/31/69 18:00:00 -0600  
+kernoops        0        0   12/31/69 18:00:00 -0600  
+rtkit           0        0   12/31/69 18:00:00 -0600  
+saned           0        0   12/31/69 18:00:00 -0600  
+whoopsie        0        0   12/31/69 18:00:00 -0600  
+speech-dispatcher       0        0   12/31/69 18:00:00 -0600  
+avahi           0        0   12/31/69 18:00:00 -0600  
+lightdm         0        0   12/31/69 18:00:00 -0600  
+colord          0        0   12/31/69 18:00:00 -0600  
+hplip           0        0   12/31/69 18:00:00 -0600  
+pulse           0        0   12/31/69 18:00:00 -0600  
+vboxadd         0        0   12/31/69 18:00:00 -0600  
+libvirt-qemu       0        0   12/31/69 18:00:00 -0600  
+libvirt-dnsmasq       0        0   12/31/69 18:00:00 -0600  
+sshd            0        0   12/31/69 18:00:00 -0600  
+grafana         0        0   12/31/69 18:00:00 -0600  
+paul.pasika       0        0   12/31/69 18:00:00 -0600  
+
+---------- grep for common errors ----------
+
+
+---------- Check for log rotation ----------
+

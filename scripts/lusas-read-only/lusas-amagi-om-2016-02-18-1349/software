@@ -1,0 +1,167 @@
+>>>>>>>>>> Software, Packages ----------
+---------- Installed software ----------
+
+A complete list of installed packages was written to /home/paul.pasika/git/scripts/scripts/lusas-read-only/lusas-amagi-om-2016-02-18-1349/pkglist
+---------- Patch level ----------
+
+
+
+ Patches for Linux  ------
+
+ Package DB:
+Skipping package checks
+Running command: apt-get check
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Running command: apt-get update -s
+Running command: apt-get upgrade -s
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages were automatically installed and are no longer required:
+  giblib1 libid3tag0 libimlib2 linux-headers-3.19.0-25
+  linux-headers-3.19.0-25-generic linux-image-3.19.0-25-generic
+  linux-image-extra-3.19.0-25-generic
+Use 'apt-get autoremove' to remove them.
+The following packages will be upgraded:
+  base-files eog firefox firefox-locale-en fonts-opensymbol initscripts
+  libc-bin libc-dev-bin libc6 libc6:i386 libc6-dbg libc6-dev libc6-dev-i386
+  libc6-dev-x32 libc6-i386 libc6-x32 libgcrypt11 libgcrypt11:i386
+  libgraphite2-3 libgraphite2-3:i386 libgtk2.0-common libnettle4 libnss3
+  libnss3-nssdb libreoffice-avmedia-backend-gstreamer libreoffice-base-core
+  libreoffice-calc libreoffice-common libreoffice-core libreoffice-draw
+  libreoffice-gnome libreoffice-gtk libreoffice-impress libreoffice-math
+  libreoffice-ogltrans libreoffice-pdfimport
+  libreoffice-presentation-minimizer libreoffice-style-human
+  libreoffice-writer libsmbclient libwbclient0 multiarch-support ntpdate
+  python-samba python3-uno samba-common samba-common-bin samba-libs smbclient
+  sysv-rc sysvinit-utils thermald uno-libs3 ure
+54 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Inst base-files [7.2ubuntu5.3] (7.2ubuntu5.4 Ubuntu:14.04/trusty-updates [amd64])
+Conf base-files (7.2ubuntu5.4 Ubuntu:14.04/trusty-updates [amd64])
+Inst libc6-i386 [2.19-0ubuntu6.6] (2.19-0ubuntu6.7 Ubuntu:14.04/trusty-updates [amd64]) [libc6-dev-i386:amd64 ]
+Inst libc-dev-bin [2.19-0ubuntu6.6] (2.19-0ubuntu6.7 Ubuntu:14.04/trusty-updates [amd64]) [libc6-dev-i386:amd64 libc6-dev:amd64 ]
+Inst libc6-dev [2.19-0ubuntu6.6] (2.19-0ubuntu6.7 Ubuntu:14.04/trusty-updates [amd64]) [libc6-dev-x32:amd64 libc6-dev-i386:amd64 ]
+Inst libc6-dev-i386 [2.19-0ubuntu6.6] (2.19-0ubuntu6.7 Ubuntu:14.04/trusty-updates [amd64]) [libc6-dev-x32:amd64 ]
+Inst libc6-dev-x32 [2.19-0ubuntu6.6] (2.19-0ubuntu6.7 Ubuntu:14.04/trusty-updates [amd64]) []
+Inst libc6-x32 [2.19-0ubuntu6.6] (2.19-0ubuntu6.7 Ubuntu:14.04/trusty-updates [amd64]) []
+Inst libc-bin [2.19-0ubuntu6.6] (2.19-0ubuntu6.7 Ubuntu:14.04/trusty-updates [amd64]) []
+Conf libc-bin (2.19-0ubuntu6.7 Ubuntu:14.04/trusty-updates [amd64]) []
+Inst libc6-dbg [2.19-0ubuntu6.6] (2.19-0ubuntu6.7 Ubuntu:14.04/trusty-updates [amd64]) []
+Inst libc6 [2.19-0ubuntu6.6] (2.19-0ubuntu6.7 Ubuntu:14.04/trusty-updates [amd64]) [libc6:amd64 on libc6:i386] [libc6:i386 on libc6:amd64] [libc6:i386 ]
+Inst libc6:i386 [2.19-0ubuntu6.6] (2.19-0ubuntu6.7 Ubuntu:14.04/trusty-updates [i386])
+Inst libgcrypt11 [1.5.3-2ubuntu4.2] (1.5.3-2ubuntu4.3 Ubuntu:14.04/trusty-updates [amd64]) [libgcrypt11:amd64 on libgcrypt11:i386] [libgcrypt11:i386 on libgcrypt11:amd64] [libgcrypt11:i386 ]
+Inst libgcrypt11:i386 [1.5.3-2ubuntu4.2] (1.5.3-2ubuntu4.3 Ubuntu:14.04/trusty-updates [i386])
+Inst ntpdate [1:4.2.6.p5+dfsg-3ubuntu2.14.04.7] (1:4.2.6.p5+dfsg-3ubuntu2.14.04.8 Ubuntu:14.04/trusty-updates [amd64])
+Inst libgraphite2-3 [1.2.4-1ubuntu1] (1.2.4-1ubuntu1.1 Ubuntu:14.04/trusty-updates [amd64]) [libgraphite2-3:amd64 on libgraphite2-3:i386] [libgraphite2-3:i386 on libgraphite2-3:amd64] [libgraphite2-3:i386 ]
+Inst libgraphite2-3:i386 [1.2.4-1ubuntu1] (1.2.4-1ubuntu1.1 Ubuntu:14.04/trusty-updates [i386])
+Inst libnettle4 [2.7.1-1] (2.7.1-1ubuntu0.1 Ubuntu:14.04/trusty-updates [amd64])
+Inst libnss3-nssdb [2:3.19.2.1-0ubuntu0.14.04.2] (2:3.21-0ubuntu0.14.04.1 Ubuntu:14.04/trusty-updates [all]) []
+Inst libnss3 [2:3.19.2.1-0ubuntu0.14.04.2] (2:3.21-0ubuntu0.14.04.1 Ubuntu:14.04/trusty-updates [amd64])
+Inst libreoffice-calc [1:4.2.8-0ubuntu3] (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64]) []
+Inst libreoffice-gnome [1:4.2.8-0ubuntu3] (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64]) []
+Inst libreoffice-gtk [1:4.2.8-0ubuntu3] (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64]) []
+Inst libreoffice-impress [1:4.2.8-0ubuntu3] (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64]) []
+Inst libreoffice-writer [1:4.2.8-0ubuntu3] (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64]) []
+Inst libreoffice-common [1:4.2.8-0ubuntu3] (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [all]) []
+Inst libreoffice-pdfimport [1:4.2.8-0ubuntu3] (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64]) []
+Inst libreoffice-base-core [1:4.2.8-0ubuntu3] (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64]) []
+Inst libreoffice-math [1:4.2.8-0ubuntu3] (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64]) []
+Inst python3-uno [1:4.2.8-0ubuntu3] (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64]) []
+Inst libreoffice-ogltrans [1:4.2.8-0ubuntu3] (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64]) []
+Inst uno-libs3 [4.2.8-0ubuntu3] (4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64]) [ure:amd64 ]
+Inst ure [4.2.8-0ubuntu3] (4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64]) []
+Inst libreoffice-draw [1:4.2.8-0ubuntu3] (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64]) []
+Inst libreoffice-core [1:4.2.8-0ubuntu3] (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64])
+Inst fonts-opensymbol [2:102.6+LibO4.2.8-0ubuntu3] (2:102.6+LibO4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [all])
+Inst libreoffice-style-human [1:4.2.8-0ubuntu3] (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [all])
+Inst libwbclient0 [2:4.1.6+dfsg-1ubuntu2.14.04.11] (2:4.1.6+dfsg-1ubuntu2.14.04.12 Ubuntu:14.04/trusty-updates [amd64])
+Inst libsmbclient [2:4.1.6+dfsg-1ubuntu2.14.04.11] (2:4.1.6+dfsg-1ubuntu2.14.04.12 Ubuntu:14.04/trusty-updates [amd64]) []
+Inst smbclient [2:4.1.6+dfsg-1ubuntu2.14.04.11] (2:4.1.6+dfsg-1ubuntu2.14.04.12 Ubuntu:14.04/trusty-updates [amd64]) []
+Inst samba-common-bin [2:4.1.6+dfsg-1ubuntu2.14.04.11] (2:4.1.6+dfsg-1ubuntu2.14.04.12 Ubuntu:14.04/trusty-updates [amd64]) []
+Inst python-samba [2:4.1.6+dfsg-1ubuntu2.14.04.11] (2:4.1.6+dfsg-1ubuntu2.14.04.12 Ubuntu:14.04/trusty-updates [amd64]) []
+Inst samba-libs [2:4.1.6+dfsg-1ubuntu2.14.04.11] (2:4.1.6+dfsg-1ubuntu2.14.04.12 Ubuntu:14.04/trusty-updates [amd64]) []
+Inst samba-common [2:4.1.6+dfsg-1ubuntu2.14.04.11] (2:4.1.6+dfsg-1ubuntu2.14.04.12 Ubuntu:14.04/trusty-updates [all])
+Inst multiarch-support [2.19-0ubuntu6.6] (2.19-0ubuntu6.7 Ubuntu:14.04/trusty-updates [amd64])
+Conf libc6 (2.19-0ubuntu6.7 Ubuntu:14.04/trusty-updates [amd64])
+Conf libc6:i386 (2.19-0ubuntu6.7 Ubuntu:14.04/trusty-updates [i386])
+Conf multiarch-support (2.19-0ubuntu6.7 Ubuntu:14.04/trusty-updates [amd64])
+Inst sysvinit-utils [2.88dsf-41ubuntu6.2] (2.88dsf-41ubuntu6.3 Ubuntu:14.04/trusty-updates [amd64])
+Conf sysvinit-utils (2.88dsf-41ubuntu6.3 Ubuntu:14.04/trusty-updates [amd64])
+Inst sysv-rc [2.88dsf-41ubuntu6.2] (2.88dsf-41ubuntu6.3 Ubuntu:14.04/trusty-updates [all])
+Conf sysv-rc (2.88dsf-41ubuntu6.3 Ubuntu:14.04/trusty-updates [all])
+Inst initscripts [2.88dsf-41ubuntu6.2] (2.88dsf-41ubuntu6.3 Ubuntu:14.04/trusty-updates [amd64])
+Inst eog [3.10.2-0ubuntu5] (3.10.2-0ubuntu5.1 Ubuntu:14.04/trusty-updates [amd64])
+Inst firefox [44.0.1+build2-0ubuntu0.14.04.1] (44.0.2+build1-0ubuntu0.14.04.1 Ubuntu:14.04/trusty-updates [amd64])
+Inst firefox-locale-en [44.0.1+build2-0ubuntu0.14.04.1] (44.0.2+build1-0ubuntu0.14.04.1 Ubuntu:14.04/trusty-updates [amd64])
+Inst libgtk2.0-common [2.24.23-0ubuntu1.3] (2.24.23-0ubuntu1.4 Ubuntu:14.04/trusty-updates [all])
+Inst libreoffice-avmedia-backend-gstreamer [1:4.2.8-0ubuntu3] (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64])
+Inst libreoffice-presentation-minimizer [1:4.2.8-0ubuntu3] (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [all])
+Inst thermald [1.4.3-5~14.04.1] (1.4.3-5~14.04.2 Ubuntu:14.04/trusty-updates [amd64])
+Conf libc6-i386 (2.19-0ubuntu6.7 Ubuntu:14.04/trusty-updates [amd64])
+Conf libc-dev-bin (2.19-0ubuntu6.7 Ubuntu:14.04/trusty-updates [amd64])
+Conf libc6-dev (2.19-0ubuntu6.7 Ubuntu:14.04/trusty-updates [amd64])
+Conf libc6-dev-i386 (2.19-0ubuntu6.7 Ubuntu:14.04/trusty-updates [amd64])
+Conf libc6-x32 (2.19-0ubuntu6.7 Ubuntu:14.04/trusty-updates [amd64])
+Conf libc6-dev-x32 (2.19-0ubuntu6.7 Ubuntu:14.04/trusty-updates [amd64])
+Conf libc6-dbg (2.19-0ubuntu6.7 Ubuntu:14.04/trusty-updates [amd64])
+Conf libgcrypt11:i386 (1.5.3-2ubuntu4.3 Ubuntu:14.04/trusty-updates [i386])
+Conf libgcrypt11 (1.5.3-2ubuntu4.3 Ubuntu:14.04/trusty-updates [amd64])
+Conf ntpdate (1:4.2.6.p5+dfsg-3ubuntu2.14.04.8 Ubuntu:14.04/trusty-updates [amd64])
+Conf libgraphite2-3:i386 (1.2.4-1ubuntu1.1 Ubuntu:14.04/trusty-updates [i386])
+Conf libgraphite2-3 (1.2.4-1ubuntu1.1 Ubuntu:14.04/trusty-updates [amd64])
+Conf libnettle4 (2.7.1-1ubuntu0.1 Ubuntu:14.04/trusty-updates [amd64])
+Conf libnss3-nssdb (2:3.21-0ubuntu0.14.04.1 Ubuntu:14.04/trusty-updates [all])
+Conf libnss3 (2:3.21-0ubuntu0.14.04.1 Ubuntu:14.04/trusty-updates [amd64])
+Conf fonts-opensymbol (2:102.6+LibO4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [all])
+Conf libreoffice-style-human (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [all])
+Conf uno-libs3 (4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64])
+Conf ure (4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64])
+Conf libreoffice-common (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [all])
+Conf libreoffice-core (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64])
+Conf libreoffice-base-core (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64])
+Conf libreoffice-calc (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64])
+Conf libreoffice-gtk (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64])
+Conf libreoffice-gnome (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64])
+Conf libreoffice-draw (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64])
+Conf libreoffice-impress (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64])
+Conf libreoffice-writer (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64])
+Conf libreoffice-pdfimport (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64])
+Conf libreoffice-math (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64])
+Conf python3-uno (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64])
+Conf libreoffice-ogltrans (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64])
+Conf libwbclient0 (2:4.1.6+dfsg-1ubuntu2.14.04.12 Ubuntu:14.04/trusty-updates [amd64])
+Conf samba-libs (2:4.1.6+dfsg-1ubuntu2.14.04.12 Ubuntu:14.04/trusty-updates [amd64])
+Conf libsmbclient (2:4.1.6+dfsg-1ubuntu2.14.04.12 Ubuntu:14.04/trusty-updates [amd64])
+Conf samba-common (2:4.1.6+dfsg-1ubuntu2.14.04.12 Ubuntu:14.04/trusty-updates [all])
+Conf smbclient (2:4.1.6+dfsg-1ubuntu2.14.04.12 Ubuntu:14.04/trusty-updates [amd64])
+Conf python-samba (2:4.1.6+dfsg-1ubuntu2.14.04.12 Ubuntu:14.04/trusty-updates [amd64])
+Conf samba-common-bin (2:4.1.6+dfsg-1ubuntu2.14.04.12 Ubuntu:14.04/trusty-updates [amd64])
+Conf initscripts (2.88dsf-41ubuntu6.3 Ubuntu:14.04/trusty-updates [amd64])
+Conf eog (3.10.2-0ubuntu5.1 Ubuntu:14.04/trusty-updates [amd64])
+Conf firefox (44.0.2+build1-0ubuntu0.14.04.1 Ubuntu:14.04/trusty-updates [amd64])
+Conf firefox-locale-en (44.0.2+build1-0ubuntu0.14.04.1 Ubuntu:14.04/trusty-updates [amd64])
+Conf libgtk2.0-common (2.24.23-0ubuntu1.4 Ubuntu:14.04/trusty-updates [all])
+Conf libreoffice-avmedia-backend-gstreamer (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [amd64])
+Conf libreoffice-presentation-minimizer (1:4.2.8-0ubuntu4 Ubuntu:14.04/trusty-updates [all])
+Conf thermald (1.4.3-5~14.04.2 Ubuntu:14.04/trusty-updates [amd64])
+
+Files with suid and sgid: stored in /home/paul.pasika/git/scripts/scripts/lusas-read-only/lusas-amagi-om-2016-02-18-1349/suid-list
+
+Java version:
+java version "1.7.0_95"
+OpenJDK Runtime Environment (IcedTea 2.6.4) (7u95-2.6.4-0ubuntu0.14.04.1)
+OpenJDK 64-Bit Server VM (build 24.95-b01, mixed mode)
+29/fd/7': No such file or directory
+find: `/proc/19429/task/19429/fd/7': No such file or directory
+find: `/proc/19429/task/19429/fd/7': No such file or directory
+find: `/proc/19429/task/19429/fdinfo/7': No such file or directory
+find: `/proc/19429/task/19429/fdinfo/7': No such file or directory
+find: `/proc/19429/task/19429/fdinfo/7': No such file or directory
+find: `/proc/19429/fd/7': No such file or directory
+find: `/proc/19429/fd/7': No such file or directory
+find: `/proc/19429/fd/7': No such file or directory
+find: `/proc/19429/fdinfo/7': No such file or directory
+find: `/proc/19429/fdinfo/7': No such file or directory
+find: `/proc/19429/fdinfo/7': No such file or directory

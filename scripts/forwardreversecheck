@@ -1,0 +1,50 @@
+#!/bin/bash
+
+cd /var/named/chroot/var/named
+TLD=com
+# Count dots in the IPs, x max
+DOTS='.'
+ls *.$TLD | while read FILE
+do
+	echo "..........Searching $FILE.........." 
+	# Parse out uneeded zone file charcters and print valid hostnames.  $FILE is the zone doman, $i is the hostname
+	egrep -v 'NS|_|^$|IN|\$|@|^\.|\;' $FILE | egrep -v 'NS|MX|CNAME' | awk '/^[a-z]/{print $1}' | while read i
+	do
+		# Collect forward DNS
+		FORWARD=`dig $i.$FILE A +short 2>/dev/null`
+		# Determine Reverse
+		REVERSE=`echo $FORWARD | dig -x $FORWARD +short | sed -e 's/.$//g'| tr '\n' ' '`
+		REVERSESANITY=`echo $REVERSE | sed 's/ //g'`
+		# Validate REVERSE resolves to the same IP as the FORWARD
+		# the grep -v is to remove root-server entries when the PTR doesn't exist
+		REVERSEFORWARD=`dig $REVERSE A +short 2>/dev/null| grep -v ^[a-z]`
+
+		# Use this to only show which forward and reverse entries do NOT match
+		if [[ -z $REVERSE ]] || [[ -z $REVERSEFORWARD ]]
+		then
+			echo "No reverse: $i.$FILE should be $FORWARD"
+			echo
+			continue 1
+		fi
+		# Determine if REVERSE has more than one TLD
+		if  (( `echo $REVERSE | grep -Fo .$TLD | wc -l` > 1 ))
+		then
+			echo "Error, Expected: $i.$FILE:$FORWARD -> Results: $REVERSE"
+			echo
+			continue 1
+		fi
+		# Determine if REVERSE has more than one entry
+		if  (( `echo $REVERSESANITY | grep -Fo $DOTS | wc -l` > 3 ))
+		then
+			echo "Multiple: Expected forward: $i.$FILE:$FORWARD -> $REVERSE"
+			echo
+			continue 1
+		fi
+		if [[ "$i.$FILE:$FORWARD" != "$REVERSESANITY:$REVERSEFORWARD" ]]
+		then
+			echo "Expected: $i.$FILE:$FORWARD -> Results: $REVERSEFORWARD:$REVERSE"
+			echo
+		fi
+	done
+	echo "..........End $FILE search.........."
+done

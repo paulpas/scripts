@@ -1,0 +1,31 @@
+The script needs to only run on the active data center.  At the time of this writing it is either DFW or ORD.
+
+
+
+NOTE: This script issues the --delete tag, do not reverse sync until you know the primary site before failure is done updating!!!!
+
+0) Adjust the max bandwidth by adjusting the 'kbps' variable.
+
+1) Open the script on the base system where the script repo resides:  nagios:/root/scripts/bin/sync_DFW_to_ORD.sh
+
+2) Edit the 'Site_enabled' variable to the data center you need it to run on: DFW or ORD
+
+3) Run nagios:/root/scripts/scripts-enabled/scripts_sync_to_DFW_ORD.sh to push the script out, or wait and within 5 minutes the automated process will do it.
+
+
+4) Issue the following command on imgrzp01 and imgrzp11:
+
+rm -f /var/run/sync_DFW_to_ORD.pid
+
+
+5) A crontab entry should be on both servers already, if not then add the following to both hosts at the same time:
+
+0 * * * * /root/scripts/scripts-enabled/sync_DFW_to_ORD.sh
+
+6) Verify that the script started by checking syslog:
+
+grep sync_DFW_to_ORD.sh /var/log/messages
+
+7) The script can be run manually, if a pid file exists then the script is already running or the pid file is stale.  Verify with:
+
+ps -ef | grep sync_DFW_to_ORD.sh

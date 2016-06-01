@@ -1,0 +1,55 @@
+This describes the method of how we manage custom scripts for crontab entries or other important maintenance items.
+
+
+
+1) The host where all scripts need to be located are:
+
+nagios:/root/scripts/bin/
+
+1a) Scripts can be developed on their destination host, they will removed if they are not added to the script host.  Design your scripts in /tmp or some safe directory!
+
+1b) /root/scripts/sbin/ can be used for utility scripts.  For example, frequently used scripts to modify files on multiple servers
+
+
+2) Once you put your script in there you can enable it by a symbolic link to /root/scripts/scripts-enabled/ by using the supplied script:
+
+ex: /root/scripts/bin/enablescript.sh <script name>
+
+
+3) In your crontab entries you will add it similar as follows as applicable:
+
+0 * * * * /root/scripts/scripts-enabled/<script name>
+
+
+4) To disable the script do the following command:
+
+/root/scripts/bin/disablescript.sh <script name>
+
+YOU MUST ONLY RUN SCRIPTS IN scripts-enabled TO KEEP solidarity!!!
+
+
+
+Functions required:
+
+5) Must specifiy which host and user it can run as, and env variables.
+
+Ex:  root / imgrzp01
+
+
+# The only host this script can run on
+hostallow="372654-imgrzp01"
+
+# Ensure the script runs on imgrzp01 as root only.
+if [[ `whoami` != root ]] || [[ `hostname -s` != $hostallow ]]
+then
+        echo "$0 needs to be run as root and on the host $targethost."
+        echo "Script is being run as `whoami`@`hostname -s`.  Exiting."
+        rm -f $pidfile
+        exit 1
+fi
+
+
+6) ENV variables needed in each script
+
+. /root/scripts/etc/env
+

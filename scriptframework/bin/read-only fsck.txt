@@ -1,0 +1,1 @@
+0 3 * * 0 /sbin/fsck -n /data 2>&1 | mailx -s "Disk Health: `hostname` /data report" infrastructure@proxibid.com

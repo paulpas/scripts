@@ -1,0 +1,1 @@
+This script loads the FTNI URL, and if it fails, emails.  Right now only Paul Pasika gets notified.

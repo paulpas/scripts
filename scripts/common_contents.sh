@@ -8,6 +8,15 @@
 # Date 02/26/2016
 #
 #
+## To adjust as needed:
+##find lines only in file1
+#comm -23 file1 file2 
+#
+##find lines only in file2
+#comm -13 file1 file2 
+#
+##find lines common to both files
+#comm -12 file1 file2 
 
 for prefix in ALL web db app etc
 do

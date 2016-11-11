@@ -1,0 +1,492 @@
+
+=========================================================================
+=== 07/02/04,11:36:28 Connecting to 10.2.41.48 (10.2.41.48)
+=========================================================================
+spawn /bin/ksh
+spawn ssh -o stricthostkeychecking=no -l ppasik01 10.2.41.48
+ppasik01@10.2.41.48's password: 
+Last login: Fri Jul  2 09:32:58 2004 from tux.nmcc.sprint
+Sun Microsystems Inc.   SunOS 5.7       Generic October 1998
+*-----------------------------------------------------------------*
+| This system is for the use of authorized users only.            |
+| Individuals using this computer system without authority, or in |
+| excess of their authority, are subject to having all of their   |
+| activities on this system monitored and recorded by system      |
+| personnel.                                                      |
+|                                                                 |
+| In the course of monitoring individuals improperly using this   |
+| system, or in the course of system maintenance, the activities  |
+| of authorized users may also be monitored.                      |
+|                                                                 |
+| Anyone using this system expressly consents to such monitoring  |
+| and is advised that if such monitoring reveals possible         |
+| evidence of criminal activity, system personnel may provide the |
+| evidence of such monitoring to law enforcement officials.       |
+*-----------------------------------------------------------------*
+ppasik01@sacrdns01% sudo su
+Password:
+# passwd root
+New password: 
+Re-enter new password: 
+passwd (SYSTEM): passwd successfully changed for root
+# exit
+ppasik01@sacrdns01% exit
+logout
+Connection to 10.2.41.48 closed.
+
+=========================================================================
+=== 07/02/04,11:36:30 Connecting to 10.3.217.48 (10.3.217.48)
+=========================================================================
+spawn /bin/ksh
+spawn ssh -o stricthostkeychecking=no -l ppasik01 10.3.217.48
+ppasik01@10.3.217.48's password: 
+Last login: Fri Jul  2 09:33:16 2004 from tux.nmcc.sprint
+Sun Microsystems Inc.   SunOS 5.7       Generic October 1998
+*-----------------------------------------------------------------*
+| This system is for the use of authorized users only.            |
+| Individuals using this computer system without authority, or in |
+| excess of their authority, are subject to having all of their   |
+| activities on this system monitored and recorded by system      |
+| personnel.                                                      |
+|                                                                 |
+| In the course of monitoring individuals improperly using this   |
+| system, or in the course of system maintenance, the activities  |
+| of authorized users may also be monitored.                      |
+|                                                                 |
+| Anyone using this system expressly consents to such monitoring  |
+| and is advised that if such monitoring reveals possible         |
+| evidence of criminal activity, system personnel may provide the |
+| evidence of such monitoring to law enforcement officials.       |
+*-----------------------------------------------------------------*
+ppasik01@santdns01% sudo su
+Password:
+# passwd root
+New password: 
+Re-enter new password: 
+passwd (SYSTEM): passwd successfully changed for root
+# exit
+ppasik01@santdns01% exit
+logout
+Connection to 10.3.217.48 closed.
+
+=========================================================================
+=== 07/02/04,11:36:32 Connecting to 10.7.41.48 (10.7.41.48)
+=========================================================================
+spawn /bin/ksh
+spawn ssh -o stricthostkeychecking=no -l ppasik01 10.7.41.48
+ppasik01@10.7.41.48's password: 
+Last login: Fri Jul  2 11:33:32 2004 from tux.nmcc.sprint
+Sun Microsystems Inc.   SunOS 5.7       Generic October 1998
+*-----------------------------------------------------------------*
+| This system is for the use of authorized users only.            |
+| Individuals using this computer system without authority, or in |
+| excess of their authority, are subject to having all of their   |
+| activities on this system monitored and recorded by system      |
+| personnel.                                                      |
+|                                                                 |
+| In the course of monitoring individuals improperly using this   |
+| system, or in the course of system maintenance, the activities  |
+| of authorized users may also be monitored.                      |
+|                                                                 |
+| Anyone using this system expressly consents to such monitoring  |
+| and is advised that if such monitoring reveals possible         |
+| evidence of criminal activity, system personnel may provide the |
+| evidence of such monitoring to law enforcement officials.       |
+*-----------------------------------------------------------------*
+ppasik01@indpdns01% sudo su
+Password:
+# passwd root
+New password: 
+Re-enter new password: 
+passwd (SYSTEM): passwd successfully changed for root
+# exit
+ppasik01@indpdns01% exit
+logout
+Connection to 10.7.41.48 closed.
+
+=========================================================================
+=== 07/02/04,11:36:33 Connecting to 10.6.41.48 (10.6.41.48)
+=========================================================================
+spawn /bin/ksh
+spawn ssh -o stricthostkeychecking=no -l ppasik01 10.6.41.48
+ppasik01@10.6.41.48's password: 
+Last login: Fri Jul  2 11:33:48 2004 from tux.nmcc.sprint
+Sun Microsystems Inc.   SunOS 5.7       Generic October 1998
+*-----------------------------------------------------------------*
+| This system is for the use of authorized users only.            |
+| Individuals using this computer system without authority, or in |
+| excess of their authority, are subject to having all of their   |
+| activities on this system monitored and recorded by system      |
+| personnel.                                                      |
+|                                                                 |
+| In the course of monitoring individuals improperly using this   |
+| system, or in the course of system maintenance, the activities  |
+| of authorized users may also be monitored.                      |
+|                                                                 |
+| Anyone using this system expressly consents to such monitoring  |
+| and is advised that if such monitoring reveals possible         |
+| evidence of criminal activity, system personnel may provide the |
+| evidence of such monitoring to law enforcement officials.       |
+*-----------------------------------------------------------------*
+ppasik01@omhadns01% sudo su
+Password:
+# passwd root
+New password: 
+Re-enter new password: 
+passwd (SYSTEM): passwd successfully changed for root
+# exit
+ppasik01@omhadns01% exit
+logout
+Connection to 10.6.41.48 closed.
+
+=========================================================================
+=== 07/02/04,11:36:35 Connecting to 10.11.217.48 (10.11.217.48)
+=========================================================================
+spawn /bin/ksh
+spawn ssh -o stricthostkeychecking=no -l ppasik01 10.11.217.48
+ppasik01@10.11.217.48's password: 
+Last login: Fri Jul  2 12:31:59 2004 from tux.nmcc.sprint
+Sun Microsystems Inc.   SunOS 5.7       Generic October 1998
+*-----------------------------------------------------------------*
+| This system is for the use of authorized users only.            |
+| Individuals using this computer system without authority, or in |
+| excess of their authority, are subject to having all of their   |
+| activities on this system monitored and recorded by system      |
+| personnel.                                                      |
+|                                                                 |
+| In the course of monitoring individuals improperly using this   |
+| system, or in the course of system maintenance, the activities  |
+| of authorized users may also be monitored.                      |
+|                                                                 |
+| Anyone using this system expressly consents to such monitoring  |
+| and is advised that if such monitoring reveals possible         |
+| evidence of criminal activity, system personnel may provide the |
+| evidence of such monitoring to law enforcement officials.       |
+*-----------------------------------------------------------------*
+ppasik01@brandns01% sudo su
+Password:
+# passwd root
+New password: 
+Re-enter new password: 
+passwd (SYSTEM): passwd successfully changed for root
+# exit
+ppasik01@brandns01% exit
+logout
+Connection to 10.11.217.48 closed.
+
+=========================================================================
+=== 07/02/04,11:36:38 Connecting to 10.11.169.48 (10.11.169.48)
+=========================================================================
+spawn /bin/ksh
+spawn ssh -o stricthostkeychecking=no -l ppasik01 10.11.169.48
+ppasik01@10.11.169.48's password: 
+Last login: Fri Jul  2 12:34:23 2004 from 208.4.114.177
+Sun Microsystems Inc.   SunOS 5.7       Generic October 1998
+*-----------------------------------------------------------------*
+| This system is for the use of authorized users only.            |
+| Individuals using this computer system without authority, or in |
+| excess of their authority, are subject to having all of their   |
+| activities on this system monitored and recorded by system      |
+| personnel.                                                      |
+|                                                                 |
+| In the course of monitoring individuals improperly using this   |
+| system, or in the course of system maintenance, the activities  |
+| of authorized users may also be monitored.                      |
+|                                                                 |
+| Anyone using this system expressly consents to such monitoring  |
+| and is advised that if such monitoring reveals possible         |
+| evidence of criminal activity, system personnel may provide the |
+| evidence of such monitoring to law enforcement officials.       |
+*-----------------------------------------------------------------*
+ppasik01@chekdns01% sudo su
+Password:
+# passwd root
+New password: 
+Re-enter new password: 
+passwd (SYSTEM): passwd successfully changed for root
+# exit
+ppasik01@chekdns01% exit
+logout
+Connection to 10.11.169.48 closed.
+
+=========================================================================
+=== 07/02/04,11:36:40 Connecting to 10.14.9.48 (10.14.9.48)
+=========================================================================
+spawn /bin/ksh
+spawn ssh -o stricthostkeychecking=no -l ppasik01 10.14.9.48
+ppasik01@10.14.9.48's password: 
+Last login: Fri Jul  2 11:34:40 2004 from tux.nmcc.sprint
+Sun Microsystems Inc.   SunOS 5.7       Generic October 1998
+*-----------------------------------------------------------------*
+| This system is for the use of authorized users only.            |
+| Individuals using this computer system without authority, or in |
+| excess of their authority, are subject to having all of their   |
+| activities on this system monitored and recorded by system      |
+| personnel.                                                      |
+|                                                                 |
+| In the course of monitoring individuals improperly using this   |
+| system, or in the course of system maintenance, the activities  |
+| of authorized users may also be monitored.                      |
+|                                                                 |
+| Anyone using this system expressly consents to such monitoring  |
+| and is advised that if such monitoring reveals possible         |
+| evidence of criminal activity, system personnel may provide the |
+| evidence of such monitoring to law enforcement officials.       |
+*-----------------------------------------------------------------*
+ppasik01@indydns01% sudo su
+Password:
+# passwd root
+New password: 
+Re-enter new password: 
+passwd (SYSTEM): passwd successfully changed for root
+# exit
+ppasik01@indydns01% exit
+logout
+Connection to 10.14.9.48 closed.
+
+=========================================================================
+=== 07/02/04,11:36:41 Connecting to 10.15.137.48 (10.15.137.48)
+=========================================================================
+spawn /bin/ksh
+spawn ssh -o stricthostkeychecking=no -l ppasik01 10.15.137.48
+ppasik01@10.15.137.48's password: 
+Last login: Fri Jul  2 12:34:57 2004 from tux.nmcc.sprint
+Sun Microsystems Inc.   SunOS 5.7       Generic October 1998
+*-----------------------------------------------------------------*
+| This system is for the use of authorized users only.            |
+| Individuals using this computer system without authority, or in |
+| excess of their authority, are subject to having all of their   |
+| activities on this system monitored and recorded by system      |
+| personnel.                                                      |
+|                                                                 |
+| In the course of monitoring individuals improperly using this   |
+| system, or in the course of system maintenance, the activities  |
+| of authorized users may also be monitored.                      |
+|                                                                 |
+| Anyone using this system expressly consents to such monitoring  |
+| and is advised that if such monitoring reveals possible         |
+| evidence of criminal activity, system personnel may provide the |
+| evidence of such monitoring to law enforcement officials.       |
+*-----------------------------------------------------------------*
+ppasik01@lansdns01% sudo su
+Password:
+# passwd root
+New password: 
+Re-enter new password: 
+passwd (SYSTEM): passwd successfully changed for root
+# exit
+ppasik01@lansdns01% exit
+logout
+Connection to 10.15.137.48 closed.
+
+=========================================================================
+=== 07/02/04,11:36:43 Connecting to 10.18.41.48 (10.18.41.48)
+=========================================================================
+spawn /bin/ksh
+spawn ssh -o stricthostkeychecking=no -l ppasik01 10.18.41.48
+ppasik01@10.18.41.48's password: 
+Last login: Fri Jul  2 11:34:59 2004 from tux.nmcc.sprint
+Sun Microsystems Inc.   SunOS 5.7       Generic October 1998
+*-----------------------------------------------------------------*
+| This system is for the use of authorized users only.            |
+| Individuals using this computer system without authority, or in |
+| excess of their authority, are subject to having all of their   |
+| activities on this system monitored and recorded by system      |
+| personnel.                                                      |
+|                                                                 |
+| In the course of monitoring individuals improperly using this   |
+| system, or in the course of system maintenance, the activities  |
+| of authorized users may also be monitored.                      |
+|                                                                 |
+| Anyone using this system expressly consents to such monitoring  |
+| and is advised that if such monitoring reveals possible         |
+| evidence of criminal activity, system personnel may provide the |
+| evidence of such monitoring to law enforcement officials.       |
+*-----------------------------------------------------------------*
+ppasik01@ftwtdns01% sudo su
+Password:
+# passwd root
+New password: 
+Re-enter new password: 
+passwd (SYSTEM): passwd successfully changed for root
+# exit
+ppasik01@ftwtdns01% exit
+logout
+Connection to 10.18.41.48 closed.
+
+=========================================================================
+=== 07/02/04,11:36:46 Connecting to 10.18.201.48 (10.18.201.48)
+=========================================================================
+spawn /bin/ksh
+spawn ssh -o stricthostkeychecking=no -l ppasik01 10.18.201.48
+ppasik01@10.18.201.48's password: 
+Last login: Fri Jul  2 11:35:02 2004 from tux.nmcc.sprint
+Sun Microsystems Inc.   SunOS 5.7       Generic October 1998
+*-----------------------------------------------------------------*
+| This system is for the use of authorized users only.            |
+| Individuals using this computer system without authority, or in |
+| excess of their authority, are subject to having all of their   |
+| activities on this system monitored and recorded by system      |
+| personnel.                                                      |
+|                                                                 |
+| In the course of monitoring individuals improperly using this   |
+| system, or in the course of system maintenance, the activities  |
+| of authorized users may also be monitored.                      |
+|                                                                 |
+| Anyone using this system expressly consents to such monitoring  |
+| and is advised that if such monitoring reveals possible         |
+| evidence of criminal activity, system personnel may provide the |
+| evidence of such monitoring to law enforcement officials.       |
+*-----------------------------------------------------------------*
+ppasik01@nokedns01% sudo su
+Password:
+# passwd root
+New password: 
+Re-enter new password: 
+passwd (SYSTEM): passwd successfully changed for root
+# exit
+ppasik01@nokedns01% exit
+logout
+Connection to 10.18.201.48 closed.
+
+=========================================================================
+=== 07/02/04,11:36:48 Connecting to 10.26.41.48 (10.26.41.48)
+=========================================================================
+spawn /bin/ksh
+spawn ssh -o stricthostkeychecking=no -l ppasik01 10.26.41.48
+ppasik01@10.26.41.48's password: 
+Last login: Fri Jul  2 12:35:04 2004 from tux.nmcc.sprint
+Sun Microsystems Inc.   SunOS 5.7       Generic October 1998
+*-----------------------------------------------------------------*
+| This system is for the use of authorized users only.            |
+| Individuals using this computer system without authority, or in |
+| excess of their authority, are subject to having all of their   |
+| activities on this system monitored and recorded by system      |
+| personnel.                                                      |
+|                                                                 |
+| In the course of monitoring individuals improperly using this   |
+| system, or in the course of system maintenance, the activities  |
+| of authorized users may also be monitored.                      |
+|                                                                 |
+| Anyone using this system expressly consents to such monitoring  |
+| and is advised that if such monitoring reveals possible         |
+| evidence of criminal activity, system personnel may provide the |
+| evidence of such monitoring to law enforcement officials.       |
+*-----------------------------------------------------------------*
+ppasik01@chardns01% sudo su
+Password:
+# passwd root
+New password: 
+Re-enter new password: 
+passwd (SYSTEM): passwd successfully changed for root
+# exit
+ppasik01@chardns01% exit
+logout
+Connection to 10.26.41.48 closed.
+
+=========================================================================
+=== 07/02/04,11:36:51 Connecting to 10.26.169.48 (10.26.169.48)
+=========================================================================
+spawn /bin/ksh
+spawn ssh -o stricthostkeychecking=no -l ppasik01 10.26.169.48
+ppasik01@10.26.169.48's password: 
+Last login: Fri Jul  2 12:35:06 2004 from tux.nmcc.sprint
+Sun Microsystems Inc.   SunOS 5.7       Generic October 1998
+*-----------------------------------------------------------------*
+| This system is for the use of authorized users only.            |
+| Individuals using this computer system without authority, or in |
+| excess of their authority, are subject to having all of their   |
+| activities on this system monitored and recorded by system      |
+| personnel.                                                      |
+|                                                                 |
+| In the course of monitoring individuals improperly using this   |
+| system, or in the course of system maintenance, the activities  |
+| of authorized users may also be monitored.                      |
+|                                                                 |
+| Anyone using this system expressly consents to such monitoring  |
+| and is advised that if such monitoring reveals possible         |
+| evidence of criminal activity, system personnel may provide the |
+| evidence of such monitoring to law enforcement officials.       |
+*-----------------------------------------------------------------*
+ppasik01@atlndns01% sudo su
+Password:
+# passwd root
+New password: 
+Re-enter new password: 
+passwd (SYSTEM): passwd successfully changed for root
+# exit
+ppasik01@atlndns01% exit
+logout
+Connection to 10.26.169.48 closed.
+
+=========================================================================
+=== 07/02/04,11:37:03 Connecting to 10.22.21.198 (10.22.21.198)
+=========================================================================
+spawn /bin/ksh
+spawn ssh -o stricthostkeychecking=no -l ppasik01 10.22.21.198
+ppasik01@10.22.21.198's password: 
+Last login: Fri Jul  2 11:24:58 2004 from 208.4.114.177
+Sun Microsystems Inc.   SunOS 5.7       Generic October 1998
+*-----------------------------------------------------------------*
+| This system is for the use of authorized users only.            |
+| Individuals using this computer system without authority, or in |
+| excess of their authority, are subject to having all of their   |
+| activities on this system monitored and recorded by system      |
+| personnel.                                                      |
+|                                                                 |
+| In the course of monitoring individuals improperly using this   |
+| system, or in the course of system maintenance, the activities  |
+| of authorized users may also be monitored.                      |
+|                                                                 |
+| Anyone using this system expressly consents to such monitoring  |
+| and is advised that if such monitoring reveals possible         |
+| evidence of criminal activity, system personnel may provide the |
+| evidence of such monitoring to law enforcement officials.       |
+*-----------------------------------------------------------------*
+
+ppasik01@osscdns01% sudo su
+Password:
+# passwd root
+New password: 
+Re-enter new password: 
+passwd (SYSTEM): passwd successfully changed for root
+# exit
+ppasik01@osscdns01% exit
+logout
+Connection to 10.22.21.198 closed.
+
+=========================================================================
+=== 07/02/04,11:37:04 Connecting to 10.22.21.199 (10.22.21.199)
+=========================================================================
+spawn /bin/ksh
+spawn ssh -o stricthostkeychecking=no -l ppasik01 10.22.21.199
+ppasik01@10.22.21.199's password: 
+Last login: Fri Jul  2 11:35:09 2004 from 208.4.114.177
+Sun Microsystems Inc.   SunOS 5.7       Generic October 1998
+*-----------------------------------------------------------------*
+| This system is for the use of authorized users only.            |
+| Individuals using this computer system without authority, or in |
+| excess of their authority, are subject to having all of their   |
+| activities on this system monitored and recorded by system      |
+| personnel.                                                      |
+|                                                                 |
+| In the course of monitoring individuals improperly using this   |
+| system, or in the course of system maintenance, the activities  |
+| of authorized users may also be monitored.                      |
+|                                                                 |
+| Anyone using this system expressly consents to such monitoring  |
+| and is advised that if such monitoring reveals possible         |
+| evidence of criminal activity, system personnel may provide the |
+| evidence of such monitoring to law enforcement officials.       |
+*-----------------------------------------------------------------*
+
+root@osscdns02% sudo su
+Password:
+# passwd root
+New password: 
+Re-enter new password: 
+passwd (SYSTEM): passwd successfully changed for root
+# exit
+root@osscdns02% exit
+logout
+Connection to 10.22.21.199 closed.

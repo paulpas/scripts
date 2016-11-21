@@ -8,7 +8,7 @@
 
 temp=`mktemp -d`
 yourlogin=read-only-user
-ip=10.32.250.1
+ip=10.0.0.1
 password="xxxxxxxx"
 name=`basename $0 | awk -F. '{print $1}'`
 

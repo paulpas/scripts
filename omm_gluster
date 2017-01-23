@@ -1,0 +1,103 @@
+How to set up OMM NAS gluster on the client and server
+
+############################
+#nas01 and nas02:
+############################
+
+## Setup /dev/sdb
+
+# Partition /dev/sdb with a type 8e primary partition, using gparted or fdisk
+
+# Set up LVM, format, and mount
+pvcreate /dev/sdb1
+vgcreate gluster_vol /dev/sdb1
+lvcreate -l 100%FREE -n gluster_store gluster_vol
+mkfs.ext4 /dev/gluster_vol/gluster_store
+echo "/dev/gluster_vol/gluster_store	/export		ext4	defaults	0	0" >> /etc/fstab
+mkdir /export
+
+# Install Gluster
+yum install glusterfs-server
+service glusterd start
+
+############################
+# nas01 
+############################
+gluster peer probe ednas02
+
+# Verify things look good with
+gluster peer status
+
+gluster volume create ed-volume replica 2 transport tcp ednas01:/export ednas02:/export force
+gluster volume start ed-volume
+
+
+
+############################
+# Clients
+############################
+yum -y install glusterfs glusterfs-fuse
+mkdir /export
+mkdir /etc/glusterfs
+
+# Set up client config
+cat > /etc/glusterfs/datastore.vol << EOF
+volume remote1
+  type protocol/client
+  option transport-type tcp
+  option ping-timeout 2
+  option remote-host ednas01
+  option remote-subvolume /export
+end-volume
+
+volume remote2
+  type protocol/client
+  option transport-type tcp
+  option ping-timeout 2
+  option remote-host ednas02
+  option remote-subvolume /export
+end-volume
+
+volume replicate
+  type cluster/replicate
+  subvolumes remote1 remote2
+end-volume
+
+volume writebehind
+  type performance/write-behind
+  option window-size 1MB
+  subvolumes replicate
+end-volume
+
+volume cache
+  type performance/io-cache
+  option cache-size 512MB
+  subvolumes writebehind
+end-volume
+EOF
+
+# Mount volume
+echo "/etc/glusterfs/datastore.vol /export	glusterfs	rw 0 0" >> /etc/fstab
+mount /export
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Maintenance
+
+# Repair and resync volume ed-volume
+gluster volume heal ed-volume full

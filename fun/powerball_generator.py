@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import random
 print "Offical Powerball number generator"
 x = int(raw_input("How many sets of numbers? "))

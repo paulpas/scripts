@@ -3,7 +3,6 @@
 # get profit stats for a coin, 
 # prices are for 24 hour average.
 
-
 # hashrate for Erhash (ETC/ETH) in MH/s
 ETHHASHRATE=289
 # hashrate for equihash (ZEC) in h/s
@@ -19,17 +18,8 @@ APIurl="http://whattomine.com/coins.json?utf8=%E2%9C%93&eth=true&factor%5Beth_hr
 
 temp=`mktemp`
 
-# Detect if g$SED is available for Mac OSX, if not then exit.
-if [[ `uname -s` == "Darwin" ]]
-then
-     SED=gsed
-else
-     SED=sed
-fi
 # collect stats for parsing
 curl -s "$APIurl" > $temp
-# it downloads into a 1 line file, break it up on the tag "id"
-$SED -i 's/id/\n/g' $temp
 
 echo "Mined USD in 24 hours"
 echo "Add SIA to total values because of dual mining factors"
@@ -40,11 +30,9 @@ CurrencyToCheck="ETH ETC ZEC SC"
 
 for i in $CurrencyToCheck
 do
-	echo -n "`grep "$i" $temp | awk -F: '{print $3}' | awk -F, '{print $1}' | $SED 's/\"//g'` " > $temp$i
-	echo "`grep $i $temp | awk -F: '{print $20}' | awk -F, '{print $1}' | $SED 's/\"//g'`" >> $temp$i
-	echo -n "`awk '{print $1}' $temp$i` "
-	echo "$(awk '{print $2}' $temp$i) * $(curl -s http://api.coindesk.com/v1/bpi/currentprice/USD.json | jq .bpi.\"USD\".rate | tr -d \"\"\" | $SED -e 's/,//g' )"  | bc -l
+     jq ".coins[] | select(.tag == \"$i\") | .tag, .btc_revenue24" $temp | sed 's/\"//g' | sed '$!N;s/\n/ /' > $temp$i
+     echo -n "$(awk '{print $1}' $temp$i) "
+     echo "$(awk '{print $2}' $temp$i) * $(curl -s http://api.coindesk.com/v1/bpi/currentprice/USD.json | jq .bpi.\"USD\".rate | tr -d \"\"\" | sed -e 's/,//g' )"  | bc -l
 done
 
 rm -f $temp*
-

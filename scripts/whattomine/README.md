@@ -2,9 +2,7 @@ Auto switch between the most profitable coin.
 
 It assumes that you have set up systemd for claymore on Ubuntu:
 ```
-vi /etc/systemd/system/claymore.service
-
-cat << EOF > /tmp/claymore.service
+cat << EOF > /etc/systemd/system/claymore.service
 [Unit]
 Description=Claymore Etherenet Miner
 After=syslog.target

@@ -25,3 +25,13 @@ systemctl start claymore.service
 ```
 
 On ethOS is requires that you have your claymore miner utilizing claymore.stub.conf
+
+You will need to put this into your path
+```
+echo "PATH=$PATH:$HOME/git/scripts/scripts/whattomine" >> $HOME/.bashrc
+```
+
+Now setup in cron to check every hour and make a switch.
+```
+0 * * * * source $HOME/.bashrc&&switchclaymore.sh
+```

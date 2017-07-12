@@ -1,7 +1,7 @@
 Auto switch between the most profitable coin.
 
 It assumes that you have set up systemd for claymore on Ubuntu:
-
+```
 vi /etc/systemd/system/claymore.service
 
 cat << EOF > /tmp/claymore.service
@@ -24,6 +24,6 @@ EOF
 systemctl daemon-reload
 systemctl enable claymore.service
 systemctl start claymore.service
-
+```
 
 On ethOS is requires that you have your claymore miner utilizing claymore.stub.conf

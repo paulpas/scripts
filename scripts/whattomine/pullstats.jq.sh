@@ -4,7 +4,7 @@
 # prices are for 24 hour average.
 
 # hashrate for Erhash (ETC/ETH) in MH/s
-ETHHASHRATE=290
+ETHHASHRATE=287
 # hashrate for equihash (ZEC) in h/s
 EQUIHASH=3900
 # hashrate for blake2b (SIA) in Mh/s

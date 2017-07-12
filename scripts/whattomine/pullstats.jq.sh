@@ -37,7 +37,7 @@ jq '.coins[].tag' $temp | sed 's/\"//g' | egrep -v "$FILTER" | while read i
 do
      jq ".coins[] | select(.tag == \"$i\") | .tag, .btc_revenue24" $temp | sed 's/\"//g' | sed '$!N;s/\n/ /' > $temp$i
      echo -n "$(awk '{print $1}' $temp$i) "
-     echo "$(awk '{print $2}' $temp$i) * $(curl -s http://api.coindesk.com/v1/bpi/currentprice/USD.json | jq .bpi.\"USD\".rate | tr -d \"\"\" | sed -e 's/,//g' )"  | bc -l
+     echo "$(awk '{print $2}' $temp$i) * $(curl -s http://api.coindesk.com/v1/bpi/currentprice/USD.json | jq .bpi."USD".rate | tr -d \"\"\" | sed -e 's/,//g' )"  | bc -l
 done | sort -rnk 2
 
 rm -f $temp*

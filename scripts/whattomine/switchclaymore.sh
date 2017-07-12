@@ -19,8 +19,14 @@ fi
 BestCoin=`pullstats.jq.sh | grep -E 'ET[CH]' | head -1 | awk '{print $1}' | tr '[:upper:]' '[:lower:]'`
 
 # move config file to the most profitable coin
-cp -f $ClaymoreRUN.$BestCoin $ClaymoreRUN
+beforeSUM=`md5sum $ClaymoreRUN | awk '{print $1'}`
+afterSUM=`md5sum $ClaymoreRUN.$BestCoin | awk '{print $1}'`
 
-# restart miner
-echo $RestartCMD | sh
+if [[ "$beforeSUM" != "$afterSUM" ]]
+then
+	cp -f $ClaymoreRUN.$BestCoin $ClaymoreRUN
+	
+	# restart miner
+	echo $RestartCMD | sh
+fi
 

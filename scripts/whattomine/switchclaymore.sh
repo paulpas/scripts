@@ -3,6 +3,15 @@
 # Detect OS, Ubuntu or ethos
 # I install Claymore in /opt/Claymore on Ubuntu
 
+# 
+if [ -d $HOME/git/scripts/scripts/whattomine ]]
+then
+     BINROOT=$HOME/git/scripts/scripts/whattomine
+     PATH=$PATH:$BINROOT
+else
+     exit 1
+fi
+
 if uname -r | grep -- "-generic"
 then
         ClaymoreROOT=/opt/Claymore

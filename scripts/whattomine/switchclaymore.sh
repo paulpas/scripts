@@ -12,12 +12,12 @@ else
      exit 1
 fi
 
-if uname -r | grep -- "-generic"
+if uname -r | grep -- "-generic" >/dev/null
 then
         ClaymoreROOT=/opt/Claymore
         ClaymoreRUN=$ClaymoreROOT/start.bash
         RestartCMD="sudo systemctl restart claymore.service"
-elif uname -r | grep -- "-ethos"
+elif uname -r | grep -- "-ethos" >/dev/null
 then
         ClaymoreROOT=$HOME
         ClaymoreRUN=$ClaymoreROOT/claymore.stub.conf

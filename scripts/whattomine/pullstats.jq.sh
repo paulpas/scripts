@@ -4,14 +4,14 @@
 # prices are for 24 hour average.
 
 # hashrate for Erhash (ETC/ETH) in MH/s
-ETHHASHRATE=287
+ETHHASHRATE=428
 # hashrate for equihash (ZEC) in h/s
 EQUIHASH=3900
 # hashrate for blake2b (SIA) in Mh/s
-SIAHASH=3900
+SIAHASH=3000
 
 # Total Watts for all rigs
-ETHWATTS=2000
+ETHWATTS=2900
 EQUWATTS=2000
 WATTS=2000 # generic place holder
 BLAKEWATTS=0 # 0 because I'm dual mining and it's taking no more power

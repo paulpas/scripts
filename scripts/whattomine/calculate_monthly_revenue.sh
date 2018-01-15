@@ -90,5 +90,5 @@ echo $ETHPerMonth
 SUM=0
 for i in $(ETHNanoPool) $(SCNanoPool) $(ZECNanoPool) $(ETHEthermine)
 do
-	echo -n "$i+"
-done | sed 's/.$//' | bc -l
+	echo "$i"
+done | gawk '{sum+=$1} END {print sum}'

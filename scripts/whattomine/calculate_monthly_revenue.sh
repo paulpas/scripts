@@ -5,6 +5,8 @@
 ETHAddress=2E92eaB40B89367C5cc72b41c3b613197Ecfe591
 SCAddress=a477c7fe22964d2c12a934a6e867b9830f6ecd5f4b7937dcfd9f6701a7a34ab3e3816566537f
 ZECAddress=t1Rxg7pVjX8UvVZ3bLpNEm1pXpwh9WiTEFg
+XMRAddress=4JUdGzvrMFDWrUUwY3toJATSeNwjn54LkCnKBPRzDuhzi5vSepHfUckJNxRL2gjkNrSqtCoRUrEDAgRwsQvVCjZbS1MAmG7hKb34Rxh9vp
+
 TimeRangeHours=3
 
 #########################################
@@ -77,6 +79,29 @@ done
 echo $ZECNanopoolRevenue
 }
 
+#########################################
+# XMR Nanopool
+#########################################
+function XMRNanoPool
+{
+# Nanopool XMR ave hash collection. 
+# Run until the value isn't null since it's an unreliable API
+XMRHashRate=0
+while [[ $XMRHashRate == 0 ]]
+do
+	XMRHashRate=$(curl -s https://api.nanopool.org/v1/xmr/avghashratelimited/$XMRAddress/$TimeRangeHours | jq '.data')
+done
+
+# Nanopool Revenue calculation, requires SC ave hash collection.  
+# Run until value isn't null since it's an unreliable API
+XMRNanopoolRevenue=null
+while [[ $XMRNanopoolRevenue == null ]]
+do
+	XMRNanopoolRevenue=$(curl -s https://api.nanopool.org/v1/xmr/approximated_earnings/$XMRHashRate | jq '.data.month.dollars')
+done
+echo $XMRNanopoolRevenue
+}
+
 
 #########################################
 # ETH Ethermine
@@ -88,7 +113,7 @@ echo $ETHPerMonth
 }
 
 SUM=0
-for i in $(ETHNanoPool) $(SCNanoPool) $(ZECNanoPool) $(ETHEthermine)
+for i in $(ETHNanoPool) $(SCNanoPool) $(ZECNanoPool) $(XMRNanoPool) # $(ETHEthermine)
 do
 	echo "$i"
 done | gawk '{sum+=$1} END {print sum}'

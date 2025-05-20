@@ -80,6 +80,7 @@ You can install the required Python packages with:
 ```
 sudo apt update
 sudo apt install -y python3-pip python3-pandas python3-matplotlib python3-numpy
+pip3 install pyparsing
 ```
 
 ## Installation

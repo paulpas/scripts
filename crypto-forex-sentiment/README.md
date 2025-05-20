@@ -72,7 +72,8 @@ The script generates three PNG charts (1024x1024):
   - numpy
 - curl (for fetching data)
 - jq (for JSON processing)
-- mods (for AI sentiment analysis)
+- mods (for AI sentiment analysis
+  - https://github.com/charmbracelet/mods
 
 You can install the required Python packages with:
 

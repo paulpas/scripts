@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Source user profile to get environment variables
+source $HOME/.profile
+source $HOME/.bashrc  # Also source bashrc if needed
+
 # Define feed URLs
 CRYPTO_FEEDS="https://www.coindesk.com/arc/outboundfeeds/rss/ \
 https://cointelegraph.com/rss \
@@ -181,7 +185,7 @@ try:
     }
     
     # Create the plot
-    plt.figure(figsize=(16, 9))  # Slightly wider to accommodate the legend
+    plt.figure(figsize=(32, 9))  # Slightly wider to accommodate the legend
     plt.title(title, fontsize=16)
     plt.xlabel('Date', fontsize=12)
     plt.ylabel('Sentiment Score (0-100)', fontsize=12)
@@ -325,12 +329,13 @@ clean_old_data "$COMBINED_DATA"
 
 # Create charts using Python
 echo "Generating crypto sentiment chart..."
-create_chart_with_python "$CRYPTO_DATA" "$DATA_DIR/crypto_sentiment_chart.png" "Crypto Market Sentiment (Last 3 Months)"
+create_chart_with_python "$CRYPTO_DATA" "$DATA_DIR/crypto_sentiment_chart.png" "Crypto Market Sentiment (Last 3 Months)" &
 
 echo "Generating forex sentiment chart..."
-create_chart_with_python "$FOREX_DATA" "$DATA_DIR/forex_sentiment_chart.png" "Forex Market Sentiment (Last 3 Months)"
+create_chart_with_python "$FOREX_DATA" "$DATA_DIR/forex_sentiment_chart.png" "Forex Market Sentiment (Last 3 Months)" &
 
 echo "Generating combined sentiment chart..."
 create_chart_with_python "$COMBINED_DATA" "$DATA_DIR/combined_sentiment_chart.png" "Crypto vs Forex Market Summary (Last 3 Months)" "true"
 
-echo "Sentiment data updated and charts generated in $DATA_DIR/"
+echo "Sentiment data updated and charts generated in $DATA_DIR/" &
+wait

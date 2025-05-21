@@ -67,10 +67,10 @@ add_to_data() {
   echo "$json" >> "$data_file"
 }
 
-# Function to clean old data (keep only last 3 months)
+# Function to clean old data (keep only last 1 months)
 clean_old_data() {
   local data_file="$1"
-  local cutoff_date=$(date -d "3 months ago" +"%Y-%m-%d %H:%M:%S")
+  local cutoff_date=$(date -d "1 months ago" +"%Y-%m-%d %H:%M:%S")
   
   # If the file exists
   if [ -f "$data_file" ]; then
@@ -120,7 +120,7 @@ title = sys.argv[3]
 summary_only = len(sys.argv) > 4 and sys.argv[4] == "summary_only"
 
 # Define the window size for the moving average
-WINDOW_SIZE = 3  # Can be adjusted for more or less smoothing
+WINDOW_SIZE = 24  # Can be adjusted for more or less smoothing
 
 try:
     # Create an empty list to store data
@@ -185,7 +185,7 @@ try:
     }
     
     # Create the plot
-    plt.figure(figsize=(32, 9))  # Slightly wider to accommodate the legend
+    plt.figure(figsize=(20, 9))  # Slightly wider to accommodate the legend
     plt.title(title, fontsize=16)
     plt.xlabel('Date', fontsize=12)
     plt.ylabel('Sentiment Score (0-100)', fontsize=12)

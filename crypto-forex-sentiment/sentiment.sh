@@ -324,10 +324,10 @@ fi
 echo "Generating crypto sentiment chart..."
 create_chart_with_python "$CRYPTO_DATA" "$DATA_DIR/crypto_sentiment_chart.png" "Crypto Market Sentiment (Last 3 Months)"
 
-echo "Generating forex sentiment chart..."
-create_chart_with_python "$FOREX_DATA" "$DATA_DIR/forex_sentiment_chart.png" "Forex Market Sentiment (Last 3 Months)"
-
-echo "Generating combined sentiment chart..."
-create_chart_with_python "$COMBINED_DATA" "$DATA_DIR/combined_sentiment_chart.png" "Combined Market Sentiment (Last 3 Months)"
-
-echo "Sentiment data updated and charts generated in $DATA_DIR/"
+#echo "Generating forex sentiment chart..."
+#create_chart_with_python "$FOREX_DATA" "$DATA_DIR/forex_sentiment_chart.png" "Forex Market Sentiment (Last 3 Months)"
+#
+#echo "Generating combined sentiment chart..."
+#create_chart_with_python "$COMBINED_DATA" "$DATA_DIR/combined_sentiment_chart.png" "Combined Market Sentiment (Last 3 Months)"
+#
+#echo "Sentiment data updated and charts generated in $DATA_DIR/"

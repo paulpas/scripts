@@ -184,7 +184,7 @@ get_sentiment() {
   # Process headlines with mods
   #echo "$headlines" | mods --no-cache --quiet --api ollama --model gemma3:27b "${PROMPT} ${SCHEMA}" |
   #echo "$headlines" | mods --no-cache --quiet --api ollama --model deepseek-r1:32b "${PROMPT} ${SCHEMA}" |
-  echo "$headlines" | mods --no-cache --quiet --api ollama --model phi4:14b "${PROMPT} ${SCHEMA}" |
+  echo "$headlines" | mods --no-limit --no-cache --quiet --api ollama --model phi4:14b "${PROMPT} ${SCHEMA}" |
     # Extract JSON block
     awk '/^[[:space:]]*{/,/^[[:space:]]*}/ {print}' |
     # Add type field and format with jq

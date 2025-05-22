@@ -15,23 +15,12 @@ for arg in "$@"; do
 done
 
 # Define feed URLs
-CRYPTO_FEEDS="https://www.coindesk.com/arc/outboundfeeds/rss/ \
-https://cointelegraph.com/rss \
-https://bitcoinist.com/feed/ \
-https://www.newsbtc.com/feed/ \
-https://cryptopotato.com/feed/ \
-https://99bitcoins.com/news/feed/ \
-https://cryptobriefing.com/feed/ \
-https://crypto.news/tag/cryptocurrency/ \
-https://www.fxempire.com/api/v1/en/articles/rss/forecasts"
+CRYPTO_FEEDS="https://www.coindesk.com/arc/outboundfeeds/rss/ https://cointelegraph.com/rss https://bitcoinist.com/feed/ https://www.newsbtc.com/feed/ https://cryptopotato.com/feed/ https://99bitcoins.com/news/feed/ https://cryptobriefing.com/feed/ https://crypto.news/tag/cryptocurrency/ https://www.fxempire.com/api/v1/en/articles/rss/forecasts"
 
-FOREX_FEEDS="https://feeds.content.dowjones.io/public/rss/WSJcomUSBusiness \
-https://feeds.content.dowjones.io/public/rss/latestnewsrealestate \
-https://feeds.content.dowjones.io/public/rss/RSSWorldNews \
-https://feeds.content.dowjones.io/public/rss/socialpoliticsfeed"
+FOREX_FEEDS="https://feeds.content.dowjones.io/public/rss/WSJcomUSBusiness https://feeds.content.dowjones.io/public/rss/latestnewsrealestate https://feeds.content.dowjones.io/public/rss/RSSWorldNews https://feeds.content.dowjones.io/public/rss/socialpoliticsfeed"
 
 # Define prompt and schema
-PROMPT="what is the general sentiment of the markts from this rss feeds? Give it a scale from 0-100, 0 being absolute pessimism and despair, and 100 being euphoric optimism. Break down the score by major topic subjects, price forcasts, bull sentiment, bear sentiment, regulation sentiment, ETF sentiment, whale sentiment, retail sentiment, price forcasts, adoption, summary of entire market. Only tell me the score, nothing else, and say it in json format using this schema:"
+PROMPT="Based on these headlines from news feeds, what is the general sentiment of the markets? Give it a scale from 0-100, 0 being absolute pessimism and despair, and 100 being euphoric optimism. Break down the score by major topic subjects, price forecasts, bull sentiment, bear sentiment, regulation sentiment, ETF sentiment, whale sentiment, retail sentiment, adoption, and summary of entire market. Only provide the score in json format using this schema:"
 
 SCHEMA='{
   "Price Forecasts": 0,
@@ -55,13 +44,147 @@ COMBINED_DATA="$DATA_DIR/combined_sentiment_data.txt"
 # Remove any old CSV files that might be causing issues
 rm -f "$DATA_DIR/crypto_sentiment.csv" "$DATA_DIR/forex_sentiment.csv" "$DATA_DIR/combined_sentiment.csv"
 
+# Function to fetch and extract structured content from RSS feeds
+extract_headlines_from_feeds() {
+    local output=""
+    local temp_file=$(mktemp)
+    local count=0
+    local total_feeds=$(echo $1 | wc -w)
+    
+    # Use bash word splitting to process each URL
+    for feed_url in $1; do
+        count=$((count + 1))
+        echo "Fetching data from feed $count/$total_feeds: $feed_url..."
+        
+        # Fetch the RSS feed
+        curl -s -L "$feed_url" > "$temp_file"
+        
+        # Check if the feed was fetched successfully
+        if [ -s "$temp_file" ]; then
+            # Extract feed content
+            local feed_content=$(cat "$temp_file")
+            
+            # Start with feed source information
+            output="${output}SOURCE: $feed_url\n"
+            
+            # Process each item in the feed
+            # First, try to identify item boundaries
+            local items=$(echo "$feed_content" | sed 's/<item>/\n<item>/g' | grep -o '<item>.*</item>' || echo "")
+            
+            if [ -z "$items" ]; then
+                # If no <item> tags found, process the whole feed
+                # Extract titles (skip the first which is usually the feed title)
+                local titles=$(echo "$feed_content" | grep -o "<title>.*</title>" | 
+                              sed 's/<title>//g; s/<\/title>//g' | 
+                              sed 's/&lt;/</g; s/&gt;/>/g; s/&amp;/\&/g; s/&quot;/"/g; s/&#39;/'"'"'/g' |
+                              tail -n +2)
+                
+                # Extract headlines if available
+                local headlines=$(echo "$feed_content" | grep -o "<headline>.*</headline>" | 
+                                 sed 's/<headline>//g; s/<\/headline>//g' | 
+                                 sed 's/&lt;/</g; s/&gt;/>/g; s/&amp;/\&/g; s/&quot;/"/g; s/&#39;/'"'"'/g')
+                
+                # Extract descriptions
+                local descriptions=$(echo "$feed_content" | grep -o "<description>.*</description>" | 
+                                    sed 's/<description>//g; s/<\/description>//g' | 
+                                    sed 's/<!$$CDATA\[//g; s/$$\]>//g' | 
+                                    sed 's/<[^>]*>//g' |  # Remove any HTML tags inside descriptions
+                                    sed 's/&lt;/</g; s/&gt;/>/g; s/&amp;/\&/g; s/&quot;/"/g; s/&#39;/'"'"'/g' |
+                                    grep -v "^$" | tail -n +2)
+                
+                # Extract content
+                local content=$(echo "$feed_content" | grep -o "<content>.*</content>\|<content:encoded>.*</content:encoded>" | 
+                               sed 's/<content>//g; s/<\/content>//g; s/<content:encoded>//g; s/<\/content:encoded>//g' | 
+                               sed 's/<!$$CDATA\[//g; s/$$\]>//g' | 
+                               sed 's/<[^>]*>//g' |  # Remove any HTML tags inside content
+                               sed 's/&lt;/</g; s/&gt;/>/g; s/&amp;/\&/g; s/&quot;/"/g; s/&#39;/'"'"'/g' |
+                               grep -v "^$")
+                
+                # Add structured content to output
+                if [ -n "$titles" ]; then
+                    output="${output}TITLES:\n$titles\n\n"
+                fi
+                
+                if [ -n "$headlines" ]; then
+                    output="${output}HEADLINES:\n$headlines\n\n"
+                fi
+                
+                if [ -n "$descriptions" ]; then
+                    output="${output}DESCRIPTIONS:\n$descriptions\n\n"
+                fi
+                
+                if [ -n "$content" ]; then
+                    # Limit content to first 200 chars to avoid overloading
+                    local trimmed_content=$(echo "$content" | cut -c1-200 | sed 's/$/.../')
+                    output="${output}CONTENT SNIPPETS:\n$trimmed_content\n\n"
+                fi
+            else
+                # Process each item individually if <item> tags were found
+                local item_count=0
+                while read -r item; do
+                    item_count=$((item_count + 1))
+                    
+                    # Extract elements from the item
+                    local title=$(echo "$item" | grep -o "<title>.*</title>" | 
+                                 sed 's/<title>//g; s/<\/title>//g' |
+                                 sed 's/&lt;/</g; s/&gt;/>/g; s/&amp;/\&/g; s/&quot;/"/g; s/&#39;/'"'"'/g')
+                    
+                    local description=$(echo "$item" | grep -o "<description>.*</description>" | 
+                                       sed 's/<description>//g; s/<\/description>//g' | 
+                                       sed 's/<!$$CDATA\[//g; s/$$\]>//g' | 
+                                       sed 's/<[^>]*>//g' |  # Remove any HTML tags inside descriptions 
+                                       sed 's/&lt;/</g; s/&gt;/>/g; s/&amp;/\&/g; s/&quot;/"/g; s/&#39;/'"'"'/g')
+                    
+                    # Add item information if available
+                    if [ -n "$title" ] || [ -n "$description" ]; then
+                        output="${output}ITEM $item_count:\n"
+                        
+                        if [ -n "$title" ]; then
+                            output="${output}Title: $title\n"
+                        fi
+                        
+                        if [ -n "$description" ]; then
+                            # Limit description to first 150 chars to avoid overloading
+                            local trimmed_desc=$(echo "$description" | cut -c1-150 | sed 's/$/.../')
+                            output="${output}Description: $trimmed_desc\n"
+                        fi
+                        
+                        output="${output}\n"
+                    fi
+                done <<< "$items"
+            fi
+            
+            # Add separator between feeds
+            output="${output}----------------------------------------\n\n"
+        else
+            echo "Warning: Failed to fetch feed from $feed_url"
+        fi
+    done
+    
+    # Clean up the temporary file
+    rm -f "$temp_file"
+    
+    # Output the structured content
+    echo "$output"
+}
+
 # Function to process feeds and extract sentiment data
 get_sentiment() {
   local feeds="$1"
   local type="$2"
 
-  # Fetch feeds and process with mods
-  curl -s -L $feeds | mods --no-cache --quiet "${PROMPT} ${SCHEMA}" |
+  # Extract just the headlines from feeds
+  local headlines=$(extract_headlines_from_feeds "$feeds")
+  
+  if [ -z "$headlines" ]; then
+    echo "Error: No headlines extracted from feeds" >&2
+    return 1
+  fi
+  
+  # Process headlines with mods
+  #echo "$headlines" | mods --no-cache --quiet --api ollama --model gemma3:27b "${PROMPT} ${SCHEMA}" |
+  #echo "$headlines" | mods --no-cache --quiet --api ollama --model deepseek-r1:32b "${PROMPT} ${SCHEMA}" |
+  echo "$headlines" | mods --no-cache --quiet --api ollama --model phi4:14b "${PROMPT} ${SCHEMA}" |
     # Extract JSON block
     awk '/^[[:space:]]*{/,/^[[:space:]]*}/ {print}' |
     # Add type field and format with jq
@@ -77,10 +200,10 @@ add_to_data() {
   echo "$json" >> "$data_file"
 }
 
-# Function to clean old data (keep only last 3 months)
+# Function to clean old data (keep only last 1 months)
 clean_old_data() {
   local data_file="$1"
-  local cutoff_date=$(date -d "3 months ago" +"%Y-%m-%d %H:%M:%S")
+  local cutoff_date=$(date -d "1 months ago" +"%Y-%m-%d %H:%M:%S")
 
   # If the file exists
   if [ -f "$data_file" ]; then
@@ -109,7 +232,6 @@ create_chart_with_python() {
 
   # Create a Python script to generate the chart
   local python_script=$(mktemp)
-
   cat > "$python_script" << 'EOF'
 #!/usr/bin/env python3
 import sys
@@ -198,14 +320,13 @@ try:
 
     # Draw the horizontal line at 50 first (so it's behind the data series)
     plt.axhline(y=50, color='#696969', linestyle='dashed', linewidth=1.5)
-    
-    # Add the neutral line to the plot for legend purposes (but don't show it)
-    plt.plot([], [], 
-             label='Neutral Sentiment (50)', 
-             color='#FF5733', 
-             linestyle='-', 
-             linewidth=2.5)
 
+    # Add the neutral line to the plot for legend purposes (but don't show it)
+    plt.plot([], [],
+             label='Neutral Sentiment (50)',
+             color='#FF5733',
+             linestyle='-',
+             linewidth=2.5)
     # Plot each metric with its unique style
     for col in columns:
         if col in df.columns:
@@ -228,19 +349,30 @@ try:
                 markevery=max(1, len(df) // 10)  # Show fewer markers to avoid clutter
             )
 
-    # Add text "NEUTRAL SENTIMENT" at the right side of the chart
-    # (This is separate from the line to ensure it's visible)
-    plt.text(
-        0.99, 0.5,  # Positioned at 95% of the way across, 50% up (relative to axes)
-        'NEUTRAL SENTIMENT',
-        fontsize=10,
-        fontweight='bold',
-        color='#696969',
-        transform=plt.gca().transAxes,  # Use axes coordinates
-        verticalalignment='center',
-        horizontalalignment='left',
-        bbox=dict(facecolor='white', alpha=0.8, edgecolor='gray', boxstyle='round,pad=0.3')
-    )
+    # Define sentiment markers with their properties
+    sentiment_markers = [
+        {'y': 0, 'position': 0.01, 'text': 'MAX BEARISH', 'color': '#A52A2A', 'valign': 'bottom'},
+        {'y': 50, 'position': 0.5, 'text': 'NEUTRAL SENTIMENT', 'color': '#696969', 'valign': 'center'},
+        {'y': 100, 'position': 0.99, 'text': 'MAX BULLISH', 'color': '#006400', 'valign': 'top'}
+    ]
+    
+    # Add horizontal lines and text boxes for each sentiment marker
+    for marker in sentiment_markers:
+        # Draw horizontal line
+        plt.axhline(y=marker['y'], color=marker['color'], linestyle='dashed', linewidth=1.5)
+        
+        # Add text box
+        plt.text(
+            0.99, marker['position'],  # x position at right side, y position as specified
+            marker['text'],
+            fontsize=10,
+            fontweight='bold',
+            color=marker['color'],
+            transform=plt.gca().transAxes,
+            verticalalignment=marker['valign'],
+            horizontalalignment='right',
+            bbox=dict(facecolor='white', alpha=0.8, edgecolor=marker['color'], boxstyle='round,pad=0.3')
+        )
 
     # Format the x-axis to show dates nicely
     plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%d-%b'))
@@ -292,6 +424,7 @@ if [ "$CHARTS_ONLY" = false ]; then
   # Get results
   echo "Fetching crypto sentiment data..."
   CRYPTO_RESULTS=$(get_sentiment "$CRYPTO_FEEDS" "Crypto")
+echo $CRYPTO_RESULTS
   if [ -z "$CRYPTO_RESULTS" ]; then
     echo "Error: Failed to get crypto sentiment data" >&2
   else
@@ -301,18 +434,18 @@ if [ "$CHARTS_ONLY" = false ]; then
     add_to_data "$CRYPTO_RESULTS" "$COMBINED_DATA"
   fi
 
-  echo "Fetching forex sentiment data..."
-  FOREX_RESULTS=$(get_sentiment "$FOREX_FEEDS" "Forex")
-  if [ -z "$FOREX_RESULTS" ]; then
-    echo "Error: Failed to get forex sentiment data" >&2
-  else
-    echo "Successfully fetched forex sentiment data"
-    # Add results to data files
-    add_to_data "$FOREX_RESULTS" "$FOREX_DATA"
-    add_to_data "$FOREX_RESULTS" "$COMBINED_DATA"
-  fi
-
-  # Clean old data (keep only last 3 months)
+#  echo "Fetching forex sentiment data..."
+#  FOREX_RESULTS=$(get_sentiment "$FOREX_FEEDS" "Forex")
+#  if [ -z "$FOREX_RESULTS" ]; then
+#    echo "Error: Failed to get forex sentiment data" >&2
+#  else
+#    echo "Successfully fetched forex sentiment data"
+#    # Add results to data files
+#    add_to_data "$FOREX_RESULTS" "$FOREX_DATA"
+#    add_to_data "$FOREX_RESULTS" "$COMBINED_DATA"
+#  fi
+#
+  # Clean old data (keep only last 1 months)
   clean_old_data "$CRYPTO_DATA"
   clean_old_data "$FOREX_DATA"
   clean_old_data "$COMBINED_DATA"
@@ -320,14 +453,16 @@ else
   echo "Charts-only mode: Skipping data fetch and using existing data..."
 fi
 
+echo $CRYPTO_RESULTS
+
 # Create charts using Python (this happens in both modes)
 echo "Generating crypto sentiment chart..."
-create_chart_with_python "$CRYPTO_DATA" "$DATA_DIR/crypto_sentiment_chart.png" "Crypto Market Sentiment (Last 3 Months)"
+create_chart_with_python "$CRYPTO_DATA" "$DATA_DIR/crypto_sentiment_chart.png" "Crypto Market Sentiment (Last 1 Months)"
 
 #echo "Generating forex sentiment chart..."
-#create_chart_with_python "$FOREX_DATA" "$DATA_DIR/forex_sentiment_chart.png" "Forex Market Sentiment (Last 3 Months)"
-#
+#create_chart_with_python "$FOREX_DATA" "$DATA_DIR/forex_sentiment_chart.png" "Forex Market Sentiment (Last 1 Months)"
+
 #echo "Generating combined sentiment chart..."
-#create_chart_with_python "$COMBINED_DATA" "$DATA_DIR/combined_sentiment_chart.png" "Combined Market Sentiment (Last 3 Months)"
-#
+#create_chart_with_python "$COMBINED_DATA" "$DATA_DIR/combined_sentiment_chart.png" "Combined Market Sentiment (Last 1 Months)"
+
 #echo "Sentiment data updated and charts generated in $DATA_DIR/"

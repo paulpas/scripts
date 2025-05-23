@@ -11,7 +11,7 @@ CHART_DIR="/data/sentiment-data"
 CRYPTO_DATE=$(date --utc)
 
 # OpenAI API details
-#OPENAI_API_KEY="your_openai_api_key_here" # Replace with your actual API key
+OPENAI_API_KEY="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" # Replace with your actual API key
 OPENAI_MODEL="gpt-4.1-nano" #"gpt-4o" # You can change to a different model if needed
 
 # Maximum retries
@@ -235,26 +235,60 @@ update_past_predictions() {
     # Create a temp file for updating
     local temp_file="$TEMP_DIR/updating_predictions.json"
     
-    # Read the current predictions log
-    jq --arg now "$now" --arg price "$current_btc_price" '
-      map(
-        if .actual_price == null and .target_time < ($now | tonumber) then
-          # Calculate if prediction was correct (within 5% of actual)
-          . + {
-            actual_price: ($price | tonumber),
-            was_correct: (
-              ($price | tonumber) > (.predicted_price * 0.95) and 
-              ($price | tonumber) < (.predicted_price * 1.05)
-            )
-          }
-        else
-          .
-        end
-      )
-    ' "$PREDICTIONS_LOG" > "$temp_file"
+    # Read each prediction that needs updating
+    jq -c --arg now "$now" --arg price "$current_btc_price" '
+      [.[] | select(.actual_price == null and .target_time < ($now | tonumber))]
+    ' "$PREDICTIONS_LOG" > "$TEMP_DIR/predictions_to_update.json"
     
-    # Replace the predictions log with updated data
-    mv "$temp_file" "$PREDICTIONS_LOG"
+    # Process each prediction that needs updating
+    local updated=false
+    
+    # For each prediction that needs updating, get the historical price
+    while read -r prediction; do
+        if [ -z "$prediction" ] || [ "$prediction" = "[]" ]; then
+            continue
+        fi
+        
+        local target_time=$(echo "$prediction" | jq -r '.target_time')
+        local target_date=$(date -u -d "@$target_time" "+%Y-%m-%d")
+        
+        # Get historical price at the target time
+        # Using Coindesk API to get historical price data
+        local historical_url="https://data-api.coindesk.com/index/cc/v1/historical/days?market=cadli&instrument=BTC-USD&start_date=${target_date}&end_date=${target_date}&limit=1&aggregate=1&fill=true&apply_mapping=true&response_format=JSON"
+        local historical_price=$(curl -s "$historical_url" | jq '.Data[0].CLOSE')
+        
+        if [ -z "$historical_price" ] || [ "$historical_price" = "null" ]; then
+            # If we can't get historical price, use current price as fallback
+            historical_price=$current_btc_price
+        fi
+        
+        # Update the prediction with actual price
+        local target_time_num=$(echo "$prediction" | jq '.target_time')
+        local predicted_price=$(echo "$prediction" | jq '.predicted_price')
+        
+        # Calculate if prediction was correct (within 2% of actual)
+        local was_correct=$(echo "$predicted_price $historical_price" | awk '{
+            if ($2 > $1 * 0.98 && $2 < $1 * 1.02) print "true"; else print "false"
+        }')
+        
+        # Update the prediction in the file
+        jq --arg time "$target_time_num" --arg price "$historical_price" --arg correct "$was_correct" '
+          map(if (.target_time | tostring) == $time then 
+            . + {actual_price: ($price | tonumber), was_correct: ($correct == "true")} 
+          else 
+            . 
+          end)
+        ' "$PREDICTIONS_LOG" > "$temp_file"
+        
+        # Replace the predictions log with updated data
+        mv "$temp_file" "$PREDICTIONS_LOG"
+        updated=true
+    done < <(jq -c '.[]' "$TEMP_DIR/predictions_to_update.json")
+    
+    # If nothing was updated, just touch the file to ensure it exists
+    if [ "$updated" = false ]; then
+        touch "$PREDICTIONS_LOG"
+    fi
 }
 
 # Get the recent prediction accuracy information

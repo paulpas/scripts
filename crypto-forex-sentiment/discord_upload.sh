@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Define the webhook URL
-WEBHOOK_URL='https://discord.com/api/webhooks/0000000000000000002/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+WEBHOOK_URL=''
 
 # Define the directory containing charts
 CHART_DIR="/data/sentiment-data"
@@ -15,23 +15,23 @@ curl -s -F "payload_json={\"content\":\"Crypto Market Sentiment (Updated: $CRYPT
      -X POST "$WEBHOOK_URL"
 
 # Wait to avoid rate limiting
-sleep 2
-
-# Upload forex chart
-FOREX_FILE="${CHART_DIR}/forex_sentiment_chart.png"
-FOREX_DATE=$(date -r "$FOREX_FILE" "+%Y-%m-%d %H:%M:%S" 2>/dev/null || echo "Unknown")
-curl -s -F "payload_json={\"content\":\"Forex Market Sentiment (Updated: $FOREX_DATE)\\nScale: 0-100 (Below 50 = Bearish, Above 50 = Bullish)\"}" \
-     -F "file=@$FOREX_FILE" \
-     -H "Content-Type: multipart/form-data" \
-     -X POST "$WEBHOOK_URL"
-
-# Wait to avoid rate limiting
-sleep 2
-
-# Upload combined chart
-COMBINED_FILE="${CHART_DIR}/combined_sentiment_chart.png"
-COMBINED_DATE=$(date -r "$COMBINED_FILE" "+%Y-%m-%d %H:%M:%S" 2>/dev/null || echo "Unknown")
-curl -s -F "payload_json={\"content\":\"Combined Market Sentiment (Updated: $COMBINED_DATE)\\nScale: 0-100 (Below 50 = Bearish, Above 50 = Bullish)\"}" \
-     -F "file=@$COMBINED_FILE" \
-     -H "Content-Type: multipart/form-data" \
-     -X POST "$WEBHOOK_URL"
+#sleep 2
+#
+## Upload forex chart
+#FOREX_FILE="${CHART_DIR}/forex_sentiment_chart.png"
+#FOREX_DATE=$(date -r "$FOREX_FILE" "+%Y-%m-%d %H:%M:%S" 2>/dev/null || echo "Unknown")
+#curl -s -F "payload_json={\"content\":\"Forex Market Sentiment (Updated: $FOREX_DATE)\\nScale: 0-100 (Below 50 = Bearish, Above 50 = Bullish)\"}" \
+#     -F "file=@$FOREX_FILE" \
+#     -H "Content-Type: multipart/form-data" \
+#     -X POST "$WEBHOOK_URL"
+#
+## Wait to avoid rate limiting
+#sleep 2
+#
+## Upload combined chart
+##COMBINED_FILE="${CHART_DIR}/combined_sentiment_chart.png"
+#COMBINED_DATE=$(date -r "$COMBINED_FILE" "+%Y-%m-%d %H:%M:%S" 2>/dev/null || echo "Unknown")
+#curl -s -F "payload_json={\"content\":\"Combined Market Sentiment (Updated: $COMBINED_DATE)\\nScale: 0-100 (Below 50 = Bearish, Above 50 = Bullish)\"}" \
+#     -F "file=@$COMBINED_FILE" \
+#     -H "Content-Type: multipart/form-data" \
+#     -X POST "$WEBHOOK_URL"

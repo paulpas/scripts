@@ -11,7 +11,7 @@ CHART_DIR="/data/sentiment-data"
 CRYPTO_DATE=$(date --utc)
 
 # OpenAI API details
-OPENAI_API_KEY="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" # Replace with your actual API key
+OPENAI_API_KEY="" # Replace with your actual API key
 OPENAI_MODEL="gpt-4.1-nano" #"gpt-4o" # You can change to a different model if needed
 
 # Maximum retries

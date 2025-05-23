@@ -1,0 +1,4 @@
+# /scripts/crypto-forex-sentiment/.gitignore
+
+# Ignore all files and directories named 'runtime'
+runtime/

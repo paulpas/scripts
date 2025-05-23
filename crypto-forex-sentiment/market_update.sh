@@ -3,7 +3,7 @@
 set -o pipefail
 
 # Define the webhook URL
-WEBHOOK_URL='https://discord.com/api/webhooks/1374475141655826472/PKgV0w5NhNd8WWYlgeNAuhI_HcAvi1VKM6sN90nl3XDI-dU-lkb90HJkvImZzwePaZ-r'
+WEBHOOK_URL=''
 
 # Define the directory containing charts
 CHART_DIR="/data/sentiment-data"
